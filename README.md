@@ -91,9 +91,12 @@ puts ed101.to_xml(Nokogiri::XML::Builder.new(encoding: 'UTF-8'), nil, nil).to_xm
 ```
 
 ## Development
+Форкните гем.
 
 Сначала: `bundle`
 Guard: `guard`
+Тесты: `rake test`
+Консолб `bin/console`
 
 ## Contributing
 
