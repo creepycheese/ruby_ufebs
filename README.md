@@ -65,12 +65,15 @@ ed101 = Ufebs::ED101(
     payt_reason: 'ТП'
   }
 )
+```
 
 # вывод в UTF-8
-puts ed101.to_xml(Nokogiri::XML::Builder.new(encoding: 'UTF-8'), nil, nil).to_xml
- #=>
 
- ###
+```ruby
+puts ed101.to_xml(Nokogiri::XML::Builder.new(encoding: 'UTF-8'), nil, nil).to_xml
+```
+
+```
  <?xml version="1.0" encoding="UTF-8"?>
  <ed:ED101 xmlns:ed="urn:cbr-ru:ed:v2.0" EDNo="7" EDDate="2017-12-11" EDAuthor="4525595000" Sum="150000" TransKind="01" ChargeOffDate="2017-12-11" ReceiptDate="2017-12-11" SystemCode="01" Priority="0">
    <ed:AccDoc AccDocNo="003" AccDocDate="2017-12-11"/>
@@ -85,7 +88,6 @@ puts ed101.to_xml(Nokogiri::XML::Builder.new(encoding: 'UTF-8'), nil, nil).to_xm
    <ed:Purpose>оплата в том числе ндс 4000 руб</ed:Purpose>
    <ed:DepartmentalInfo CBC="18210301000010000110" OKATO="45263591000" TaxPeriod="МС.03.2017" DrawerStatus="01" PaytReason="ТП" DocNo="111" TaxPaytKind="НС" DocDate="2017-12-11"/>
  </ed:ED101>
- ###
 ```
 
 ## Development
