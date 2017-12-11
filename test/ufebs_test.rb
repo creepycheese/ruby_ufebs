@@ -7,7 +7,6 @@ class UfebsTest < MiniTest::Test
       ed_date: '2003-04-14',
       ed_author: '4525545000')
 
-    puts pr.to_xml
     doc = Nokogiri::XML(pr.to_xml)
     assert Ufebs.validate(doc)
   end

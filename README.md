@@ -1,6 +1,8 @@
-# RubyUfebs
+# Ufebs
 
 Обертка для XML форматов УФЕБС 2018 и 2017 годов. Для валидации и сборки XML используются Nokogiri и HappyMapper
+
+!!!UNDER DEVELOPMENT!!!
 
 ## Installation
 
@@ -20,6 +22,19 @@ gem 'ruby_ufebs'
 
 ## Usage
 
+Configuration:
+
+```
+Ufebs.configure do |config|
+  config.standard = '2018'  # использовать стандарты УФЕБС 2018
+end
+```
+
+ED101:
+
+```ruby
+
+```
 
 ## Development
 
