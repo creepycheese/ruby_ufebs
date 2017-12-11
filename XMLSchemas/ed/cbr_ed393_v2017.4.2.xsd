@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+ППС
+
+Схемы с описанием прикладных частей электроных сообщений, используемых в расчетной сети Банка России.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2017.4.2">
+	<xs:include schemaLocation="cbr_ed_objects_v2017.4.2.xsd"/>
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2017.4.2.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED393" type="ed:ED393"/>
+	<xs:complexType name="ED393">
+		<xs:annotation>
+			<xs:documentation>Распоряжение для изменения признака основного канала взаимодействия</xs:documentation>
+			<xs:documentation>Order for changing the indicator of primary interaction channel</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ed:ESID">
+				<xs:choice>
+					<xs:element name="ChannelMode" type="lt:OneDigitCodeType">
+						<xs:annotation>
+							<xs:documentation>Признак основного канала взаимодействия с АС ППС (ЦоиР).</xs:documentation>
+							<xs:documentation>Indicator of primary interaction channel with NPS.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ARMNo" type="lt:TwoDigitIdentifierType">
+						<xs:annotation>
+							<xs:documentation>Номер АРМ по умолчанию.</xs:documentation>
+							<xs:documentation>Default Terminal ID.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:choice>
+				<xs:attribute name="SystemCode" type="lt:TwoDigitCodeType" fixed="05" use="required">
+					<xs:annotation>
+						<xs:documentation>Признак системы обработки.</xs:documentation>
+						<xs:documentation>Fund transfer service (urgent/non-urgent).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="UID" type="lt:EDDrawerIDType">
+					<xs:annotation>
+						<xs:documentation>УИС Участника, для которого устанавливается основной канал взаимодействия (номер АРМ по умолчанию).</xs:documentation>
+						<xs:documentation>Participant’s UID whose Primary communication channel or Default Terminal ID is changed.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

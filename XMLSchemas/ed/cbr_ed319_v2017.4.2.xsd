@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+Схемы с описанием прикладных частей электроных сообщений, используемых в системе БЭСП Банка России.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" version="2017.4.2">
+	<xs:include schemaLocation="cbr_ed_objects_v2017.4.2.xsd"/>
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2017.4.2.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED319" type="ed:ED319"/>
+	<xs:complexType name="ED319">
+		<xs:annotation>
+			<xs:documentation>Подтверждение исполнения распоряжения для управления реквизитами получателя</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ed:ESID">
+				<xs:sequence>
+					<xs:element name="EDRefID" type="ed:EDRefID">
+						<xs:annotation>
+							<xs:documentation>Идентификаторы исходного ЭС</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ShortPayeeInfo" type="ed:ShortPayeeInfo">
+						<xs:annotation>
+							<xs:documentation>Реквизиты получателя</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="InitialED" type="ed:EDRefID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Идентификаторы исходного ЭСИС</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="ExecTime" type="lt:TimeType" use="required">
+					<xs:annotation>
+						<xs:documentation>Время исполнения</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="PayerBIC" type="lt:BICRUIDType" use="required">
+					<xs:annotation>
+						<xs:documentation>БИК плательщика</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

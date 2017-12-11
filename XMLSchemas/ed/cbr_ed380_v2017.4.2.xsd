@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+Схемы с описанием прикладных частей электроных сообщений, используемых в системе БЭСП Банка России.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2017.4.2">
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="cbr_ed_objects_v2017.4.2.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED380" type="ed:ED380"/>
+	<xs:complexType name="ED380">
+		<xs:annotation>
+			<xs:documentation>Запрос о лимитах в системе БЭСП</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ed:ESID">
+				<xs:attribute name="LimitTransKind" type="lt:OneDigitCodeType" use="required">
+					<xs:annotation>
+						<xs:documentation>Вид лимита</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="LimitDirection" type="lt:OneDigitCodeType">
+					<xs:annotation>
+						<xs:documentation>Направление лимита</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="PURBIC" type="lt:BICRUIDType">
+					<xs:annotation>
+						<xs:documentation>БИК ПУР, который установил (на который установлен) лимит</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

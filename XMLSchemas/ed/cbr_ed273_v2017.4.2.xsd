@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+Схемы с описанием прикладных частей электроных сообщений, используемых в системе БЭСП Банка России.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" version="2017.4.2">
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="cbr_ed_objects_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="cbr_ed113_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="cbr_ed114_v2017.4.2.xsd"/>
+	<xs:element name="ED273" type="ed:ED273"/>
+	<xs:complexType name="ED273">
+      		<xs:annotation>
+         		<xs:documentation>Сообщение для передачи выставляемых на оплату инкассовых поручений и выставляемых на оплату платежных требований, предъявленных получателем средств</xs:documentation>
+      		</xs:annotation>
+      		<xs:complexContent>
+         		<xs:extension base="ed:ESWithMandatoryEDReceiver">
+            			<xs:sequence>
+					<xs:choice maxOccurs="unbounded">
+						<xs:element ref="ed:ED113">
+							<xs:annotation>
+								<xs:documentation>Выставляемое на оплату платежное требование.</xs:documentation>
+								<xs:documentation>Payment Request.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element ref="ed:ED114">
+        						<xs:annotation>
+								<xs:documentation>Выставляемое на оплату инкассовое поручение.</xs:documentation>
+								<xs:documentation>Collection Order.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+            			</xs:sequence>
+         		</xs:extension>
+      		</xs:complexContent>
+   	</xs:complexType>
+</xs:schema>

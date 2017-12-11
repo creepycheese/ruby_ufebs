@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+Схемы с описанием прикладных частей электроных сообщений, используемых в системе БЭСП Банка России.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" version="2018.1.1">
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2018.1.1.xsd"/>
+	<xs:include schemaLocation="cbr_ed_objects_v2018.1.1.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные объекты</xs:documentation>
+	</xs:annotation>
+	<xs:element name="CancelledLimitInfo" type="ed:CancelledLimitInfo">
+	</xs:element>
+	<xs:complexType name="CancelledLimitInfo">
+		<xs:annotation>
+			<xs:documentation>Информация об отмененном лимите</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="LimitTransKind" type="lt:OneDigitCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Вид отменяемого лимита </xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PURBIC" type="lt:BICRUIDType">
+			<xs:annotation>
+				<xs:documentation>БИК ПУР, в отношении которого установлен лимит</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="LimitSum" type="lt:NotNegativeKopeckAmountType" use="required">
+			<xs:annotation>
+				<xs:documentation>Сумма лимита</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED375" type="ed:ED375">
+	</xs:element>
+	<xs:complexType name="ED375">
+      		<xs:annotation>
+         		<xs:documentation>Извещение об отмене установленного лимита ПУР в системе БЭСП</xs:documentation>
+      		</xs:annotation>
+      		<xs:complexContent>
+         		<xs:extension base="ed:ESID">
+            			<xs:sequence>
+               				<xs:element name="InitialED" type="ed:EDRefID" minOccurs="0">
+                  				<xs:annotation>
+                     					<xs:documentation>Идентификаторы исходного ЭСИС</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+               				<xs:element name="CancelledLimitInfo" type="ed:CancelledLimitInfo" maxOccurs="unbounded">
+	               				<xs:annotation>
+                     					<xs:documentation>Информация об отмененном лимите</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+            			</xs:sequence>
+         		</xs:extension>
+      		</xs:complexContent>
+   	</xs:complexType>
+</xs:schema>

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+Схемы с описанием прикладных частей электроных сообщений, используемых в системе БЭСП Банка России.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2017.4.2">
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="cbr_ed_objects_v2017.4.2.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED301" type="ed:ED301"/>
+	<xs:complexType name="ED301">
+		<xs:annotation>
+			<xs:documentation>Распоряжение для управления ликвидностью</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ed:ESID">
+				<xs:sequence>
+					<xs:element name="EDRefID" type="ed:EDRefID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Идентификаторы исходного ЭС</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="BIC" type="lt:BICRUIDType" use="required">
+					<xs:annotation>
+						<xs:documentation>БИК ПУР</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="Sum" type="lt:NotNegativeKopeckAmountType" use="required">
+					<xs:annotation>
+						<xs:documentation>Сумма операции</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="LiquidityTransKind" type="lt:OneDigitCodeType" use="required">
+					<xs:annotation>
+						<xs:documentation>Код операции по управлению позицией ликвидности</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

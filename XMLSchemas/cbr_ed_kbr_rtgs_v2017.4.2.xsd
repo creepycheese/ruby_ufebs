@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений для безналичных расчетов.
+
+Схемы с описанием прикладных частей электроных сообщений, используемых в расчетной сети Банка России.
+Предназначены для прямых участников расчетов системы БЭСП и содержат ЭС, используемые ПУР для взаимодействия с ЦОиР БЭСП.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2017.4.2">
+	<xs:include schemaLocation="ed/cbr_ed101_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed103_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed104_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed107_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed201_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed202_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed203_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed204_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed205_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed206_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed207_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed209_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed210_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed215_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed218_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed219_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed221_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed240_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed241_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed242_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed301_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed306_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed318_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed319_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed330_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed331_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed332_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed333_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed373_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed374_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed375_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed378_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed379_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed380_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed381_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed382_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed383_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed385_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed393_v2017.4.2.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed999_v2017.4.2.xsd"/>
+</xs:schema>

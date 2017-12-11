@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+ППС
+
+Схемы с описанием прикладных частей электроных сообщений, используемых в расчетной сети Банка России.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2018.1.1">
+	<xs:include schemaLocation="cbr_ed_objects_v2018.1.1.xsd"/>
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2018.1.1.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные объекты</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="ScheduleChangeType">
+		<xs:annotation>
+			<xs:documentation>Изменение в расписании.</xs:documentation>
+			<xs:documentation>Schedule Change.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Event" type="ed:EventType" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Событие.</xs:documentation>
+					<xs:documentation>Event.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="ScheduleDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата ОД, для которого изменено расписание.</xs:documentation>
+				<xs:documentation>Date of OD with changed schedule.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED809" type="ed:ED809"/>
+	<xs:complexType name="ED809">
+		<xs:annotation>
+			<xs:documentation>Уведомление об изменении графика работы</xs:documentation>
+			<xs:documentation>Operation schedule change</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ed:ESID">
+				<xs:sequence>
+					<xs:element name="ScheduleChange" type="ed:ScheduleChangeType" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Изменение в расписании.</xs:documentation>
+							<xs:documentation>Schedule Change.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="CreationReason" type="lt:ReasonCodeType" use="required">
+					<xs:annotation>
+						<xs:documentation>Код причины формирования ЭСИС.</xs:documentation>
+						<xs:documentation>Reason Code of ESIM generation (request of Participant, end of concolidated cycle, etc.).</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
