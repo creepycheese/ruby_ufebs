@@ -6,7 +6,9 @@ Dir[File.dirname(__FILE__) + '/**/*.rb'].each { |ff| require ff }
 module Ufebs
   extend self
 
-  XMLNS="urn:cbr-ru:ed:v2.0".freeze
+  def namespace
+    "urn:cbr-ru:ed:v2.0".freeze
+  end
 
   def configuration
     @configuration ||= Configuration.new

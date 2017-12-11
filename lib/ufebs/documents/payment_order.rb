@@ -14,9 +14,10 @@ module Ufebs
       SYSTEM_CODE          = '01'.freeze
       ED_AUTHOR            = '4525595000'.freeze
 
+      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'ED101'
+      namespace 'ed'
 
-      attribute :xmlns, String
       attribute :number, String, tag: 'EDNo'
       attribute :ed_date, String, tag: 'EDDate'
       attribute :ed_author, String, tag: 'EDAuthor'
@@ -64,7 +65,6 @@ module Ufebs
         @uin            = uin
 
         @ed_author   = ED_AUTHOR
-        @xmlns       = XMLNS
         @type_number = DOCUMENT_NUMBER_TYPE
         @system_code = SYSTEM_CODE
 
