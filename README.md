@@ -1,6 +1,8 @@
 # Ufebs
 
-Обертка для XML форматов УФЕБС 2018 и 2017 годов. Для валидации и сборки XML используются Nokogiri и HappyMapper
+Обертка для XML форматов УФЕБС 2018 и 2017 годов. Для валидации и сборки XML используются Nokogiri и HappyMapper.
+
+[Форматы](http://www.cbr.ru/analytics/?PrtId=Formats)
 
 !!!UNDER DEVELOPMENT!!!
 
