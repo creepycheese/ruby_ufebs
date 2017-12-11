@@ -8,16 +8,16 @@ class Ufebs::Documents::PackageTest < MiniTest::Test
         sum: 150000,
         receipt_date: Time.now,
         acc_doc: Ufebs::Entities::AccDoc.new(number: '123', date: Time.now),
-        purpose: 'оплата по договору 95456 от 15.01.2003 в том числе ндс 4000 руб',
+        purpose: 'оплата по  том числе ндс 4000 руб',
         departmental_info: nil
       ) do |p|
-        p.payer.name = 'ООО ТЕХНО ПЛЮС'
+        p.payer.name = 'ООО Тест'
         p.payer.account = '40702810200203001037'
         p.payer.inn = '7726274727'
         p.payer.bank.bic = '044525545'
         p.payer.bank.account = '30101810300000000545'
 
-        p.payee.name = 'ООО ТЕХНО ПЛЮС'
+        p.payee.name = 'Test Test'
         p.payee.account = '40702810200203001037'
         p.payee.inn = '7726274727'
         p.payee.bank.bic = '044525545'

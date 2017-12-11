@@ -6,6 +6,8 @@ Dir[File.dirname(__FILE__) + '/**/*.rb'].each { |ff| require ff }
 module Ufebs
   extend self
 
+  XMLNS="urn:cbr-ru:ed:v2.0".freeze
+
   def configuration
     @configuration ||= Configuration.new
   end
@@ -16,15 +18,17 @@ module Ufebs
 
   def validation_schema
     @validation ||= begin
-      validation = Nokogiri::XML(File.read(configuration.schemas), configuration.schemas)
-      Nokogiri::XML::Schema.from_document(validation)
-    end
+                      validation = Nokogiri::XML(File.read(configuration.schemas), configuration.schemas)
+                      Nokogiri::XML::Schema.from_document(validation)
+                    end
   end
 
-  def ED999()
+  def ED999(params)
+    Ufebs::Requests::TestRequest.new(params)
   end
 
-  def ED101()
+  def ED101(params)
+    Ufebs::Documents::PaymentOrder.new(params)
   end
 
   def PackedEPD()
