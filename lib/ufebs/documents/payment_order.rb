@@ -49,7 +49,7 @@ module Ufebs
         uin: nil,
         payt_kind: nil,
         system_code: nil,
-        departmental_info: DepartmentalInfo.new
+        departmental_info: nil
       )
         raise InvalidPriority.new('priority Реквизит должен иметь значение в диапазоне 0-5.') unless (0..5).include?(priority.to_i)
 

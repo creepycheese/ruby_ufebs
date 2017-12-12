@@ -27,8 +27,8 @@ module Ufebs
         @system_code   = '01'
       end
 
-      def to_xml
-        super(Nokogiri::XML::Builder.new(:encoding => 'UTF-8')).to_xml
+      def to_xml(encoding: 'UTF-8')
+        super(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
       end
     end
   end
