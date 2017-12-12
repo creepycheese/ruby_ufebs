@@ -8,7 +8,7 @@ module Ufebs
       attribute :kpp, String, tag: 'KPP'
 
       element   :name, String, tag: 'Name'
-      has_one   :bank, Bank, tag: 'Bank'
+      has_one   :bank, Ufebs::Entities::Bank, tag: 'Bank'
 
       def initialize(inn:'', account:'' ,name:'', bank_account:'', bank_bic:'', kpp: nil)
         @inn, @kpp, @account, @name = inn, kpp, account, name.encode(xml: :text)
