@@ -48,6 +48,7 @@ module Ufebs
         purpose: '',
         uin: nil,
         payt_kind: nil,
+        system_code: nil,
         departmental_info: DepartmentalInfo.new
       )
         raise InvalidPriority.new('priority Реквизит должен иметь значение в диапазоне 0-5.') unless (0..5).include?(priority.to_i)
@@ -68,7 +69,7 @@ module Ufebs
 
         @ed_author   = ed_author
         @type_number = DOCUMENT_NUMBER_TYPE
-        @system_code = SYSTEM_CODE
+        @system_code = system_code || SYSTEM_CODE
 
         yield self if block_given?
       end
