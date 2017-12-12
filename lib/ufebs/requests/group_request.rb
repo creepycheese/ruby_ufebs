@@ -4,9 +4,10 @@ module Ufebs
       include HappyMapper
       include Fields::Header
 
+      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'ED203'
+      namespace 'ed'
 
-      attribute :xmlns, String, tag: 'xmlns'
       attribute :ed_receiver, String, tag: 'EDReceiver'
       attribute :status_code, String, tag: 'StatusCode'
       attribute :account, String, tag: 'Acc'
@@ -15,7 +16,6 @@ module Ufebs
       def initialize(params = {})
 
         params.each { |key, value| instance_variable_set("@#{key}".to_sym, value) }
-        @xmlns = "urn:cbr-ru:ed:v2.0".freeze
       end
     end
   end
