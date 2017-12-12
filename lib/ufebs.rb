@@ -1,7 +1,10 @@
 require 'happymapper'
 require "ufebs/version"
 require "ufebs/configuration"
-Dir[File.dirname(__FILE__) + '/**/*.rb'].each { |ff| require ff }
+Dir[File.dirname(__FILE__) + '/**/entities/*.rb'].each { |ff| require ff }
+Dir[File.dirname(__FILE__) + '/**/fields/*.rb'].each { |ff| require ff }
+Dir[File.dirname(__FILE__) + '/**/documents/*.rb'].each { |ff| require ff }
+Dir[File.dirname(__FILE__) + '/**/requests/*.rb'].each { |ff| require ff }
 
 module Ufebs
   extend self
@@ -53,7 +56,7 @@ module Ufebs
   # @option params [Integer] :number номер документа аттрибут EDNo
   # @option params [Integer] :sum Сумма документа аттрибут Sum
   # @option params [DateTime] :receipt_date ReceiptDate дата обработки
-  # @option params [Hash] :acc_doc AccDoc информация о счете(number: Номер исходного расчетного документа, date: Дата выписки расчетного документа)
+  # @option params [Hash] :acc_doc AccDoc информация о счете(number: Номер исходного расчетного документа, date: Дата выписки расчетного документа
   # @option params [String] :purpose Purpose предназначение-описание платежа
   # @option params [Hash] :payer Payer плательщик
   # @option params [Hash] :payer Payee получатель
