@@ -113,7 +113,8 @@ module Ufebs
     Ufebs::Documents::PaymentOrder.new(params)
   end
 
-  def PackedEPD()
+  def PackedEPD(payment_eds, params)
+    Ufebs::Documents::Package.new(payment_eds, params)
   end
 
   def validate(doc)

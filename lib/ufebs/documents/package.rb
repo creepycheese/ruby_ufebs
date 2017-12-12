@@ -6,7 +6,7 @@ module Ufebs
       include HappyMapper
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'PacketEPD'
-      XMLNS                = "urn:cbr-ru:ed:v2.0".freeze
+      namespace 'ed'
 
       attribute :ed_date, String, tag: 'EDDate'
       attribute :ed_author, String, tag: 'EDAuthor'
@@ -14,7 +14,6 @@ module Ufebs
       attribute :quantity, String, tag: 'EDQuantity'
       attribute :sum, String, tag: 'Sum'
       attribute :system_code, String, tag: 'SystemCode'
-      attribute :xmlns, String
 
       has_many :payment_orders, Ufebs::Documents::PaymentOrder
 
@@ -26,8 +25,6 @@ module Ufebs
         @quantity  = params[:quantity] || payment_orders.size
         @sum       = params[:sum] || payment_orders.sum(&:sum)
         @system_code   = '01'
-
-        @xmlns = XMLNS
       end
 
       def to_xml
