@@ -17,6 +17,7 @@ class UfebsTest < MiniTest::Test
       sum: 150000,
       receipt_date: Time.now,
       acc_doc: { number: '3', date: Time.now },
+      ed_author: '4525545000',
       purpose: 'оплата в том числе ндс 4000 руб',
       payer: {
         name: 'ООО ТЕСТ',

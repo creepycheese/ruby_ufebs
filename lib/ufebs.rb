@@ -14,6 +14,7 @@ module Ufebs
     @configuration ||= Configuration.new
   end
 
+  # Конфигурация
   def configure(&block)
     block.call(configuration)
   end
@@ -34,6 +35,19 @@ module Ufebs
     Ufebs::Requests::TestRequest.new(params)
   end
 
+  def ED210(params)
+  end
+
+  def ED243(params)
+  end
+
+  def ED218(params)
+  end
+
+  def ED244
+  end
+
+
   # Создание XML по формату ED101(Платежное поручение)
   # @param params [Hash] Hash значений документа
   # @option params [Integer] :number номер документа аттрибут EDNo
@@ -51,6 +65,7 @@ module Ufebs
   #     sum: 150000,
   #     receipt_date: Time.now,
   #     acc_doc: { number: '3', date: Time.now },
+  #     ed_author: 4525595000
   #     purpose: 'оплата в том числе ндс 4000 руб',
   #     payer: {
   #       name: 'ООО ТЕСТ',

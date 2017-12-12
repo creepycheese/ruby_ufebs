@@ -4,6 +4,7 @@ module Ufebs
   module Documents
     class Package
       include HappyMapper
+      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'PacketEPD'
       XMLNS                = "urn:cbr-ru:ed:v2.0".freeze
 

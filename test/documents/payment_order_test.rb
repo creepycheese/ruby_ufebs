@@ -6,6 +6,7 @@ class Ufebs::Documents::PaymentOrderTest < MiniTest::Test
       number: 7,
       sum: 150000,
       receipt_date: Time.now,
+      ed_author: '4525595000',
       acc_doc: { number: '3', date: Time.now },
       purpose: 'оплата в том числе ндс 4000 руб',
       payer: {

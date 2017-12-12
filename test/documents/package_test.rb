@@ -7,6 +7,7 @@ class Ufebs::Documents::PackageTest < MiniTest::Test
         number: 7,
         sum: 150000,
         receipt_date: Time.now,
+        ed_author: '4525595000',
         acc_doc: Ufebs::Entities::AccDoc.new(number: '123', date: Time.now),
         purpose: 'оплата по  том числе ндс 4000 руб',
         departmental_info: nil

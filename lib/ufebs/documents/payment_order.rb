@@ -10,9 +10,7 @@ module Ufebs
       InvalidPriority = Class.new(StandardError)
 
       DOCUMENT_NUMBER_TYPE = '01'.freeze
-      XMLNS                = "urn:cbr-ru:ed:v2.0".freeze
       SYSTEM_CODE          = '01'.freeze
-      ED_AUTHOR            = '4525595000'.freeze
 
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'ED101'
@@ -42,6 +40,7 @@ module Ufebs
         charge_off_date: Time.now,
         priority: 0,
         receipt_date: Time.now,
+        ed_author:,
         acc_doc: Ufebs::Entities::AccDoc.new,
         payer: Ufebs::Entities::Participant.new,
         payee: Ufebs::Entities::Participant.new,
@@ -64,7 +63,7 @@ module Ufebs
         @departmental_info = departmental_info.is_a?(Hash) ? Ufebs::Entities::DepartmentalInfo.new(departmental_info) : departmental_info
         @uin            = uin
 
-        @ed_author   = ED_AUTHOR
+        @ed_author   = ed_author
         @type_number = DOCUMENT_NUMBER_TYPE
         @system_code = SYSTEM_CODE
 
