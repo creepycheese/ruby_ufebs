@@ -1,3 +1,5 @@
+require_relative '../fields/header'
+
 module Ufebs
   module Requests
     class PackageRequest
