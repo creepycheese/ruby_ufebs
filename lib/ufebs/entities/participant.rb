@@ -1,3 +1,5 @@
+require_relative 'bank'
+
 module Ufebs
   module Entities
     class Participant
