@@ -35,5 +35,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'guard'
   spec.add_development_dependency 'guard-minitest'
   spec.add_development_dependency 'guard-bundler'
+  spec.add_development_dependency 'yard'
   spec.add_runtime_dependency 'nokogiri-happymapper'
 end
