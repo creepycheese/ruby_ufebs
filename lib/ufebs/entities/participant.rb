@@ -12,7 +12,7 @@ module Ufebs
 
       def initialize(inn:'', account:'' ,name:'', bank_account:'', bank_bic:'', kpp: nil)
         @inn, @kpp, @account, @name = inn, kpp, account, name.encode(xml: :text)
-        @bank = Bank.new(bic: bank_bic, account: bank_account)
+        @bank = Ufebs::Entities::Bank.new(bic: bank_bic, account: bank_account)
       end
     end
   end
