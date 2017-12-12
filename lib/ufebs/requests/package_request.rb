@@ -17,9 +17,10 @@ module Ufebs
       include HappyMapper
       include Ufebs::Fields::Header
 
+      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'ED202'
+      namespace 'ed'
 
-      attribute :xmlns, String, tag: 'xmlns'
       attribute :ed_receiver, String, tag: 'EDReceiver'
       attribute :ed_inqiery_code, String, tag: 'EDInquiryCode'
       has_one :ref, Ref, tag: 'EDRefID'
@@ -29,8 +30,6 @@ module Ufebs
         params.delete(:ref)
 
         params.each { |key, value| instance_variable_set("@#{key}".to_sym, value) }
-
-        @xmlns = "urn:cbr-ru:ed:v2.0".freeze
       end
     end
   end
