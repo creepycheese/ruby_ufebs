@@ -2,6 +2,9 @@ module Ufebs
   module Entities
     class AccDoc
       include HappyMapper
+      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      namespace 'ed'
+
       attribute :number, String, tag: 'AccDocNo'
       attribute :date, String, tag: 'AccDocDate'
 

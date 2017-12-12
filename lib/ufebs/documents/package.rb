@@ -17,14 +17,15 @@ module Ufebs
 
       has_many :payment_orders, Ufebs::Documents::PaymentOrder
 
-      def initialize(payment_orders, params = {})
+      def initialize(payment_orders=[], params = {})
         @payment_orders = payment_orders
         @ed_date   = Date.parse(params.fetch(:ed_date){Time.now}.to_s).strftime('%Y-%m-%d')
         @ed_author = params[:ed_author]
         @number    = params[:number]
         @quantity  = params[:quantity] || payment_orders.size
-        @sum       = params[:sum] || payment_orders.sum(&:sum)
+        @sum       = params[:sum]
         @system_code   = '01'
+        super()
       end
 
       def to_xml(encoding: 'UTF-8')

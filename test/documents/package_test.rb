@@ -3,27 +3,29 @@ require_relative '../test_helper'
 class Ufebs::Documents::PackageTest < MiniTest::Test
   def test_it_creates_valid_package_xml
     po = 3.times.map do
-     Ufebs::Documents::PaymentOrder.new(
+      Ufebs::Documents::PaymentOrder.new(
         number: 7,
         sum: 150000,
         receipt_date: Time.now,
         ed_author: '4525595000',
         acc_doc: Ufebs::Entities::AccDoc.new(number: '123', date: Time.now),
         purpose: 'оплата по  том числе ндс 4000 руб',
-        departmental_info: nil
-      ) do |p|
-        p.payer.name = 'ООО Тест'
-        p.payer.account = '40702810200203001037'
-        p.payer.inn = '7726274727'
-        p.payer.bank.bic = '044525545'
-        p.payer.bank.account = '30101810300000000545'
-
-        p.payee.name = 'Test Test'
-        p.payee.account = '40702810200203001037'
-        p.payee.inn = '7726274727'
-        p.payee.bank.bic = '044525545'
-        p.payee.bank.account = '30101810300000000545'
-      end
+        departmental_info: nil,
+        payer: {
+          name: 'ООО ТЕСТ',
+          account: '40702810200203001037',
+          inn: '7726274727',
+          bank_bic: '044525545',
+          bank_account: '30101810300000000545'
+        },
+        payee: {
+          name: 'ООО ТЕСТ',
+          account: '40702810200203001037',
+          inn: '7726274727',
+          bank_bic: '044525545',
+          bank_account: '30101810300000000545'
+        }
+      )
     end
 
     pack = Ufebs::Documents::Package.new(

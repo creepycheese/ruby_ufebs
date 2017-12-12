@@ -3,6 +3,9 @@ module Ufebs
     class Bank
       include HappyMapper
 
+      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      namespace 'ed'
+
       attribute :bic, String, tag: 'BIC'
       attribute :account, String, tag: 'CorrespAcc'
 

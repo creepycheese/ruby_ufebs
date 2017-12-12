@@ -5,6 +5,9 @@ module Ufebs
     class Participant
       include HappyMapper
 
+      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      namespace 'ed'
+
       attribute :inn, String, tag: 'INN'
       attribute :account, String, tag: 'PersonalAcc'
       attribute :kpp, String, tag: 'KPP'

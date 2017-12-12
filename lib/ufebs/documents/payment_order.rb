@@ -34,17 +34,21 @@ module Ufebs
 
       has_one :departmental_info, Ufebs::Entities::DepartmentalInfo, tag: 'DepartmentalInfo', state_when_nil: false
 
+      def validate
+        Ufebs.validate(to_xml)
+      end
+
       def initialize(
         ed_date: Time.now,
-        number:,
-        sum:,
+        number: nil,
+        sum: nil,
         charge_off_date: Time.now,
         priority: 0,
         receipt_date: Time.now,
-        ed_author:,
-        acc_doc: Ufebs::Entities::AccDoc.new,
-        payer: Ufebs::Entities::Participant.new,
-        payee: Ufebs::Entities::Participant.new,
+        ed_author: '',
+        acc_doc: nil,
+        payer: nil,
+        payee: nil,
         purpose: '',
         uin: nil,
         payt_kind: nil,
@@ -72,6 +76,8 @@ module Ufebs
         @system_code = system_code || SYSTEM_CODE
 
         yield self if block_given?
+
+        super()
       end
     end
   end

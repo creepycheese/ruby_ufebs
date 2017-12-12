@@ -2,6 +2,9 @@ module Ufebs
   module Entities
     class DepartmentalInfo
       include HappyMapper
+      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      namespace 'ed'
+
       attribute :kbk, String, tag: 'CBC'
       attribute :okato, String, tag: 'OKATO'
       attribute :tax_period, String, tag: 'TaxPeriod'
