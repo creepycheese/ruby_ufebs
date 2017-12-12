@@ -13,7 +13,7 @@ module Ufebs
       end
 
       include HappyMapper
-      include Fields::Header
+      include Ufebs::Fields::Header
 
       tag 'ED202'
 
