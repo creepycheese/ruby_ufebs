@@ -20,6 +20,7 @@ module Ufebs
       attribute :ed_date, String, tag: 'EDDate'
       attribute :ed_author, String, tag: 'EDAuthor'
       attribute :sum, String, tag: 'Sum'
+      attribute :payt_kind, String, tag: 'PaytKind'
       attribute :type_number, String, tag: 'TransKind'
       attribute :uin, String, tag: 'PaymentID'
       attribute :charge_off_date, String, tag: 'ChargeOffDate'
@@ -46,6 +47,7 @@ module Ufebs
         payee: Ufebs::Entities::Participant.new,
         purpose: '',
         uin: nil,
+        payt_kind: nil,
         departmental_info: DepartmentalInfo.new
       )
         raise InvalidPriority.new('priority Реквизит должен иметь значение в диапазоне 0-5.') unless (0..5).include?(priority.to_i)
@@ -62,6 +64,7 @@ module Ufebs
         @purpose         = purpose
         @departmental_info = departmental_info.is_a?(Hash) ? Ufebs::Entities::DepartmentalInfo.new(departmental_info) : departmental_info
         @uin            = uin
+        @payt_kind      = payt_kind
 
         @ed_author   = ed_author
         @type_number = DOCUMENT_NUMBER_TYPE

@@ -21,7 +21,7 @@ module Ufebs
       def initialize(payment_orders, params = {})
         @payment_orders = payment_orders
         @ed_date   = Date.parse(params.fetch(:ed_date){Time.now}.to_s).strftime('%Y-%m-%d')
-        @ed_author = params[:ed_author] || Utya::ED_AUTHOR
+        @ed_author = params[:ed_author]
         @number    = params[:number]
         @quantity  = params[:quantity] || payment_orders.size
         @sum       = params[:sum] || payment_orders.sum(&:sum)

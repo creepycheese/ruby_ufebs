@@ -53,7 +53,7 @@ module Ufebs
   # @option params [Integer] :number номер документа аттрибут EDNo
   # @option params [Integer] :sum Сумма документа аттрибут Sum
   # @option params [DateTime] :receipt_date ReceiptDate дата обработки
-  # @option params [Hash] :acc_doc AccDoc информация о счете
+  # @option params [Hash] :acc_doc AccDoc информация о счете(number: Номер исходного расчетного документа, date: Дата выписки расчетного документа)
   # @option params [String] :purpose Purpose предназначение-описание платежа
   # @option params [Hash] :payer Payer плательщик
   # @option params [Hash] :payer Payee получатель
