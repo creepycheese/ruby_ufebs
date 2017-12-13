@@ -9,8 +9,9 @@ module Ufebs
       attribute :bic, String, tag: 'BIC'
       attribute :account, String, tag: 'CorrespAcc'
 
-      def initialize(bic: '', account: '')
+      def initialize(bic: nil, account: nil)
         @bic, @account = bic, account
+        super()
       end
     end
   end
