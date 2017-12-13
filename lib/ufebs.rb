@@ -61,7 +61,7 @@ module Ufebs
   # @option params [Hash] :payer Payer плательщик
   # @option params [Hash] :payer Payee получатель
   # @option params [Hash] :departmental_info ({}) DepartmentalInfo Ведомственная информация
-  # @return [Ufebs::Documents::PaymentOrder] Представление документа УФЕБС
+  # @return [Ufebs::Documents::PaymentOrder, Array<Ufebs::Documents::PaymentOrder>] Представление документа УФЕБС
   # @example Пример документа
   #   ed101 = Ufebs::ED101(
   #     number: 7,
@@ -109,6 +109,8 @@ module Ufebs
   #      <ed:Purpose>оплата в том числе ндс 4000 руб</ed:Purpose>
   #      <ed:DepartmentalInfo CBC="18210301000010000110" OKATO="45263591000" TaxPeriod="МС.03.2017" DrawerStatus="01" PaytReason="ТП" DocNo="111" TaxPaytKind="НС" DocDate="2017-12-11"/>
   #    </ed:ED101>'
+  # @example Чтение XML
+  #   Ufebs::ED101(File.read('packet_epd.xml')) #=> [#<Ufebs::Documents::PaymentOrder:0x00..>]
   def ED101(params)
     params.is_a?(Hash) ? Ufebs::Documents::PaymentOrder.new(params) : Ufebs::Documents::PaymentOrder.parse(params)
   end
