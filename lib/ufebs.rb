@@ -110,7 +110,7 @@ module Ufebs
   #      <ed:DepartmentalInfo CBC="18210301000010000110" OKATO="45263591000" TaxPeriod="МС.03.2017" DrawerStatus="01" PaytReason="ТП" DocNo="111" TaxPaytKind="НС" DocDate="2017-12-11"/>
   #    </ed:ED101>'
   def ED101(params)
-    Ufebs::Documents::PaymentOrder.new(params)
+    params.is_a?(Hash) ? Ufebs::Documents::PaymentOrder.new(params) : Ufebs::Documents::PaymentOrder.parse(params)
   end
 
   def PackedEPD(payment_eds, params)
