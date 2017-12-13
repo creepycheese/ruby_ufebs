@@ -52,7 +52,7 @@ module Ufebs
 
 
   # Создание XML по формату ED101(Платежное поручение)
-  # @param params [Hash] Hash значений документа
+  # @param params [Hash, String] Hash значений документа или его строковое представление в виде XML
   # @option params [Integer] :number номер документа аттрибут EDNo
   # @option params [Integer] :sum Сумма документа аттрибут Sum
   # @option params [DateTime] :receipt_date ReceiptDate дата обработки
