@@ -10,6 +10,7 @@ module Ufebs
 
       attribute :ed_date, String, tag: 'EDDate'
       attribute :ed_author, String, tag: 'EDAuthor'
+      attribute :ed_receiver, String, tag: 'EDReceiver'
       attribute :number, String, tag: 'EDNo'
       attribute :quantity, String, tag: 'EDQuantity'
       attribute :sum, String, tag: 'Sum'
@@ -21,6 +22,7 @@ module Ufebs
         @payment_orders = payment_orders
         @ed_date   = Date.parse(params.fetch(:ed_date){Time.now}.to_s).strftime('%Y-%m-%d')
         @ed_author = params[:ed_author]
+        @ed_receiver = params[:ed_receiver]
         @number    = params[:number]
         @quantity  = params[:quantity] || payment_orders.size
         @sum       = params[:sum]
