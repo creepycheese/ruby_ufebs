@@ -38,6 +38,10 @@ module Ufebs
         Ufebs.validate(to_xml)
       end
 
+      def to_xml(encoding: 'UTF-8')
+        super(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
+      end
+
       def initialize(
         ed_date: Time.now,
         number: nil,
