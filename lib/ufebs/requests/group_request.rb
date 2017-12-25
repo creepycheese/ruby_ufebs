@@ -1,8 +1,10 @@
+require_relative '../fields/header'
+
 module Ufebs
   module Requests
     class GroupRequest
       include HappyMapper
-      include Fields::Header
+      include Ufebs::Fields::Header
 
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'ED203'
