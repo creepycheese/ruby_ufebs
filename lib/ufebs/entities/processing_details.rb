@@ -9,7 +9,7 @@ module Ufebs
       attribute :debit_date, String, tag: 'DebitDate'
       attribute :credit_date, String, tag: 'CreditDate'
 
-      def initialize(debit_date:, credit_date:)
+      def initialize(debit_date: Time.now, credit_date: Time.now)
         @debit_date = Date.parse(debit_date.to_s).strftime('%Y-%m-%d')
         @credit_date = Date.parse(credit_date.to_s).strftime('%Y-%m-%d')
       end
