@@ -30,6 +30,7 @@ module Ufebs
       has_one :acc_doc, ::Ufebs::Entities::AccDoc, tag: 'AccDoc'
       has_one :payer, ::Ufebs::Entities::Participant, tag: 'Payer'
       has_one :payee, ::Ufebs::Entities::Participant, tag: 'Payee'
+      has_one :processing_details, ::Ufebs::Entities::ProcessingDetails, tag: 'ProcessingDetails'
       element :purpose, String, tag: 'Purpose'
 
       has_one :departmental_info, Ufebs::Entities::DepartmentalInfo, tag: 'DepartmentalInfo', state_when_nil: false
