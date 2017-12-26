@@ -39,7 +39,7 @@ module Ufebs
       end
 
       def as_xml(encoding: 'UTF-8')
-        super(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
+        to_xml(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
       end
 
       def initialize(
