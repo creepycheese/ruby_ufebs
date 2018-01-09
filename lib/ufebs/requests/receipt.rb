@@ -17,7 +17,11 @@ module Ufebs
       attribute :inquiry_session, String, tag: 'InquirySession'
       attribute :last_movet_date, String, tag: 'LastMovetDate'
       attribute :out_bal, String, tag: 'OutBal'
+      attribute :reserved_sum, String, tag: 'ReservedSum'
+      attribute :credit_limit_sum, String, tag: 'CreditLimitSum'
       attribute :rtgs_unconfirmed_ed, String, tag: 'RTGSUnconfirmedED'
+      attribute :arrest_sum, String, tag: 'ArrestSum'
+      attribute :part_aggregate_id, String, tag: 'PartAggregateID'
 
       def initialize(params = {})
         params.each do |key, value|

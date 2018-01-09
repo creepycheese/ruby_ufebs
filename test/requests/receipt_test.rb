@@ -16,7 +16,11 @@ class Ufebs::Requests::PackageRequestTest < MiniTest::Test
       inquiry_session: '0',
       last_movet_date: Date.today,
       out_bal: '72619100',
-      rtgs_unconfirmed_ed: '0'
+      rtgs_unconfirmed_ed: '0',
+
+      arrest_sum: '123123',
+      credit_limit_sum: '213123',
+      reserved_sum: '213123'
     )
 
     doc = Nokogiri::XML(pr.to_xml)
