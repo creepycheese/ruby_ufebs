@@ -1,3 +1,5 @@
+require_relative 'session'
+
 module Ufebs
   module Entities
     class ProcessingDetails
@@ -8,6 +10,7 @@ module Ufebs
 
       attribute :debit_date, String, tag: 'DebitDate'
       attribute :credit_date, String, tag: 'CreditDate'
+      has_one :session, ::Ufebs::Entities::Session, tag: 'Session', state_when_nil: false
 
       def initialize(debit_date: Time.now, credit_date: Time.now)
         @debit_date = Date.parse(debit_date.to_s).strftime('%Y-%m-%d')

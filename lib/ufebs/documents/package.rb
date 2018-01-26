@@ -1,4 +1,5 @@
 require_relative 'payment_order'
+require_relative '../entities/session'
 
 module Ufebs
   module Documents
@@ -17,6 +18,7 @@ module Ufebs
       attribute :system_code, String, tag: 'SystemCode'
 
       has_many :payment_orders, Ufebs::Documents::PaymentOrder
+      has_one :session, ::Ufebs::Entities::Session, tag: 'Session', state_when_nil: false
 
       def initialize(payment_orders=[], params = {})
         @payment_orders = payment_orders
