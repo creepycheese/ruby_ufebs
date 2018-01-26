@@ -16,7 +16,6 @@ module Ufebs
   # Получение Сессии(Номера рейса)
   # @return [Ufebs::Entities::Session]
   # @example Пример
-  #
   # session = Ufebs::Session(File.read('doc.xml')) #=> #<Ufebs::Entities::Session:0x00..>
   def Session(params)
     params.is_a?(Hash) ? Ufebs::Entities::Session.new(params) : Ufebs::Entities::Session.parse(params, single: true)
@@ -53,7 +52,6 @@ module Ufebs
 
   # Создание/Парсинг выписки ED211
   # @example Пример
-  #
   # ed211 = Ufebs::Requests::Receipt.new(
   #   number: '8',
   #   ed_date: '2003-04-14',
