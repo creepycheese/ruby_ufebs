@@ -13,6 +13,15 @@ module Ufebs
     "urn:cbr-ru:ed:v2.0".freeze
   end
 
+  # Получение Сессии(Номера рейса)
+  # @return [Ufebs::Entities::Session]
+  # @example Пример
+  #
+  # session = Ufebs::Session(File.read('doc.xml')) #=> #<Ufebs::Entities::Session:0x00..>
+  def Session(params)
+    params.is_a?(Hash) ? Ufebs::Entities::Session.new(params) : Ufebs::Entities::Session.parse(params, single: true)
+  end
+
   def configuration
     @configuration ||= Configuration.new
   end

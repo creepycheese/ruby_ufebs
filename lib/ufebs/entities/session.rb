@@ -3,6 +3,7 @@ module Ufebs
     class Session
       include HappyMapper
 
+      tag 'Session'
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       namespace 'ed'
 
