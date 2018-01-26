@@ -22,6 +22,12 @@ gem 'ruby_ufebs'
 
     $ gem install ruby_ufebs
 
+## Generate doc
+
+```sh
+yard doc
+```
+
 ## Usage
 
 Configuration:
