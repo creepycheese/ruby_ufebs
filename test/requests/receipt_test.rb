@@ -20,7 +20,17 @@ class Ufebs::Requests::PackageRequestTest < MiniTest::Test
 
       arrest_sum: '123123',
       credit_limit_sum: '213123',
-      reserved_sum: '213123'
+      reserved_sum: '213123',
+
+      trans_kind:         '01',
+      sum:                '100',
+      debit_sum:          '200',
+      credit_sum:         '200',
+      dc:                 '2',
+      payer_personal_acc: '40000810000000000000',
+      payee_personal_acc: '40000810000000000000',
+      bic_corr:           '044123123',
+      cash_doc_no:        '123',
     )
 
     doc = Nokogiri::XML(pr.to_xml)

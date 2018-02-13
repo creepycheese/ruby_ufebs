@@ -22,6 +22,15 @@ module Ufebs
       attribute :rtgs_unconfirmed_ed, String, tag: 'RTGSUnconfirmedED'
       attribute :arrest_sum, String, tag: 'ArrestSum'
       attribute :part_aggregate_id, String, tag: 'PartAggregateID'
+      attribute :trans_kind,         String, tag: 'TransKind'
+      attribute :sum,                String, tag: 'Sum'
+      attribute :debit_sum,          String, tag: 'DebetSum'
+      attribute :credit_sum,         String, tag: 'CreditSum'
+      attribute :dc,                 String, tag: 'DC'
+      attribute :payer_personal_acc, String, tag: 'PayerPersonalAcc'
+      attribute :payee_personal_acc, String, tag: 'PayeePersonalAcc'
+      attribute :bic_corr,           String, tag: 'BICCorr'
+      attribute :cash_doc_no,        String, tag: 'CashDocNo'
 
       def initialize(params = {})
         params.each do |key, value|
