@@ -25,16 +25,22 @@ module Ufebs
       attribute :debit_sum,           String, tag: 'DebetSum'
       attribute :credit_sum,          String, tag: 'CreditSum'
 
-      has_many :trans_info, Ufebs::Entities::TransInfo
+      has_many :trans_infos, Ufebs::Entities::TransInfo
 
       def initialize(params = {})
         params.each do |key, value|
-          @abstract_date =  Date.parse(value.to_s).strftime('%Y-%m-%d') if key.to_sym == :abstract_date
-          @end_time =  DateTime.parse(value.to_s).strftime('%H:%M:%S') if key.to_sym == :end_time
-          @last_movet_date =  Date.parse(value.to_s).strftime('%Y-%m-%d') if key.to_sym == :last_movet_date
-
-          instance_variable_set("@#{key}".to_sym, value)
+          case key.to_sym
+          when :abstract_date   then @abstract_date   = Date.parse(value.to_s).strftime('%Y-%m-%d')
+          when :end_time        then @end_time        = DateTime.parse(value.to_s).strftime('%H:%M:%S')
+          when :last_movet_date then @last_movet_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
+          when :trans_infos     then @trans_infos     = set_trans_infos(value)
+          else instance_variable_set("@#{key}".to_sym, value)
+          end
         end
+      end
+
+      def set_trans_infos(value)
+        value.map { |params| Ufebs::Entities::TransInfo.new(params) }
       end
     end
   end

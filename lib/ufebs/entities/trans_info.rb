@@ -19,6 +19,15 @@ module Ufebs
       attribute :cash_doc_no,        String, tag: 'CashDocNo'
 
       has_one :ed_ref_id, ::Ufebs::Entities::EdRefId
+
+      def initialize(params = {})
+        params.each do |key, value|
+          case key.to_sym
+          when :ed_ref_id then @ed_ref_id = Ufebs::Entities::EdRefId.new(value)
+          else instance_variable_set("@#{key}".to_sym, value)
+          end
+        end
+      end
     end
   end
 end
