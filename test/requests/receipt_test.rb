@@ -32,7 +32,7 @@ class Ufebs::Requests::PackageRequestTest < MiniTest::Test
             payer_personal_acc: '40000810000000000000',
             sum:                '100',
             trans_kind:         '01',
-            turnover_kind:      '02',
+            turnover_kind:      '1',
             cash_doc_no:        '123',
             ed_ref_id:          {
               ed_no:     '123',
