@@ -4,33 +4,28 @@ module Ufebs
       include HappyMapper
       include Ufebs::Fields::Header
 
-      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
       tag 'ED211'
       namespace 'ed'
 
-      attribute :abstract_date, String, tag: 'AbstractDate'
-      attribute :abstract_kind, String, tag: 'AbstractKind'
-      attribute :acc, String, tag: 'Acc'
-      attribute :bic, String, tag: 'BIC'
-      attribute :end_time, String, tag: 'EndTime'
-      attribute :enter_bal, String, tag: 'EnterBal'
-      attribute :inquiry_session, String, tag: 'InquirySession'
-      attribute :last_movet_date, String, tag: 'LastMovetDate'
-      attribute :out_bal, String, tag: 'OutBal'
-      attribute :reserved_sum, String, tag: 'ReservedSum'
-      attribute :credit_limit_sum, String, tag: 'CreditLimitSum'
+      attribute :abstract_date,       String, tag: 'AbstractDate'
+      attribute :abstract_kind,       String, tag: 'AbstractKind'
+      attribute :acc,                 String, tag: 'Acc'
+      attribute :bic,                 String, tag: 'BIC'
+      attribute :end_time,            String, tag: 'EndTime'
+      attribute :enter_bal,           String, tag: 'EnterBal'
+      attribute :inquiry_session,     String, tag: 'InquirySession'
+      attribute :last_movet_date,     String, tag: 'LastMovetDate'
+      attribute :out_bal,             String, tag: 'OutBal'
+      attribute :reserved_sum,        String, tag: 'ReservedSum'
+      attribute :credit_limit_sum,    String, tag: 'CreditLimitSum'
       attribute :rtgs_unconfirmed_ed, String, tag: 'RTGSUnconfirmedED'
-      attribute :arrest_sum, String, tag: 'ArrestSum'
-      attribute :part_aggregate_id, String, tag: 'PartAggregateID'
-      attribute :trans_kind,         String, tag: 'TransKind'
-      attribute :sum,                String, tag: 'Sum'
-      attribute :debit_sum,          String, tag: 'DebetSum'
-      attribute :credit_sum,         String, tag: 'CreditSum'
-      attribute :dc,                 String, tag: 'DC'
-      attribute :payer_personal_acc, String, tag: 'PayerPersonalAcc'
-      attribute :payee_personal_acc, String, tag: 'PayeePersonalAcc'
-      attribute :bic_corr,           String, tag: 'BICCorr'
-      attribute :cash_doc_no,        String, tag: 'CashDocNo'
+      attribute :arrest_sum,          String, tag: 'ArrestSum'
+      attribute :part_aggregate_id,   String, tag: 'PartAggregateID'
+      attribute :debit_sum,           String, tag: 'DebetSum'
+      attribute :credit_sum,          String, tag: 'CreditSum'
+
+      has_many :trans_info, Ufebs::Entities::TransInfo
 
       def initialize(params = {})
         params.each do |key, value|
