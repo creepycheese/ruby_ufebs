@@ -25,7 +25,7 @@ class Ufebs::Requests::PackageRequestTest < MiniTest::Test
       trans_infos:
         [
           {
-            acc_dc_no:          '123',
+            acc_doc_no:         '123',
             bic_corr:           '044123123',
             dc:                 '2',
             payee_personal_acc: '40000810000000000000',
