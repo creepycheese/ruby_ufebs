@@ -8,7 +8,7 @@ module Ufebs
       namespace 'ed'
       tag 'TransInfo'
 
-      attribute :acc_dc_no,          String, tag: 'AccDocNo'
+      attribute :acc_doc_no,         String, tag: 'AccDocNo'
       attribute :bic_corr,           String, tag: 'BICCorr'
       attribute :dc,                 String, tag: 'DC'
       attribute :payee_personal_acc, String, tag: 'PayeePersonalAcc'
