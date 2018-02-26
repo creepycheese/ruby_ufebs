@@ -73,14 +73,23 @@ module Ufebs
   end
 
   def ED243(params)
+    if params.is_a?(Hash)
+      Ufebs::Requests::DefineRequest.new(params)
+    else
+      Ufebs::Requests::DefineRequest.parse(params)
+    end
   end
 
   def ED218(params)
   end
 
-  def ED244
+  def ED244(params)
+    if params.is_a?(Hash)
+      Ufebs::Requests::DefineAnswer.new(params)
+    else
+      Ufebs::Requests::DefineAnswer.parse(params)
+    end
   end
-
 
   # Создание XML по формату ED101(Платежное поручение)
   # @param params [Hash, String] Hash значений документа или его строковое представление в виде XML
