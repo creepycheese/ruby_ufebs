@@ -155,8 +155,19 @@ module Ufebs
     params.is_a?(Hash) ? Ufebs::Documents::PaymentOrder.new(params) : Ufebs::Documents::PaymentOrder.parse(params)
   end
 
-  def PackedEPD(payment_eds, params)
+  def PacketEPD(payment_eds, params)
     Ufebs::Documents::Package.new(payment_eds, params)
+  end
+
+  def ED206(params)
+    return Ufebs::Documents::PaymentResponse.new(params) if params.is_a?(Hash)
+    Ufebs::Documents::PaymentResponse.parse(params)
+  end
+
+  def ED205(params)
+  end
+
+  def packetESID
   end
 
   def validate(doc)
