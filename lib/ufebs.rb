@@ -167,7 +167,7 @@ module Ufebs
   def ED205(params)
   end
 
-  def packetESID(params)
+  def PacketESID(params)
     Ufebs::Documents::PackageResponse.parse(params)
   end
 
