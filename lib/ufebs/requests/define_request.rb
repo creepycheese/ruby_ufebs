@@ -9,31 +9,29 @@ module Ufebs
       namespace 'ed'
 
       attribute :ed_define_request_code, String, tag: 'EDDefineRequestCode'
-      attribute :ed_define_request_text, String, tag: 'EDDefineRequestText'
-      attribute :payer_name,             String, tag: 'PayerName'
 
-      has_one :original_ed, Ufebs::Entities::EdRefId,
+      has_one :original_epd, Ufebs::Entities::EdRefId,
               tag: 'OriginalEPD'
 
       has_one :ed_define_request_info, Ufebs::Entities::EdDefineRequestInfo,
-              tag: 'EdDefineRequestInfo'
+              tag: 'EDDefineRequestInfo'
 
       def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
-          when :original_ed            then @trans_infos            = set_ed_ref_id(value)
-          when :ed_define_request_info then @ed_define_request_info = set_ed_define_request_info(value)
+          when :original_epd           then set_original_epd(value)
+          when :ed_define_request_info then set_ed_define_request_info(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end
       end
 
       def set_ed_define_request_info(value)
-        Ufebs::Entities::EdDefineAnswerInfo.new(value)
+        @ed_define_request_info = Ufebs::Entities::EdDefineRequestInfo.new(value)
       end
 
-      def set_ed_ref_id(value)
-        Ufebs::Entities::EdRefId.new(value)
+      def set_original_epd(value)
+        @original_epd = Ufebs::Entities::EdRefId.new(value)
       end
     end
   end

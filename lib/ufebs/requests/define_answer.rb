@@ -11,11 +11,11 @@ module Ufebs
       attribute :ed_define_request_code, String, tag: 'EDDefineRequestCode'
       attribute :ed_define_answer_code,  String, tag: 'EDDefineAnswerCode'
 
-      has_one :ed_define_answer_info, Ufebs::Entities::EdDefineAnswerInfo,
-              tag: 'EDDefineAnswerInfo'
-
       has_one :original_epd, Ufebs::Entities::EdRefId,
               tag: 'OriginalEPD'
+
+      has_one :ed_define_answer_info, Ufebs::Entities::EdDefineAnswerInfo,
+              tag: 'EDDefineAnswerInfo'
 
       has_one :initial_ed, Ufebs::Entities::EdRefId,
               tag: 'InitialED'
@@ -23,20 +23,24 @@ module Ufebs
       def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
-          when :ed_define_answer_info then @ed_define_answer_info = set_ed_define_answer_info(value)
-          when :original_epd          then @original_epd          = set_ed_ref_id(value)
-          when :initial_ed            then @initial_ed            = set_ed_ref_id(value)
+          when :ed_define_answer_info then set_ed_define_answer_info(value)
+          when :original_epd          then set_original_epd(value)
+          when :initial_ed            then set_initial_ed(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end
       end
 
       def set_ed_define_answer_info(value)
-        Ufebs::Entities::EdDefineAnswerInfo.new(value)
+        @ed_define_answer_info = Ufebs::Entities::EdDefineAnswerInfo.new(value)
       end
 
-      def set_ed_ref_id(value)
-        Ufebs::Entities::EdRefId.new(value)
+      def set_original_epd(value)
+        @original_epd = Ufebs::Entities::EdRefId.new(value)
+      end
+
+      def set_initial_ed(value)
+        @initial_ed = Ufebs::Entities::EdRefId.new(value)
       end
     end
   end
