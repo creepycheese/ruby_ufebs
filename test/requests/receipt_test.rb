@@ -1,6 +1,6 @@
 require_relative '../test_helper'
 
-class Ufebs::Requests::PackageRequestTest < MiniTest::Test
+class Ufebs::Requests::ReceiptTest < MiniTest::Test
   def test_it_forms_valid_xml
     pr = Ufebs::Requests::Receipt.new(
       number:              '8',
