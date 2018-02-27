@@ -14,14 +14,15 @@ module Ufebs
       def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
-          when :ed_reestr_filed_lists then @ed_reestr_filed_lists = set_ed_reestr_filed_lists(value)
+          when :ed_reestr_filed_lists then set_ed_reestr_filed_lists(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end
       end
 
       def set_ed_reestr_filed_lists(value)
-        value.map { |params| Ufebs::Entities::EdFieldList.new(params) }
+        @ed_reestr_filed_lists =
+          value.map { |params| Ufebs::Entities::EdFieldList.new(params) }
       end
     end
   end

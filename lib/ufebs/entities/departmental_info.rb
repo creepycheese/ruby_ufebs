@@ -5,14 +5,14 @@ module Ufebs
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       namespace 'ed'
 
-      attribute :kbk, String, tag: 'CBC'
-      attribute :okato, String, tag: 'OKATO'
-      attribute :tax_period, String, tag: 'TaxPeriod'
+      attribute :kbk,           String, tag: 'CBC'
+      attribute :okato,         String, tag: 'OKATO'
+      attribute :tax_period,    String, tag: 'TaxPeriod'
       attribute :drawer_status, String, tag: 'DrawerStatus'
-      attribute :payt_reason, String, tag: 'PaytReason'
-      attribute :doc_no, String, tag: 'DocNo'
+      attribute :payt_reason,   String, tag: 'PaytReason'
+      attribute :doc_no,        String, tag: 'DocNo'
       attribute :tax_payt_kind, String, tag: 'TaxPaytKind'
-      attribute :doc_date, String, tag: 'DocDate'
+      attribute :doc_date,      String, tag: 'DocDate'
 
       def initialize(
         tax_payt_kind: 'HC',
