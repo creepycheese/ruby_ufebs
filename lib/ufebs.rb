@@ -49,6 +49,9 @@ module Ufebs
   def ED210(params)
   end
 
+  def ED205(params)
+    Ufebs::Requests::StatusAnswer.parse(params)
+  end
 
   # Создание/Парсинг выписки ED211
   # @example Пример
