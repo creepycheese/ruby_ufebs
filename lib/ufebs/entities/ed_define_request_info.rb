@@ -19,7 +19,7 @@ module Ufebs
       element :payee_name,             String, tag: 'PayeeName'
       element :ed_define_request_text, String, tag: 'EDDefineRequestText'
 
-      has_many :ed_filed_lists,
+      has_many :ed_field_lists,
                Ufebs::Entities::EdFieldList,
                tag: 'EDFieldList'
 
@@ -30,15 +30,15 @@ module Ufebs
       def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
-          when :ed_filed_lists         then set_ed_filed_lists(value)
+          when :ed_field_lists         then set_ed_field_lists(value)
           when :ed_define_reestr_infos then set_ed_define_reestr_infos(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end
       end
 
-      def set_ed_filed_lists(value)
-        @ed_filed_lists =
+      def set_ed_field_lists(value)
+        @ed_field_lists =
           value.map { |params| Ufebs::Entities::EdFieldList.new(params) }
       end
 

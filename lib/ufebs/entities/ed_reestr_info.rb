@@ -7,21 +7,21 @@ module Ufebs
 
       attribute :transaction_id, String, tag: 'TransactionID'
 
-      has_many :ed_reestr_filed_lists,
+      has_many :ed_reestr_field_lists,
                Ufebs::Entities::EdFieldList,
                tag: 'EDReestrFieldList'
 
       def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
-          when :ed_reestr_filed_lists then set_ed_reestr_filed_lists(value)
+          when :ed_reestr_field_lists then set_ed_reestr_field_lists(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end
       end
 
-      def set_ed_reestr_filed_lists(value)
-        @ed_reestr_filed_lists =
+      def set_ed_reestr_field_lists(value)
+        @ed_reestr_field_lists =
           value.map { |params| Ufebs::Entities::EdFieldList.new(params) }
       end
     end

@@ -21,7 +21,7 @@ class Ufebs::Requests::DefineRequestTest < MiniTest::Test
         payer_name:   'ТЕСТ',
         payee_name:   'ТЕСТ',
         ed_define_request_text: 'test',
-        ed_filed_lists: [
+        ed_field_lists: [
           {
             field_no:    '110',
             field_value: '1'
@@ -34,7 +34,7 @@ class Ufebs::Requests::DefineRequestTest < MiniTest::Test
         ed_define_reestr_infos: [
           {
             transaction_id:        '123',
-            ed_reestr_filed_lists: [
+            ed_reestr_field_lists: [
               {
                 field_no:    '110',
                 field_value: '1'
