@@ -167,9 +167,6 @@ module Ufebs
     Ufebs::Documents::PaymentResponse.parse(params)
   end
 
-  def ED205(params)
-  end
-
   def PacketESID(params)
     Ufebs::Documents::PackageResponse.parse(params)
   end
