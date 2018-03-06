@@ -1,4 +1,4 @@
-# Ufebs
+# Ufebs [![Gem Version](https://badge.fury.io/rb/ruby_ufebs.svg)](https://badge.fury.io/rb/ruby_ufebs)
 
 Обертка для XML форматов УФЕБС 2018 и 2017 годов. Для валидации и сборки XML используются Nokogiri и HappyMapper.
 
