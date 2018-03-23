@@ -1,3 +1,5 @@
+require_relative 'ed_field_list'
+
 module Ufebs
   module Entities
     class EdReestrInfo
