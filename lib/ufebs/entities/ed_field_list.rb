@@ -5,8 +5,8 @@ module Ufebs
       register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
       namespace 'ed'
 
-      element :field_no,    String, tag: 'FieldNo'
-      element :field_value, String, tag: 'FieldValue'
+      has_many :field_no,    String, tag: 'FieldNo'
+      element  :field_value, String, tag: 'FieldValue'
 
       def initialize(params = {})
         params.each do |key, value|
