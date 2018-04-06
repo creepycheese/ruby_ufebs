@@ -1,9 +1,12 @@
 require_relative 'ed_field_list'
+require_relative '../../ufebs/modules/common'
 
 module Ufebs
   module Entities
     class EdReestrInfo
       include HappyMapper
+      include Ufebs::Common
+
       register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
       namespace 'ed'
 
@@ -24,7 +27,7 @@ module Ufebs
 
       def set_ed_reestr_field_lists(value)
         @ed_reestr_field_lists =
-          value.map { |params| Ufebs::Entities::EdFieldList.new(Hash[*params]) }
+          value.map { |params| Ufebs::Entities::EdFieldList.new(to_hash(params)) }
       end
     end
   end
