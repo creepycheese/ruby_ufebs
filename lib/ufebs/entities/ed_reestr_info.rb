@@ -24,7 +24,7 @@ module Ufebs
 
       def set_ed_reestr_field_lists(value)
         @ed_reestr_field_lists =
-          value.map { |params| Ufebs::Entities::EdFieldList.new(params) }
+          value.map { |params| Ufebs::Entities::EdFieldList.new(Hash[*params]) }
       end
     end
   end
