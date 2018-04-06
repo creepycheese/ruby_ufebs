@@ -1,6 +1,6 @@
 module Ufebs
   module Common
-    def to_hash(params)
+    def array_to_hash(params)
       return Hash[*params] if params.is_a?(Array)
       params
     end
