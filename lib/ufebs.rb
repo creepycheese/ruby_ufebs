@@ -37,6 +37,14 @@ module Ufebs
                     end
   end
 
+  def ED201(params)
+    Ufebs::Requests::NegativeStatusNotification.parse(params)
+  end
+
+  def ED208(params)
+    Ufebs::Requests::PositiveStatusNotification.parse(params)
+  end
+
   # XML запрос-зонд
   # @param params [Hash]
   # @option :number аттрибут EDNo
