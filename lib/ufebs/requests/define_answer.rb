@@ -42,6 +42,10 @@ module Ufebs
       def set_initial_ed(value)
         @initial_ed = Ufebs::Entities::EdRefId.new(value)
       end
+
+      def to_xml(encoding: 'UTF-8')
+        super(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
+      end
     end
   end
 end
