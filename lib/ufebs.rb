@@ -1,6 +1,8 @@
 require 'happymapper'
 require "ufebs/version"
 require "ufebs/configuration"
+require "ufebs/schema_validation_result"
+
 Dir[File.dirname(__FILE__) + '/**/entities/*.rb'].each { |ff| require ff }
 Dir[File.dirname(__FILE__) + '/**/fields/*.rb'].each { |ff| require ff }
 Dir[File.dirname(__FILE__) + '/**/documents/*.rb'].each { |ff| require ff }
@@ -185,8 +187,8 @@ module Ufebs
     errors = []
     validation_schema.validate(doc).each do |error|
       errors << error.message
-      puts error.message
     end
-    errors.empty?
+
+    Ufebs::SchemaValidationResult.new(errors)
   end
 end

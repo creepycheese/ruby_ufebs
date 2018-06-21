@@ -8,7 +8,7 @@ class UfebsTest < MiniTest::Test
       ed_author: '4525545000')
 
     doc = Nokogiri::XML(pr.to_xml)
-    assert Ufebs.validate(doc)
+    assert Ufebs.validate(doc).valid?
   end
 
   def test_it_maps_with_ed101
@@ -45,7 +45,7 @@ class UfebsTest < MiniTest::Test
     )
 
     doc = Nokogiri::XML(po.to_xml)
-    assert Ufebs.validate(doc)
+    assert Ufebs.validate(doc).valid?
   end
 
   def test_it_parses_ed_211
