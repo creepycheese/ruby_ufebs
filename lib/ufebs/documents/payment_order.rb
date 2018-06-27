@@ -10,7 +10,7 @@ module Ufebs
       InvalidPriority = Class.new(StandardError)
 
       DOCUMENT_NUMBER_TYPE = '01'.freeze
-      SYSTEM_CODE          = '01'.freeze
+      SYSTEM_CODE          = '02'.freeze
 
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'ED101'
