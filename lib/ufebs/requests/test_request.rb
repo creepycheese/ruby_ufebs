@@ -14,6 +14,11 @@ module Ufebs
 
       def initialize(params={})
         @number, @ed_date, @ed_author = params[:number], params[:ed_date], params[:ed_author]
+        super()
+      end
+
+      def to_xml(encoding: 'UTF-8')
+        super(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
       end
     end
   end
