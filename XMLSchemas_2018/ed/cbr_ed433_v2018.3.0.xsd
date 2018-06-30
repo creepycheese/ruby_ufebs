@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+ППС 
+
+Схемы с описанием прикладных частей электронных сообщений, используемых в расчетной сети Банка России.
+Обмен ДОФР (АС ДКО) с КО.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" version="2018.3.0">
+	<xs:include schemaLocation="cbr_ed_objects_v2018.3.0.xsd" />
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2018.3.0.xsd" />
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED433" type="ed:ED433">
+	</xs:element>
+	<xs:complexType name="ED433">
+     		<xs:annotation>
+         		<xs:documentation>Заявка на востребование депозита до востребования/ на досрочный возврат депозита, размещенного в Банке России на определенный срок</xs:documentation>
+		</xs:annotation>
+      		<xs:complexContent>
+         		<xs:extension base="ed:ESWithMandatoryEDReceiver">
+            			<xs:sequence>
+               				<xs:element name="DepositInfo" type="ed:DepositInfo">
+                  				<xs:annotation>
+                     					<xs:documentation>Реквизиты востребуемого депозита</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+            			</xs:sequence>
+            			<xs:attribute name="EDTime" type="lt:TimeType" use="required">
+               				<xs:annotation>
+                  				<xs:documentation>Время составления ЭС</xs:documentation>
+               				</xs:annotation>
+		            	</xs:attribute>
+				<xs:attribute name="ReqNum" type="lt:Max20TextType" use="required">
+					<xs:annotation>
+						<xs:documentation>Номер заявки</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ReturnReqDate" type="lt:DateType" use="required">
+					<xs:annotation>
+						<xs:documentation>Дата возврата депозита и уплаты процентов по требованию.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+         		</xs:extension>
+      		</xs:complexContent>
+   	</xs:complexType>
+</xs:schema>
