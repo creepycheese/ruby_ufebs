@@ -30,10 +30,11 @@ module Ufebs
       def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
-          when :abstract_date   then @abstract_date   = Date.parse(value.to_s).strftime('%Y-%m-%d')
-          when :end_time        then @end_time        = DateTime.parse(value.to_s).strftime('%H:%M:%S')
-          when :last_movet_date then @last_movet_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
-          when :trans_infos     then @trans_infos     = set_trans_infos(value)
+          when :abstract_date      then @abstract_date      = Date.parse(value.to_s).strftime('%Y-%m-%d')
+          when :end_time           then @end_time           = DateTime.parse(value.to_s).strftime('%H:%M:%S')
+          when :last_movet_date    then @last_movet_date    = Date.parse(value.to_s).strftime('%Y-%m-%d')
+          when :trans_infos        then @trans_infos        = set_trans_infos(value)
+          when :processing_details then @processing_details = Ufebs::Entities::ProcessingDetails.new(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end

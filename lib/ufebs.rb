@@ -39,71 +39,6 @@ module Ufebs
                     end
   end
 
-  def ED201(params)
-    Ufebs::Requests::NegativeStatusNotification.parse(params)
-  end
-
-  def ED208(params)
-    Ufebs::Requests::PositiveStatusNotification.parse(params)
-  end
-
-  # XML запрос-зонд
-  # @param params [Hash]
-  # @option :number аттрибут EDNo
-  # @option :ed_date аттрибут EDDate
-  # @option :ed_author аттрибут EDAuthor
-  def ED999(params)
-    Ufebs::Requests::TestRequest.new(params)
-  end
-
-  def ED210(params)
-  end
-
-  def ED205(params)
-    Ufebs::Requests::StatusAnswer.parse(params)
-  end
-
-  # Создание/Парсинг выписки ED211
-  # @example Пример
-  #   ed211 = Ufebs::Requests::Receipt.new(
-  #     number: '8',
-  #     ed_date: '2003-04-14',
-  #     ed_author: '4525545000',
-  #     ed_receiver: '4525000000',
-  #     abstract_date: Date.today,
-  #     abstract_kind: '1',
-  #     acc: '30101810945250000420',
-  #     bic: '044525000',
-  #     end_time: '00:47:07',
-  #     enter_bal: '72619100',
-  #     inquiry_session: '0',
-  #     last_movet_date: Date.today,
-  #     out_bal: '72619100',
-  #     rtgs_unconfirmed_ed: '0'
-  #   )
-  def ED211(params)
-    params.is_a?(Hash) ? Ufebs::Requests::Receipt.new(params) : Ufebs::Requests::Receipt.parse(params)
-  end
-
-  def ED243(params)
-    if params.is_a?(Hash)
-      Ufebs::Requests::DefineRequest.new(params)
-    else
-      Ufebs::Requests::DefineRequest.parse(params)
-    end
-  end
-
-  def ED218(params)
-  end
-
-  def ED244(params)
-    if params.is_a?(Hash)
-      Ufebs::Requests::DefineAnswer.new(params)
-    else
-      Ufebs::Requests::DefineAnswer.parse(params)
-    end
-  end
-
   # Создание XML по формату ED101(Платежное поручение)
   # @param params [Hash, String] Hash значений документа или его строковое представление в виде XML
   # @option params [Integer] :number номер документа аттрибут EDNo
@@ -168,6 +103,14 @@ module Ufebs
     params.is_a?(Hash) ? Ufebs::Documents::PaymentOrder.new(params) : Ufebs::Documents::PaymentOrder.parse(params)
   end
 
+
+  def ED201(params)
+    Ufebs::Requests::NegativeStatusNotification.parse(params)
+  end
+
+  def ED205(params)
+    Ufebs::Requests::StatusAnswer.parse(params)
+
   def ED104(params)
     params.is_a?(Hash) ? Ufebs::Documents::InvoiceOrder.new(params) : Ufebs::Documents::InvoiceOrder.parse(params)
   end
@@ -179,6 +122,72 @@ module Ufebs
   def ED206(params)
     return Ufebs::Documents::PaymentResponse.new(params) if params.is_a?(Hash)
     Ufebs::Documents::PaymentResponse.parse(params)
+  end
+
+  def ED207(params)
+    return Ufebs::Requests::GroupStatusAnswer.new(params) if params.is_a?(Hash)
+    Ufebs::Requests::GroupStatusAnswer.parse(params)
+  end
+
+  def ED208(params)
+    Ufebs::Requests::PositiveStatusNotification.parse(params)
+  end
+
+  def ED210(params)
+  end
+
+  # Создание/Парсинг выписки ED211
+  # @example Пример
+  #   ed211 = Ufebs::Requests::Receipt.new(
+  #     number: '8',
+  #     ed_date: '2003-04-14',
+  #     ed_author: '4525545000',
+  #     ed_receiver: '4525000000',
+  #     abstract_date: Date.today,
+  #     abstract_kind: '1',
+  #     acc: '30101810945250000420',
+  #     bic: '044525000',
+  #     end_time: '00:47:07',
+  #     enter_bal: '72619100',
+  #     inquiry_session: '0',
+  #     last_movet_date: Date.today,
+  #     out_bal: '72619100',
+  #     rtgs_unconfirmed_ed: '0'
+  #   )
+  def ED211(params)
+    params.is_a?(Hash) ? Ufebs::Requests::Receipt.new(params) : Ufebs::Requests::Receipt.parse(params)
+  end
+
+  def ED218(params)
+  end
+
+  def ED243(params)
+    if params.is_a?(Hash)
+      Ufebs::Requests::DefineRequest.new(params)
+    else
+      Ufebs::Requests::DefineRequest.parse(params)
+    end
+  end
+
+  def ED244(params)
+    if params.is_a?(Hash)
+      Ufebs::Requests::DefineAnswer.new(params)
+    else
+      Ufebs::Requests::DefineAnswer.parse(params)
+    end
+  end
+
+  # XML запрос-зонд
+  # @param params [Hash]
+  # @option :number аттрибут EDNo
+  # @option :ed_date аттрибут EDDate
+  # @option :ed_author аттрибут EDAuthor
+  def ED999(params)
+    Ufebs::Requests::TestRequest.new(params)
+  end
+
+  def PacketEPD(payment_eds, params)
+    Ufebs::Documents::Package.new(payment_eds, params)
   end
 
   def PacketESID(params)

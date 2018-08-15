@@ -27,6 +27,7 @@ module Ufebs
       attribute :receipt_date, String, tag: 'ReceiptDate'
       attribute :system_code, String, tag: 'SystemCode'
       attribute :priority, String, tag: 'Priority'
+      attribute :payment_precedence, String, tag: 'PaymentPrecedence'
       has_one :acc_doc, ::Ufebs::Entities::AccDoc, tag: 'AccDoc'
       has_one :payer, ::Ufebs::Entities::Participant, tag: 'Payer'
       has_one :payee, ::Ufebs::Entities::Participant, tag: 'Payee'
@@ -57,6 +58,7 @@ module Ufebs
         purpose: '',
         uin: nil,
         payt_kind: nil,
+
         system_code: SYSTEM_CODE,
         departmental_info: nil
       )

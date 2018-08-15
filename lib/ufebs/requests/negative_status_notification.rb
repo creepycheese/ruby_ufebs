@@ -10,9 +10,10 @@ module Ufebs
       tag 'ED201'
       namespace 'ed'
 
-      attribute :ctrl_code,  String, tag: 'CtrlCode'
-      attribute :ctrl_time,  String, tag: 'CtrlTime'
-      element   :annotation, String, tag: 'Annotation'
+      attribute :ctrl_code,        String, tag: 'CtrlCode'
+      attribute :ctrl_time,        String, tag: 'CtrlTime'
+      element   :annotation,       String, tag: 'Annotation'
+      element   :error_diagnostic, String, tag: 'ErrorDiagnostic'
 
       has_one :ed_ref_id, ::Ufebs::Entities::EdRefId
 
