@@ -12,7 +12,7 @@ class Ufebs::Documents::PaymentResponseTest < MiniTest::Test
       sum: '680700',
       ed_receiver: '4525420000',
       ed_no: '1070232',
-      system_code: '01',
+      system_code: '02',
       trans_date: '2018-02-23',
       trans_time: '13:33:08',
       acc_doc: {
@@ -31,6 +31,7 @@ class Ufebs::Documents::PaymentResponseTest < MiniTest::Test
     )
 
     doc = Nokogiri::XML(po.to_xml)
+    puts Ufebs.validate(doc).errors
     assert Ufebs.validate(doc).valid?
   end
 end

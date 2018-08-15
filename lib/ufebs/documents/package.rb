@@ -7,6 +7,7 @@ module Ufebs
       SYSTEM_CODE = '02'.freeze
 
       include HappyMapper
+      SYSTEM_CODE = '02'
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'PacketEPD'
       namespace 'ed'
@@ -29,13 +30,15 @@ module Ufebs
 
       def initialize(payment_orders = [], params = {})
         @payment_orders = payment_orders
-        @ed_date        = Date.parse(params.fetch(:ed_date) { Time.now }.to_s).strftime('%Y-%m-%d')
-        @ed_author      = params[:ed_author]
-        @ed_receiver    = params[:ed_receiver]
-        @number         = params[:number]
-        @quantity       = params[:quantity] || payment_orders.size
-        @sum            = params[:sum]
-        @system_code    = params[:system_code] || SYSTEM_CODE
+
+        @ed_date   = Date.parse(params.fetch(:ed_date){Time.now}.to_s).strftime('%Y-%m-%d')
+        @ed_author = params[:ed_author]
+        @ed_receiver = params[:ed_receiver]
+        @number    = params[:number]
+        @quantity  = params[:quantity] || payment_orders.size
+        @sum       = params[:sum]
+        @system_code   = params.fetch(:system_code) { SYSTEM_CODE }
+
         super()
       end
 

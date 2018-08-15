@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ED104 TransKind="06" Priority="0" ReceiptDateCollectBank="1900-01-01" ReceiptDate="1900-01-01" FileDate="1900-01-01" ChargeOffDate="1900-01-01" SystemCode="SystemCode1" SessionID="SessionID1" PaymentID="PaymentID1" IPBIC="IPBIC1" EDReceiver="EDReceiver1" PaytKind="PaytKind1" Sum="1" PaymentPrecedence="PaymentPrecedence1" ReqSettlementDate="1900-01-01" EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" xmlns="urn:cbr-ru:ed:v2.0">
+  <SettleNotEarlier>
+    <SessionID>SessionID1</SessionID>
+  </SettleNotEarlier>
+  <SettleNotLater>
+    <SettlementTime>01:01:01</SettlementTime>
+  </SettleNotLater>
+  <AccDoc AccDocNo="AccDo1" AccDocDate="1900-01-01" />
+  <Payer PersonalAcc="PersonalAcc1" INN="INN1" KPP="KPP1">
+    <Name>Name1</Name>
+    <Bank BIC="BIC1" CorrespAcc="CorrespAcc1" />
+  </Payer>
+  <Payee PersonalAcc="PersonalAcc1" INN="INN1" KPP="KPP1">
+    <Name>Name1</Name>
+    <Bank BIC="BIC1" CorrespAcc="CorrespAcc1" />
+  </Payee>
+  <ParticipantBusinessScenario>LORE</ParticipantBusinessScenario>
+  <SettlementCondition ConditionCode="RSRV">
+    <LiquidityReservationSchemeParameters ConfirmationMessageAuthor="ConfirmationMessageAuthor1" CancelIfNotReserved="true" />
+  </SettlementCondition>
+  <Purpose>Purpose1</Purpose>
+  <DepartmentalInfo DrawerStatus="D1" CBC="CBC1" OKATO="OKATO1" PaytReason="P1" TaxPeriod="TaxPeriod1" DocNo="DocNo1" DocDate="DocDate1" TaxPaytKind="T1" />
+  <ArrestID>ArrestID1</ArrestID>
+  <InitialED EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" />
+  <ProcessingDetails BusinessScenario="CAPE" DebitDate="1900-01-01" CreditDate="1900-01-01">
+    <Session SessionType="URGN">
+      <SessionID>SessionID1</SessionID>
+    </Session>
+  </ProcessingDetails>
+</ED104>

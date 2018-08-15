@@ -5,7 +5,8 @@ class UfebsTest < MiniTest::Test
     pr = Ufebs::Requests::TestRequest.new(
       number: '8',
       ed_date: '2003-04-14',
-      ed_author: '4525545000')
+      ed_author: '4525545000',
+      creation_date_time: Time.now)
 
     doc = Nokogiri::XML(pr.to_xml)
     assert Ufebs.validate(doc).valid?

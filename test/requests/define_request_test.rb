@@ -6,6 +6,7 @@ class Ufebs::Requests::DefineRequestTest < MiniTest::Test
       number:    '8',
       ed_date:   '2003-04-14',
       ed_author: '4525545000',
+      ed_receiver: '4525545000',
       ed_define_request_code: '01',
       original_epd:           {
         ed_no:     '8',
@@ -50,6 +51,8 @@ class Ufebs::Requests::DefineRequestTest < MiniTest::Test
     )
 
     doc = Nokogiri::XML(pr.to_xml)
+
+    puts Ufebs.validate(doc).errors
 
     result = XML_VALIDATION.valid?(doc)
     assert result

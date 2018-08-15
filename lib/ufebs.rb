@@ -103,12 +103,20 @@ module Ufebs
     params.is_a?(Hash) ? Ufebs::Documents::PaymentOrder.new(params) : Ufebs::Documents::PaymentOrder.parse(params)
   end
 
+
   def ED201(params)
     Ufebs::Requests::NegativeStatusNotification.parse(params)
   end
 
   def ED205(params)
     Ufebs::Requests::StatusAnswer.parse(params)
+
+  def ED104(params)
+    params.is_a?(Hash) ? Ufebs::Documents::InvoiceOrder.new(params) : Ufebs::Documents::InvoiceOrder.parse(params)
+  end
+
+  def PacketEPD(payment_eds, params)
+    Ufebs::Documents::Package.new(payment_eds, params)
   end
 
   def ED206(params)

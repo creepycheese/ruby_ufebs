@@ -58,31 +58,29 @@ module Ufebs
         purpose: '',
         uin: nil,
         payt_kind: nil,
-        system_code: nil,
-        departmental_info: nil,
-        payment_precedence: nil,
-        processing_details: nil
+
+        system_code: SYSTEM_CODE,
+        departmental_info: nil
       )
         raise InvalidPriority.new('priority Реквизит должен иметь значение в диапазоне 0-5.') unless (0..5).include?(priority.to_i)
 
-        @ed_date            = Date.parse(ed_date.to_s).strftime('%Y-%m-%d')
-        @number             = number
-        @sum                = sum
-        @charge_off_date    = Date.parse(charge_off_date.to_s).strftime('%Y-%m-%d')
-        @receipt_date       = Date.parse(receipt_date.to_s).strftime('%Y-%m-%d')
-        @priority           = priority
-        @acc_doc            = acc_doc.is_a?(Hash) ? Ufebs::Entities::AccDoc.new(acc_doc) : acc_doc
-        @payer              = payer.is_a?(Hash) ? Ufebs::Entities::Participant.new(payer) : payer
-        @payee              = payer.is_a?(Hash) ? Ufebs::Entities::Participant.new(payee) : payee
-        @purpose            = purpose
-        @departmental_info  = departmental_info.is_a?(Hash) ? Ufebs::Entities::DepartmentalInfo.new(departmental_info) : departmental_info
-        @uin                = uin
-        @payt_kind          = payt_kind
-        @ed_author          = ed_author
-        @type_number        = DOCUMENT_NUMBER_TYPE
-        @system_code        = system_code || SYSTEM_CODE
-        @payment_precedence = payment_precedence
-        @processing_details = processing_details.is_a?(Hash) ? ::Ufebs::Entities::ProcessingDetails.new(processing_details) : processing_details
+        @ed_date         = Date.parse(ed_date.to_s).strftime('%Y-%m-%d')
+        @number          = number
+        @sum             = sum
+        @charge_off_date = Date.parse(charge_off_date.to_s).strftime('%Y-%m-%d')
+        @receipt_date    = Date.parse(receipt_date.to_s).strftime('%Y-%m-%d')
+        @priority        = priority
+        @acc_doc         = acc_doc.is_a?(Hash) ? Ufebs::Entities::AccDoc.new(acc_doc) : acc_doc
+        @payer           = payer.is_a?(Hash) ? Ufebs::Entities::Participant.new(payer) : payer
+        @payee           = payer.is_a?(Hash) ? Ufebs::Entities::Participant.new(payee) : payee
+        @purpose         = purpose
+        @departmental_info = departmental_info.is_a?(Hash) ? Ufebs::Entities::DepartmentalInfo.new(departmental_info) : departmental_info
+        @uin            = uin
+        @payt_kind      = payt_kind
+
+        @ed_author   = ed_author
+        @type_number = DOCUMENT_NUMBER_TYPE
+        @system_code = system_code
 
         yield self if block_given?
 
