@@ -13,6 +13,7 @@ module Ufebs
         content.attribute :receipt_date, String, tag: 'ReceiptDate'
         content.attribute :system_code, String, tag: 'SystemCode'
         content.attribute :priority, String, tag: 'Priority'
+        content.attribute :payment_precedence, String, tag: 'PaymentPrecedence'
         content.has_one :acc_doc, ::Ufebs::Entities::AccDoc, tag: 'AccDoc'
         content.has_one :payer, ::Ufebs::Entities::Participant, tag: 'Payer'
         content.has_one :payee, ::Ufebs::Entities::Participant, tag: 'Payee'

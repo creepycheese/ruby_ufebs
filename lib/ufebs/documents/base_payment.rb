@@ -7,8 +7,8 @@ module Ufebs
   module Documents
     class BasePayment
       include HappyMapper
-      DOCUMENT_NUMBER_TYPE = '01'.freeze
-      SYSTEM_CODE          = '01'.freeze
+      DOCUMENT_NUMBER_TYPE = '06'.freeze
+      SYSTEM_CODE          = '02'.freeze
 
       def validate
         Ufebs.validate(to_xml)
@@ -34,6 +34,8 @@ module Ufebs
         trans_kind: DOCUMENT_NUMBER_TYPE,
         payt_kind: nil,
         system_code: nil,
+        payment_precedence: nil,
+        processing_details: nil,
         departmental_info: nil
       )
         raise InvalidPriority.new('priority Реквизит должен иметь значение в диапазоне 0-5.') unless (0..5).include?(priority.to_i)
@@ -51,6 +53,9 @@ module Ufebs
         @departmental_info = departmental_info.is_a?(Hash) ? Ufebs::Entities::DepartmentalInfo.new(departmental_info) : departmental_info
         @uin            = uin
         @payt_kind      = payt_kind
+
+        @payment_precedence = payment_precedence
+        @processing_details = processing_details.is_a?(Hash) ? ::Ufebs::Entities::ProcessingDetails.new(processing_details) : processing_details
 
         @ed_author   = ed_author
         @type_number = trans_kind

@@ -79,6 +79,7 @@ module Ufebs
         @uin            = uin
         @payt_kind      = payt_kind
         @payment_precedence = payment_precedence
+        @processing_details = processing_details.is_a?(Hash) ? ::Ufebs::Entities::ProcessingDetails.new(processing_details) : processing_details
 
         @ed_author   = ed_author
         @type_number = DOCUMENT_NUMBER_TYPE
