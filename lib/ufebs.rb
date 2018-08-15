@@ -110,6 +110,7 @@ module Ufebs
 
   def ED205(params)
     Ufebs::Requests::StatusAnswer.parse(params)
+  end
 
   def ED104(params)
     params.is_a?(Hash) ? Ufebs::Documents::InvoiceOrder.new(params) : Ufebs::Documents::InvoiceOrder.parse(params)

@@ -1,4 +1,3 @@
-require_relative '../entities/bank'
 require_relative '../entities/acc_doc'
 require_relative '../entities/departmental_info'
 require_relative '../entities/participant'
@@ -58,6 +57,8 @@ module Ufebs
         purpose: '',
         uin: nil,
         payt_kind: nil,
+        payment_precedence: nil,
+        processing_details: nil,
 
         system_code: SYSTEM_CODE,
         departmental_info: nil
@@ -77,6 +78,7 @@ module Ufebs
         @departmental_info = departmental_info.is_a?(Hash) ? Ufebs::Entities::DepartmentalInfo.new(departmental_info) : departmental_info
         @uin            = uin
         @payt_kind      = payt_kind
+        @payment_precedence = payment_precedence
 
         @ed_author   = ed_author
         @type_number = DOCUMENT_NUMBER_TYPE
