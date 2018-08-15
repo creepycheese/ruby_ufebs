@@ -1,24 +1,15 @@
-require_relative 'test_helper'
+require_relative '../test_helper'
 
-class UfebsTest < MiniTest::Test
-  def test_ed999
-    pr = Ufebs::Requests::TestRequest.new(
-      number: '8',
-      ed_date: '2003-04-14',
-      ed_author: '4525545000',
-      creation_date_time: Time.now)
-
-    doc = Nokogiri::XML(pr.to_xml)
-    assert Ufebs.validate(doc).valid?
-  end
-
-  def test_it_maps_with_ed101
-    po = Ufebs::ED101(
+class Ufebs::Documents::BankOrderTest < MiniTest::Test
+  def test_it_maps_to_valid_xml
+    po = Ufebs::Documents::BankOrder.new(
       number: 7,
       sum: 150000,
       receipt_date: Time.now,
+      ed_author: '4525595000',
+      system_code: '02',
+      trans_kind: '06',
       acc_doc: { number: '3', date: Time.now },
-      ed_author: '4525545000',
       purpose: 'оплата в том числе ндс 4000 руб',
       payer: {
         name: 'ООО ТЕСТ',
@@ -44,17 +35,7 @@ class UfebsTest < MiniTest::Test
         payt_reason: 'ТП'
       }
     )
-
     doc = Nokogiri::XML(po.to_xml)
     assert Ufebs.validate(doc).valid?
-  end
-
-  def test_it_parses_ed_211
-    ed211_xml = <<XML
-<?xml version="1.0" encoding="windows-1251"?>
-<ED211 xmlns="urn:cbr-ru:ed:v2.0" AbstractDate="2018-01-09" AbstractKind="1" Acc="30101810945250000420" BIC="044525000" EndTime="00:47:07"
-EnterBal="72619100" EDAuthor="4583001999" EDDate="2018-01-09" EDNo="1006815" EDReceiver="4525420000" InquirySession="0" LastMovetDate="2017-12-29" OutBal="72619100" RTGSUnconfirmedED="0"></ED211>
-XML
-    assert_kind_of(Ufebs::Requests::Receipt, Ufebs::ED211(ed211_xml))
   end
 end

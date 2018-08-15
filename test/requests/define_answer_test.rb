@@ -6,6 +6,7 @@ class Ufebs::Requests::DefineAnswerTest < MiniTest::Test
       number:    '8',
       ed_date:   '2003-04-14',
       ed_author: '4525545000',
+      ed_receiver: '4525545000',
       ed_define_request_code: '01',
       ed_define_answer_code: '01',
       payer_name:             'ТЕСТ',

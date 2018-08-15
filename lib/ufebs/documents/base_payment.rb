@@ -5,35 +5,10 @@ require_relative '../entities/participant'
 
 module Ufebs
   module Documents
-    class PaymentOrder
+    class BasePayment
       include HappyMapper
-      InvalidPriority = Class.new(StandardError)
-
       DOCUMENT_NUMBER_TYPE = '01'.freeze
-      SYSTEM_CODE          = '02'.freeze
-
-      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
-      tag 'ED101'
-      namespace 'ed'
-
-      attribute :number, String, tag: 'EDNo'
-      attribute :ed_date, String, tag: 'EDDate'
-      attribute :ed_author, String, tag: 'EDAuthor'
-      attribute :sum, String, tag: 'Sum'
-      attribute :payt_kind, String, tag: 'PaytKind'
-      attribute :type_number, String, tag: 'TransKind'
-      attribute :uin, String, tag: 'PaymentID'
-      attribute :charge_off_date, String, tag: 'ChargeOffDate'
-      attribute :receipt_date, String, tag: 'ReceiptDate'
-      attribute :system_code, String, tag: 'SystemCode'
-      attribute :priority, String, tag: 'Priority'
-      has_one :acc_doc, ::Ufebs::Entities::AccDoc, tag: 'AccDoc'
-      has_one :payer, ::Ufebs::Entities::Participant, tag: 'Payer'
-      has_one :payee, ::Ufebs::Entities::Participant, tag: 'Payee'
-      element :purpose, String, tag: 'Purpose'
-
-      has_one :processing_details, ::Ufebs::Entities::ProcessingDetails, tag: 'ProcessingDetails', state_when_nil: false
-      has_one :departmental_info, Ufebs::Entities::DepartmentalInfo, tag: 'DepartmentalInfo', state_when_nil: false
+      SYSTEM_CODE          = '01'.freeze
 
       def validate
         Ufebs.validate(to_xml)
@@ -56,8 +31,9 @@ module Ufebs
         payee: nil,
         purpose: '',
         uin: nil,
+        trans_kind: DOCUMENT_NUMBER_TYPE,
         payt_kind: nil,
-        system_code: SYSTEM_CODE,
+        system_code: nil,
         departmental_info: nil
       )
         raise InvalidPriority.new('priority Реквизит должен иметь значение в диапазоне 0-5.') unless (0..5).include?(priority.to_i)
@@ -77,8 +53,8 @@ module Ufebs
         @payt_kind      = payt_kind
 
         @ed_author   = ed_author
-        @type_number = DOCUMENT_NUMBER_TYPE
-        @system_code = system_code
+        @type_number = trans_kind
+        @system_code = system_code || SYSTEM_CODE
 
         yield self if block_given?
 

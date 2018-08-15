@@ -5,6 +5,7 @@ module Ufebs
   module Documents
     class Package
       include HappyMapper
+      SYSTEM_CODE = '02'
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'PacketEPD'
       namespace 'ed'
@@ -28,7 +29,7 @@ module Ufebs
         @number    = params[:number]
         @quantity  = params[:quantity] || payment_orders.size
         @sum       = params[:sum]
-        @system_code   = '01'
+        @system_code   = params.fetch(:system_code) { SYSTEM_CODE }
         super()
       end
 

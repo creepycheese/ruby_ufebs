@@ -7,6 +7,7 @@ class Ufebs::Documents::PackageTest < MiniTest::Test
         number: 7,
         sum: 150000,
         receipt_date: Time.now,
+        system_code: '02',
         ed_author: '4525595000',
         acc_doc: Ufebs::Entities::AccDoc.new(number: '123', date: Time.now),
         purpose: 'оплата по  том числе ндс 4000 руб',
@@ -34,11 +35,13 @@ class Ufebs::Documents::PackageTest < MiniTest::Test
       ed_author: '4525545000',
       quantity: '5',
       sum: '4900000',
-      number: '21'
+      number: '21',
+      system_code: '02'
     )
 
     doc = Nokogiri::XML(pack.to_xml)
-    assert XML_VALIDATION.valid?(doc)
+    puts Ufebs.validate(doc).errors
+    assert Ufebs.validate(doc).valid?
   end
 end
 
