@@ -3,7 +3,7 @@ require_relative '../fields/payment_doc'
 
 module Ufebs
   module Documents
-    class BankOrder < BasePayment
+    class InvoiceOrder < BasePayment
       include HappyMapper
       include Ufebs::Fields::PaymentDoc
 

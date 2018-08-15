@@ -1,8 +1,8 @@
 require_relative '../test_helper'
 
-class Ufebs::Documents::BankOrderTest < MiniTest::Test
+class Ufebs::Documents::InvoiceOrderTest < MiniTest::Test
   def test_it_maps_to_valid_xml
-    po = Ufebs::Documents::BankOrder.new(
+    po = Ufebs::Documents::InvoiceOrder.new(
       number: 7,
       sum: 150000,
       receipt_date: Time.now,

@@ -168,6 +168,10 @@ module Ufebs
     params.is_a?(Hash) ? Ufebs::Documents::PaymentOrder.new(params) : Ufebs::Documents::PaymentOrder.parse(params)
   end
 
+  def ED104(params)
+    params.is_a?(Hash) ? Ufebs::Documents::InvoiceOrder.new(params) : Ufebs::Documents::InvoiceOrder.parse(params)
+  end
+
   def PacketEPD(payment_eds, params)
     Ufebs::Documents::Package.new(payment_eds, params)
   end
