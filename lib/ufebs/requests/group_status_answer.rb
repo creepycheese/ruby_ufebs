@@ -19,7 +19,9 @@ module Ufebs
               Ufebs::Entities::EdRefId,
               tag: 'InitialED'
 
-      has_many :ed_infos, tag: 'EDInfo'
+      has_many :ed_infos,
+               Ufebs::Entities::EdInfo,
+               tag: 'EDInfo'
 
       def initialize(params = {})
         params.each do |key, value|
