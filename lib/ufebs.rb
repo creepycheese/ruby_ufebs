@@ -103,6 +103,37 @@ module Ufebs
     params.is_a?(Hash) ? Ufebs::Documents::PaymentOrder.new(params) : Ufebs::Documents::PaymentOrder.parse(params)
   end
 
+  def ED103(params)
+    params.is_a?(Hash) ? Ufebs::Documents::PaymentClaim.new(params) : Ufebs::Documents::PaymentClaim.parse(params)
+  end
+
+  def ED104(params)
+    params.is_a?(Hash) ? Ufebs::Documents::InvoiceOrder.new(params) : Ufebs::Documents::InvoiceOrder.parse(params)
+  end
+
+  def ED105(params)
+    params.is_a?(Hash) ? Ufebs::Documents::BillingOrder.new(params) : Ufebs::Documents::BillingOrder.parse(params)
+  end
+
+  def ED107(params)
+    params.is_a?(Hash) ? Ufebs::Documents::PaymentOrderEd107.new(params) : Ufebs::Documents::PaymentOrderEd107.parse(params)
+  end
+
+  def ED108(params)
+    params.is_a?(Hash) ? Ufebs::Documents::PaymentOrderEd108.new(params) : Ufebs::Documents::PaymentOrderEd108.parse(params)
+  end
+
+  def ED109(params)
+    params.is_a?(Hash) ? Ufebs::Documents::BankOrder.new(params) : Ufebs::Documents::BankOrder.parse(params)
+  end
+
+  def ED110(params)
+    params.is_a?(Hash) ? Ufebs::Documents::SomeOrder.new(params) : Ufebs::Documents::SomeOrder.parse(params)
+  end
+
+  def ED111(params)
+    params.is_a?(Hash) ? Ufebs::Documents::MemorialOrder.new(params) : Ufebs::Documents::MemorialOrder.parse(params)
+  end
 
   def ED201(params)
     Ufebs::Requests::NegativeStatusNotification.parse(params)
@@ -110,10 +141,6 @@ module Ufebs
 
   def ED205(params)
     Ufebs::Requests::StatusAnswer.parse(params)
-  end
-
-  def ED104(params)
-    params.is_a?(Hash) ? Ufebs::Documents::InvoiceOrder.new(params) : Ufebs::Documents::InvoiceOrder.parse(params)
   end
 
   def ED206(params)
