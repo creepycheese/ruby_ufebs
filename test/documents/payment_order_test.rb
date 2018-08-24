@@ -1,6 +1,51 @@
 require_relative '../test_helper'
 
 class Ufebs::Documents::PaymentOrderTest < MiniTest::Test
+  def test_it_parse_xml
+    result = Ufebs::Documents::PaymentOrder.parse(<<~XML.encode('windows-1251'))
+      <?xml version="1.0" encoding="WINDOWS-1251"?>
+      <PacketEPD EDAuthor="4583001999" EDDate="2018-01-03" EDNo="123"
+                 EDQuantity="2" EDReceiver="4525420000" Sum="2" SystemCode="01"
+                 xmlns="urn:cbr-ru:ed:v2.0">
+        <Session>
+          <SessionID>4</SessionID>
+        </Session>
+        <ED101 ChargeOffDate="2018-01-03" EDAuthor="4525416000" EDDate="2018-01-03"
+               EDNo="18" Priority="5" ReceiptDate="2018-01-03" Sum="1" SystemCode="01"
+               TransKind="01">
+          <AccDoc AccDocDate="2018-01-03" AccDocNo="2"/>
+          <Payer PersonalAcc="40817810000000000000">
+            <Name>Пример</Name>
+            <Bank BIC="044525416" CorrespAcc="30101810645250000416"/>
+          </Payer>
+          <Payee PersonalAcc="40817810000000000000">
+            <Name>Пример</Name>
+            <Bank BIC="044525420" CorrespAcc="30101810945250000420"/>
+          </Payee>
+          <Purpose>Пример</Purpose>
+          <ProcessingDetails CreditDate="2018-01-03" DebitDate="2018-01-03"/>
+        </ED101>
+        <ED101 ChargeOffDate="2018-01-03" EDAuthor="4525416000" EDDate="2018-01-03"
+               EDNo="17" Priority="5" ReceiptDate="2018-01-03" Sum="1" SystemCode="01"
+               TransKind="01">
+          <AccDoc AccDocDate="2018-01-03" AccDocNo="1"/>
+          <Payer PersonalAcc="40817810000000000000">
+            <Name>Пример</Name>
+            <Bank BIC="044525416" CorrespAcc="30101810645250000416"/>
+          </Payer>
+          <Payee PersonalAcc="40817810000000000000">
+            <Name>Пример</Name>
+            <Bank BIC="044525420" CorrespAcc="30101810945250000420"/>
+          </Payee>
+          <Purpose>Пример</Purpose>
+          <ProcessingDetails CreditDate="2018-01-03" DebitDate="2018-01-03"/>
+        </ED101>
+      </PacketEPD>
+    XML
+
+    assert result.any?
+  end
+
   def test_it_maps_to_valid_xml
     po = Ufebs::Documents::PaymentOrder.new(
       number: 7,
