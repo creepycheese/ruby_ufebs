@@ -29,6 +29,8 @@ module Ufebs
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end
+
+        super()
       end
 
       def set_ed_define_answer_info(value)
