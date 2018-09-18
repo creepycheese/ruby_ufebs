@@ -16,7 +16,7 @@ module Ufebs
       has_one   :bank, Ufebs::Entities::Bank, tag: 'Bank'
 
       def initialize(inn:'', account:'' ,name:'', bank_account:'', bank_bic:'', kpp: nil)
-        @inn, @kpp, @account, @name = inn, kpp, account, name.encode(xml: :text)
+        @inn, @kpp, @account, @name = inn, kpp, account, name
         @bank = Ufebs::Entities::Bank.new(bic: bank_bic, account: bank_account)
       end
     end
