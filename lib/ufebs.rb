@@ -104,15 +104,15 @@ module Ufebs
   end
 
   def ED103(params)
-    params.is_a?(Hash) ? Ufebs::Documents::PaymentClaim.new(params) : Ufebs::Documents::PaymentClaim.parse(params)
+    params.is_a?(Hash) ? Ufebs::Documents::PaymentRequirement.new(params) : Ufebs::Documents::PaymentRequirement.parse(params)
   end
 
   def ED104(params)
-    params.is_a?(Hash) ? Ufebs::Documents::InvoiceOrder.new(params) : Ufebs::Documents::InvoiceOrder.parse(params)
+    params.is_a?(Hash) ? Ufebs::Documents::CollectionOrder.new(params) : Ufebs::Documents::CollectionOrder.parse(params)
   end
 
   def ED105(params)
-    params.is_a?(Hash) ? Ufebs::Documents::BillingOrder.new(params) : Ufebs::Documents::BillingOrder.parse(params)
+    params.is_a?(Hash) ? Ufebs::Documents::PayerOrder.new(params) : Ufebs::Documents::PayerOrder.parse(params)
   end
 
   def ED107(params)

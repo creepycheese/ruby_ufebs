@@ -8,8 +8,8 @@ module Ufebs
       include HappyMapper
       InvalidPriority = Class.new(StandardError)
 
-      DOCUMENT_NUMBER_TYPE = '01'.freeze
-      SYSTEM_CODE          = '02'.freeze
+      DOCUMENT_TRANS_KIND = '01'.freeze
+      SYSTEM_CODE         = '02'.freeze
 
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
       tag 'ED101'
@@ -20,7 +20,7 @@ module Ufebs
       attribute :ed_author, String, tag: 'EDAuthor'
       attribute :sum, String, tag: 'Sum'
       attribute :payt_kind, String, tag: 'PaytKind'
-      attribute :type_number, String, tag: 'TransKind'
+      attribute :trans_kind, String, tag: 'TransKind'
       attribute :uin, String, tag: 'PaymentID'
       attribute :charge_off_date, String, tag: 'ChargeOffDate'
       attribute :receipt_date, String, tag: 'ReceiptDate'
@@ -82,7 +82,7 @@ module Ufebs
         @processing_details = processing_details.is_a?(Hash) ? ::Ufebs::Entities::ProcessingDetails.new(processing_details) : processing_details
 
         @ed_author   = ed_author
-        @type_number = DOCUMENT_NUMBER_TYPE
+        @trans_kind  = DOCUMENT_TRANS_KIND
         @system_code = system_code
 
         yield self if block_given?

@@ -7,7 +7,7 @@ module Ufebs
         content.attribute :ed_author, String, tag: 'EDAuthor'
         content.attribute :sum, String, tag: 'Sum'
         content.attribute :payt_kind, String, tag: 'PaytKind'
-        content.attribute :type_number, String, tag: 'TransKind'
+        content.attribute :trans_kind, String, tag: 'TransKind'
         content.attribute :uin, String, tag: 'PaymentID'
         content.attribute :charge_off_date, String, tag: 'ChargeOffDate'
         content.attribute :receipt_date, String, tag: 'ReceiptDate'
