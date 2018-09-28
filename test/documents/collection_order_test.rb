@@ -12,7 +12,7 @@ class Ufebs::Documents::CollectionOrderTest < MiniTest::Test
         </Session>
         <ED104 ChargeOffDate="2018-01-03" EDAuthor="4525416000" EDDate="2018-01-03"
                EDNo="17" Priority="5" ReceiptDate="2018-01-03" Sum="1" SystemCode="01"
-               TransKind="01" FileDate="2018-01-03">
+               TransKind="06" FileDate="2018-01-03">
           <AccDoc AccDocDate="2018-01-03" AccDocNo="1"/>
           <Payer PersonalAcc="40817810000000000000">
             <Name>Пример</Name>
@@ -38,6 +38,7 @@ class Ufebs::Documents::CollectionOrderTest < MiniTest::Test
       sum:                150000,
       receipt_date:       Time.now,
       ed_author:          '4525595000',
+      trans_kind:         '06',
       acc_doc:            {
         number: '3',
         date:   Time.now

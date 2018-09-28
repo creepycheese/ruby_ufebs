@@ -7,7 +7,7 @@ module Ufebs
   module Documents
     class BasePayment
       include HappyMapper
-      DOCUMENT_TRANS_KIND = '06'.freeze
+      DOCUMENT_TRANS_KIND = '01'.freeze
       SYSTEM_CODE         = '02'.freeze
 
       def validate

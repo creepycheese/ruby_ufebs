@@ -79,6 +79,7 @@ class Ufebs::Documents::PaymentOrderTest < MiniTest::Test
       }
     )
     doc = Nokogiri::XML(po.to_xml)
+    puts Ufebs.validate(doc).errors
     assert Ufebs.validate(doc).valid?
   end
 
@@ -116,6 +117,7 @@ class Ufebs::Documents::PaymentOrderTest < MiniTest::Test
         }
       )
       doc = Nokogiri::XML(po.to_xml)
+      puts Ufebs.validate(doc).errors
       assert Ufebs.validate(doc).valid?
     end
 end
