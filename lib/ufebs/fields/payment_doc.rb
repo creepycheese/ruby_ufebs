@@ -15,13 +15,14 @@ module Ufebs
         content.attribute :priority,           String, tag: 'Priority'
         content.attribute :payment_precedence, String, tag: 'PaymentPrecedence'
 
+        content.has_one :acc_doc, ::Ufebs::Entities::AccDoc,      tag: 'AccDoc'
+        content.has_one :payer,   ::Ufebs::Entities::Participant, tag: 'Payer'
+        content.has_one :payee,   ::Ufebs::Entities::Participant, tag: 'Payee'
+
         content.element :purpose, String, tag: 'Purpose'
 
-        content.has_one :acc_doc,            ::Ufebs::Entities::AccDoc,            tag: 'AccDoc'
-        content.has_one :payer,              ::Ufebs::Entities::Participant,       tag: 'Payer'
-        content.has_one :payee,              ::Ufebs::Entities::Participant,       tag: 'Payee'
-        content.has_one :departmental_info,  ::Ufebs::Entities::DepartmentalInfo,  tag: 'DepartmentalInfo',  state_when_nil: false
         content.has_one :processing_details, ::Ufebs::Entities::ProcessingDetails, tag: 'ProcessingDetails', state_when_nil: false
+        content.has_one :departmental_info,  ::Ufebs::Entities::DepartmentalInfo,  tag: 'DepartmentalInfo',  state_when_nil: false
       end
     end
   end

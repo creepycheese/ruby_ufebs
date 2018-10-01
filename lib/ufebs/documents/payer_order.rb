@@ -22,14 +22,15 @@ module Ufebs
       attribute :payment_precedence, String, tag: 'PaymentPrecedence'
       attribute :trans_content,      String, tag: 'TransContent'
 
-      element :purpose, String, tag: 'Purpose'
-
       has_one :acc_doc,            ::Ufebs::Entities::AccDoc,            tag: 'AccDoc'
       has_one :payer,              ::Ufebs::Entities::Participant,       tag: 'Payer'
       has_one :payee,              ::Ufebs::Entities::Participant,       tag: 'Payee'
-      has_one :partial_payt,       ::Ufebs::Entities::PartialPayt,       tag: 'PartialPayt'
+
+      element :purpose, String, tag: 'Purpose'
+
       has_one :processing_details, ::Ufebs::Entities::ProcessingDetails, tag: 'ProcessingDetails', state_when_nil: false
       has_one :departmental_info,  ::Ufebs::Entities::DepartmentalInfo,  tag: 'DepartmentalInfo',  state_when_nil: false
+      has_one :partial_payt,       ::Ufebs::Entities::PartialPayt,       tag: 'PartialPayt'
     end
   end
 end
