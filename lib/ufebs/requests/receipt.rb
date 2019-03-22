@@ -19,7 +19,7 @@ module Ufebs
       attribute :out_bal,             String, tag: 'OutBal'
       attribute :reserved_sum,        String, tag: 'ReservedSum'
       attribute :credit_limit_sum,    String, tag: 'CreditLimitSum'
-      attribute :rtgs_unconfirmed_ed, String, tag: 'RTGSUnconfirmedED'
+      # attribute :rtgs_unconfirmed_ed, String, tag: 'RTGSUnconfirmedED'
       attribute :arrest_sum,          String, tag: 'ArrestSum'
       attribute :part_aggregate_id,   String, tag: 'PartAggregateID'
       attribute :debit_sum,           String, tag: 'DebetSum'
