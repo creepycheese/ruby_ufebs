@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="Windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+ППС
+
+Схемы с описанием прикладных частей электронных сообщений, используемых в расчетной сети Банка России.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2019.2.1">
+	<xs:include schemaLocation="cbr_ed_objects_v2019.2.0.xsd"/>
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2019.2.0.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные объекты</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="CreationReasonType">
+		<xs:annotation>
+			<xs:documentation>Причины формирования Профиля участника (ED808).</xs:documentation>
+			<xs:documentation>Participant Profile Creation Reason Code.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CreationReasonCode" type="lt:ReasonCodeType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Код причины формирования ED808.</xs:documentation>
+					<xs:documentation>ED808 Creation reason code.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+<!--
+Типы с префиксом ED808 в выпуске 2019.3.0 перенести в objects
+Начало -->
+	<xs:complexType name="ED808ParticipantProfileType">
+		<xs:annotation>
+			<xs:documentation>Профиль участника.</xs:documentation>
+			<xs:documentation>Participant's Private Profile.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="ParticipantProfileInfo" type="ed:ParticipantProfileInfoType">
+				<xs:annotation>
+					<xs:documentation>Информация об Участнике, входящая в Профиль участника.</xs:documentation>
+					<xs:documentation>Participant Profile Information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AccountsInfo" type="ed:ED808AccountsInfoType" minOccurs="0" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Информация о счетах, входящая в профиль участника.</xs:documentation>
+					<xs:documentation>Participant’s Account Information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ED808AccountsInfoType">
+		<xs:annotation>
+			<xs:documentation>Информация о счетах, входящая в профиль участника.</xs:documentation>
+			<xs:documentation>Participant’s Account Information.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="AccIntradayRestrictions" type="ed:AccIntradayRestrictions" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Ограничения по счету.</xs:documentation>
+					<xs:documentation>Intraday restrictions on an account.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PendingDeletionInfo" type="ed:PendingDeletionInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Дополнительная информация для ограничения «в ожидании удаления» (информация о предстоящем удалении счета).</xs:documentation>
+					<xs:documentation>Additional information for “Pending deletion” restriction.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="BalanceSweepingAccount" type="ed:BalanceSweepingAccount" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Счет назначения.</xs:documentation>
+					<xs:documentation>Balance Sweeping Destination Account.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="PoolSPInfo" type="ed:PoolSPInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Информация об участниках пула ликвидности.</xs:documentation>
+					<xs:documentation>Primary account of liquidity pool (LP) OR List of Subordinate Accounts of LP.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="IPInfo" type="ed:ED808IPInfoListType" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Информация о косвенных участниках: Список БИК и счетов косвенных участников для прямого.</xs:documentation>
+					<xs:documentation>Indirect Participant Info.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="LimitsInfo" type="ed:LimitsInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Значения лимитов.</xs:documentation>
+					<xs:documentation>Participant Limits Information.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AuthorizedClaimAuthors" type="ed:AuthorizedClaimAuthors" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Список уполномоченных составителей требований.</xs:documentation>
+					<xs:documentation>Authorized Claim Authors List.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ArrestsInfo" type="ed:ArrestsInfo" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Информация об арестах и/или ограничениях.</xs:documentation>
+					<xs:documentation>Arrests/Limitations Info.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Account" type="lt:AccountNumberRUIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер счета.</xs:documentation>
+				<xs:documentation>Account Number.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AccountType" type="lt:AccountType" use="required">
+			<xs:annotation>
+				<xs:documentation>Тип номера счета.</xs:documentation>
+				<xs:documentation>Account Type.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DateOfDeletion" type="lt:DateType">
+			<xs:annotation>
+				<xs:documentation>Дата фактического исключения информации о счете.</xs:documentation>
+				<xs:documentation>Scheduled date of account’s deletion.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DefaultARMNo" type="lt:Max2TextType">
+			<xs:annotation>
+				<xs:documentation>Номер АРМ по умолчанию для счета.</xs:documentation>
+				<xs:documentation>Default Terminal ID for Account.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="UseCorrespAccInFTS" type="lt:IndicatorType">
+			<xs:annotation>
+				<xs:documentation>Использование корреспондентского счета в СБП.</xs:documentation>
+				<xs:documentation>Corresp Account usage in FTS.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ED808IPInfoListType">
+		<xs:annotation>
+			<xs:documentation>Информация о косвенных участниках.</xs:documentation>
+			<xs:documentation>Indirect Participant Info.</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IPBICAccList" type="ed:ED808IPBICAccListType" minOccurs="1" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Информация о БИК и счетах косвенных участников.</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ED808IPBICAccListType">
+		<xs:annotation>
+			<xs:documentation>БИК и номер счета косвенного участника.</xs:documentation>
+			<xs:documentation>Indirect Participant Info.</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="BIC" type="lt:BICRUIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>БИК косвенного участника.</xs:documentation>
+				<xs:documentation>IP's BIC.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="Account" type="lt:AccountNumberRUIDType">
+			<xs:annotation>
+				<xs:documentation>Номер счета косвенного участника.</xs:documentation>
+				<xs:documentation>IP's Account.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+<!-- Конец -->
+
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED808" type="ed:ED808"/>
+	<xs:complexType name="ED808">
+		<xs:annotation>
+			<xs:documentation>Профиль участника</xs:documentation>
+			<xs:documentation>Participant's Private Profile</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ed:ESID">
+				<xs:sequence>
+					<xs:element name="CreationReason" type="ed:CreationReasonType" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Причины формирования Профиля участника (ED808).</xs:documentation>
+							<xs:documentation>Participant Profile Creation Reason Code.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="BICDirectoryEntry" type="ed:BICDirectoryEntryType" minOccurs="1" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Запись в Справочнике БИК.</xs:documentation>
+							<xs:documentation>BIC Directory Entry.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="ParticipantProfile" type="ed:ED808ParticipantProfileType">
+						<xs:annotation>
+							<xs:documentation>Профиль участника.</xs:documentation>
+							<xs:documentation>Participant's Private Profile.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="InitialED" type="ed:EDRefID" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Идентификаторы исходного ЭСИС-запроса.</xs:documentation>
+							<xs:documentation>Initial ESIM-request Identifiers.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="CreationDateTime" type="lt:DateTimeType" use="required">
+					<xs:annotation>
+						<xs:documentation>Дата и время создания ЭС.</xs:documentation>
+						<xs:documentation>Date and time of creation.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="InfoTypeCode" type="lt:RequestCodeType" use="required">
+					<xs:annotation>
+						<xs:documentation>Вид представления информации.</xs:documentation>
+						<xs:documentation>Info Type.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="BusinessDay" type="lt:DateType" use="required">
+					<xs:annotation>
+						<xs:documentation>Дата ОД, к которой относятся данные Профиля.</xs:documentation>
+						<xs:documentation>Business day.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+				<xs:attribute name="ChangeNumber" type="lt:Max9NumberType">
+					<xs:annotation>
+						<xs:documentation>Номер изменения в Профиле.</xs:documentation>
+						<xs:documentation>Sequental change number.</xs:documentation>
+					</xs:annotation>
+				</xs:attribute>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

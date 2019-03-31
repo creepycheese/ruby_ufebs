@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+ППС 
+
+Схемы с описанием прикладных частей электронных сообщений, используемых в расчетной сети Банка России.
+Обмен ДОФР (АС ДКО) с КО.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" version="2019.2.0">
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2019.2.0.xsd" />
+	<xs:include schemaLocation="cbr_ed_objects_v2019.2.0.xsd" />
+	<xs:include schemaLocation="cbr_ed431_v2019.2.0.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные объекты</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="DepositTerms">
+		<xs:annotation>
+			<xs:documentation>Сведения о привлечении депозита</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="DepositOpDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата проведения депозитного аукциона или депозитной операции по фиксированной процентной ставке</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ApplicationSum" type="lt:KopeckAmountType" use="required">
+			<xs:annotation>
+				<xs:documentation>Сумма размещаемого депозита</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AttractDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата перечисления средств в депозит, открываемый в Банке России</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReturnDate" type="lt:DateType">
+			<xs:annotation>
+				<xs:documentation>Дата возврата депозита и получения процентов.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ApplicationRate" type="lt:PercentNumberType" use="required">
+			<xs:annotation>
+				<xs:documentation>Процентная ставка по размещаемому депозиту</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OrgRegNum" type="lt:BankDKOIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Регистрационный номер кредитной организации.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED432" type="ed:ED432">
+	</xs:element>
+	<xs:complexType name="ED432">
+     		<xs:annotation>
+         		<xs:documentation>Встречная заявка Банка России на привлечение депозита</xs:documentation>
+		</xs:annotation>
+      		<xs:complexContent>
+         		<xs:extension base="ed:ESWithMandatoryEDReceiver">
+            			<xs:sequence>
+               				<xs:element name="DepositTerms" type="ed:DepositTerms">
+                  				<xs:annotation>
+                     					<xs:documentation>Сведения о привлечении депозита</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+               				<xs:element name="EDRefID" type="ed:EDRefID">
+                  				<xs:annotation>
+                     					<xs:documentation>Идентификаторы исходного ЭС</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+               				<xs:element ref="ed:ED431">
+                  				<xs:annotation>
+                     					<xs:documentation>Заявка на участие в депозитном аукционе Банка России / на размещение депозита в Банке России по фиксированной процентной ставке</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+            			</xs:sequence>
+            			<xs:attribute name="EDTime" type="lt:TimeType" use="required">
+               				<xs:annotation>
+                  				<xs:documentation>Время составления ЭС</xs:documentation>
+               				</xs:annotation>
+		            	</xs:attribute>
+            			<xs:attribute name="OppReqNum" type="lt:Max20TextType" use="required">
+               				<xs:annotation>
+                  				<xs:documentation>Номер встречной заявки</xs:documentation>
+               				</xs:annotation>
+		            	</xs:attribute>
+            			<xs:attribute name="OpRC" type="lt:OneDigitCodeType" use="required">
+               				<xs:annotation>
+                  				<xs:documentation>Код участия в операции</xs:documentation>
+               				</xs:annotation>
+		            	</xs:attribute>
+         		</xs:extension>
+      		</xs:complexContent>
+   	</xs:complexType>
+</xs:schema>
