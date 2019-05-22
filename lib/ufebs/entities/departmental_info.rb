@@ -26,7 +26,7 @@ module Ufebs
       )
 
         @tax_payt_kind = tax_payt_kind
-        @doc_date = doc_date == '0' ? '0' : Date.parse(doc_date.to_s).strftime('%Y-%m-%d')
+        @doc_date = doc_date == '0' ? '0' : Date.parse(doc_date.to_s).strftime('%d.%m.%Y')
         @doc_no = doc_no
         @payt_reason = payt_reason
         @drawer_status = drawer_status
