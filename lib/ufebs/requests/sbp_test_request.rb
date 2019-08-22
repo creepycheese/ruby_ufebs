@@ -1,6 +1,6 @@
 module Ufebs
   module Requests
-    class TestRequest
+    class SbpTestRequest
       include HappyMapper
 
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"

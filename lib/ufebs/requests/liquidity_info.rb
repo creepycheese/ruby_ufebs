@@ -8,7 +8,20 @@ module Ufebs
       tag 'ED710'
       namespace 'ed'
 
-      def initialize
+      attribute :ed_receiver, String, tag: 'EDReceiver'
+      attribute :ed_no, String, tag: 'EDNo'
+      attribute :ed_date, String, tag: 'EDDate'
+      attribute :ed_author, String, tag: 'EDAuthor'
+      
+      has_one :bic_account, Ufebs::Entities::BicAccount, tag: 'BICAccount'
+      
+      def initialize(params={})
+        params.each do |key, value|
+          case key.to_sym
+          when :bic_account then @bic_account = Ufebs::Entities::BicAccount.new(value)
+          else instance_variable_set("@#{key}".to_sym, value)
+          end
+        end
       end
 
       def to_xml(encoding: 'UTF-8')

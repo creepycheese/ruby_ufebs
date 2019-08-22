@@ -56,6 +56,9 @@
 	<xs:include schemaLocation="ed/cbr_ed464_v2019.2.0.xsd"/>
 	<xs:include schemaLocation="ed/cbr_ed465_v2019.2.0.xsd"/>
 	<xs:include schemaLocation="ed/cbr_ed799_v2019.2.0.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed710_v2019.2.0.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed731_v2019.2.0.xsd"/>
+	<xs:include schemaLocation="ed/cbr_ed742_v2019.2.0.xsd"/>
 	<xs:include schemaLocation="ed/cbr_ed801_v2019.2.0.xsd"/>
 	<xs:include schemaLocation="ed/cbr_ed802_v2019.2.0.xsd"/>
 	<xs:include schemaLocation="ed/cbr_ed804_v2019.2.0.xsd"/>

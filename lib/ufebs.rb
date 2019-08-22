@@ -201,24 +201,24 @@ module Ufebs
     end
   end
 
+  def ED710(params)
+    Ufebs::Requests::LiquidityInfo.new(params)
+  end
+  
+  def ED731(params)
+    Ufebs::Requests::LiquidityChange.new(params)
+  end
+  
+  def ED742(params)
+    Ufebs::Requests::GetRegistry.new(params)
+  end
+
   def ED799(params)
     Ufebs::Requests::SbpTestRequest.new(params)
   end
 
   def ED806(params)
     Ufebs::Requests::ParticipantProfile.new(params)
-  end
-
-  def ED731(params)
-    Ufebs::Requests::LiquidityChange.new(params)
-  end
-
-  def ED710(params)
-    Ufebs::Requests::LiquidityInfo.new(params)
-  end
-
-  def ED742(params)
-    Ufebs::Requests::GetRegistry.new(params)
   end
   
   # XML запрос-зонд

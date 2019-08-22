@@ -1,11 +1,11 @@
 module Ufebs
   module Requests
-    class GetRegistry
+    class LiquidityChange
       include HappyMapper
 
       register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
 
-      tag 'ED742'
+      tag 'ED731'
       namespace 'ed'
 
       attribute :ed_receiver, String, tag: 'EDReceiver'
@@ -14,11 +14,15 @@ module Ufebs
       attribute :ed_author, String, tag: 'EDAuthor'
 
       has_one :request_info, Ufebs::Entities::RequestInfo, tag: 'RequestInfo'
-
-      def initialize(params={})
+      has_one :request_reason, Ufebs::Entities::RequestReason, tag: 'RequestReason'
+      has_one :ed_ref_id, Ufebs::Entities::EdRefId, tag: 'EDRefID'
+      
+      def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
           when :request_info then @request_info = Ufebs::Entities::RequestInfo.new(value)
+          when :request_reason then @request_reason = Ufebs::Entities::RequestReason.new(value)
+          when :ed_ref_id then @ed_ref_id = Ufebs::Entities::EdRefId.new(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end
@@ -31,8 +35,8 @@ module Ufebs
   end
 end
 
-# <ED742 EDReceiver="EDReceiver1" EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" xmlns="urn:cbr-ru:ed:v2.0">
-#   <RequestInfo BIC="BIC1" CorrespAcc="CorrespAcc1">
-#     <DateTimeInterval BeginTime="1900-01-01T01:01:01+03:00" EndTime="1900-01-01T01:01:01+03:00" />
-#   </RequestInfo>
-# </ED742>
+# <ED731 EDReceiver="EDReceiver1" EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" xmlns="urn:cbr-ru:ed:v2.0">
+#   <RequestInfo BIC="BIC1" CorrespAcc="CorrespAcc1" Sum="0" LiquidityTransKind="INCL" />
+#   <RequestReason CreateReasonCode="ARRS" />
+#   <EDRefID EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" />
+# </ED731>
