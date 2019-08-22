@@ -20,6 +20,7 @@ module Ufebs
       def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
+          when :ed_date then @ed_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
           when :request_info then @request_info = Ufebs::Entities::RequestInfo.new(value)
           when :request_reason then @request_reason = Ufebs::Entities::RequestReason.new(value)
           when :ed_ref_id then @ed_ref_id = Ufebs::Entities::EdRefId.new(value)
@@ -29,7 +30,7 @@ module Ufebs
       end
 
       def to_xml(encoding: 'UTF-8')
-        super(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
+        super(Nokogiri::XML::Builder.new(encoding: encoding)).to_xml
       end
     end
   end

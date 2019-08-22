@@ -28,7 +28,7 @@ class UfebsTest < MiniTest::Test
     pr = Ufebs::ED710(
       ed_receiver: '1234567890',
       ed_no: '1',
-      ed_date: '2003-04-14',
+      ed_date: Time.now,
       ed_author: '4525545000',
       bic_account: {
         bic: '123456789',
@@ -44,7 +44,7 @@ class UfebsTest < MiniTest::Test
     pr = Ufebs::ED731(
       ed_receiver: '1234567890',
       ed_no: '1',
-      ed_date: '2003-04-14',
+      ed_date: Time.now,
       ed_author: '4525545000',
       request_info: {
         bic: '123456789',
@@ -56,8 +56,8 @@ class UfebsTest < MiniTest::Test
         reason_code: 'ARRS'
       },
       ed_ref_id: {
-        ed_no:     '7',
-        ed_date:   '2003-04-14',
+        ed_no: '7',
+        ed_date: Time.now,
         ed_author: '4525000000'
       }
     )
@@ -70,7 +70,7 @@ class UfebsTest < MiniTest::Test
     pr = Ufebs::ED742(
       ed_receiver: '1234567890',
       ed_no: '1',
-      ed_date: '2003-04-14',
+      ed_date: Time.now,
       ed_author: '4525545000',
       request_info: {
         bic: '123456789',
@@ -90,7 +90,7 @@ class UfebsTest < MiniTest::Test
     pr = Ufebs::ED806(
       ed_receiver: '1234567890',
       ed_no: '1',
-      ed_date: '2003-04-14',
+      ed_date: Time.now,
       ed_author: '4525545000',
       request_code: 'FIRR',
       participant_id: {

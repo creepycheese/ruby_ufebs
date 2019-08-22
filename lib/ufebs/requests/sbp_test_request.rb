@@ -14,13 +14,14 @@ module Ufebs
       attribute :creation_date_time, String, tag: 'CreationDateTime'
 
       def initialize(params={})
-        @number, @ed_date, @ed_author = params[:number], params[:ed_date], params[:ed_author]
+        @number, @ed_author = params[:number], params[:ed_author]
+        @ed_date = Date.parse(params[:ed_date].to_s).strftime('%Y-%m-%d')
         @creation_date_time = DateTime.parse(params[:creation_date_time].to_s).strftime("%Y-%m-%dT%H:%M:%SZ")
         super()
       end
 
       def to_xml(encoding: 'UTF-8')
-        super(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
+        super(Nokogiri::XML::Builder.new(encoding: encoding)).to_xml
       end
     end
   end

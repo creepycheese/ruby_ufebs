@@ -201,22 +201,86 @@ module Ufebs
     end
   end
 
+  # Запрос информации о состоянии ликвидности в СБП
+  # params = {
+  #   ed_receiver: '1234567890',
+  #   ed_no: '1',
+  #   ed_date: Time.now,
+  #   ed_author: '4525545000',
+  #   bic_account: {
+  #     bic: '123456789',
+  #     correspondent_account: '40702810200203001037'
+  #   }
+  # }
   def ED710(params)
     Ufebs::Requests::LiquidityInfo.new(params)
   end
-  
+
+  # Запрос на увеличение или уменьшение позиции в СБП 
+  # params = {
+  #   ed_receiver: '1234567890',
+  #   ed_no: '1',
+  #   ed_date: Time.now,
+  #   ed_author: '4525545000',
+  #   request_info: {
+  #     bic: '123456789',
+  #     correspondent_account: '40702810200203001037',
+  #     sum: 1234,
+  #     liquidity_trans_kind: 'INCL'
+  #   },
+  #   request_reason: {
+  #     reason_code: 'ARRS'
+  #   },
+  #   ed_ref_id: {
+  #     ed_no: '7',
+  #     ed_date: Time.now,
+  #     ed_author: '4525000000'
+  #   }
+  # }
   def ED731(params)
     Ufebs::Requests::LiquidityChange.new(params)
   end
   
+  # Запрос на получение потранзакционного реестра
+  # params = {
+  #   ed_receiver: '1234567890',
+  #   ed_no: '1',
+  #   ed_date: Time.now,
+  #   ed_author: '4525545000',
+  #   request_info: {
+  #     bic: '123456789',
+  #     correspondent_account: '40702810200203001037',
+  #     date_time_interval: {
+  #       begin_time: Time.now,
+  #       end_time: Time.now
+  #     }
+  #   }
+  # }
   def ED742(params)
     Ufebs::Requests::GetRegistry.new(params)
   end
 
+  # Запрос-зонд
+  # @param params [Hash]
+  # @option :number аттрибут EDNo
+  # @option :ed_date аттрибут EDDate
+  # @option :ed_author аттрибут EDAuthor
+  # @option :creation_date_time аттрибут CreationDateTime
   def ED799(params)
     Ufebs::Requests::SbpTestRequest.new(params)
   end
 
+  # Запрос Справочника БИК и запрос Профиля участника
+  # params = {
+  #   ed_receiver: '1234567890',
+  #   ed_no: '1',
+  #   ed_date: Time.now,
+  #   ed_author: '4525545000',
+  #   request_code: 'FIRR',
+  #   participant_id: {
+  #     bic: '123456789'
+  #   }
+  # }
   def ED806(params)
     Ufebs::Requests::ParticipantProfile.new(params)
   end

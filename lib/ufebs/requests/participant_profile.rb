@@ -19,6 +19,7 @@ module Ufebs
       def initialize(params={})
         params.each do |key, value|
           case key.to_sym
+          when :ed_date then @ed_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
           when :participant_id then @bic_account = Ufebs::Entities::ParticipantId.new(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
@@ -26,7 +27,7 @@ module Ufebs
       end
 
       def to_xml(encoding: 'UTF-8')
-        super(Nokogiri::XML::Builder.new(:encoding => encoding)).to_xml
+        super(Nokogiri::XML::Builder.new(encoding: encoding)).to_xml
       end
     end
   end

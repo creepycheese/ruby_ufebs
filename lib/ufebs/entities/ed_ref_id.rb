@@ -12,7 +12,10 @@ module Ufebs
 
       def initialize(params = {})
         params.each do |key, value|
-          instance_variable_set("@#{key}".to_sym, value)
+          case key.to_sym
+          when :ed_date then @ed_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
+          else instance_variable_set("@#{key}".to_sym, value)
+          end
         end
       end
     end
