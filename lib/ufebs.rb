@@ -266,6 +266,11 @@ module Ufebs
     Ufebs::Requests::GetRegistry.new(params)
   end
 
+  # Отчет по успешным переводам за предыдущий опер.день ПС БР
+  def ED743(params)
+    Ufebs::Response::GetRegistry.parse(params)
+  end
+
   # Запрос-зонд
   # @param params [Hash]
   # @option :number аттрибут EDNo

@@ -149,25 +149,14 @@ class UfebsTest < MiniTest::Test
   end
 
   def test_ed_711_parse
-    xml = <<~XML
-      <?xml version="1.0" encoding="windows-1251"?>
-      <ED711 CreationReason="RQST" CreationDateTime="1900-01-01T01:01:01+03:00" EDReceiver="EDReceiver1" EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" xmlns="urn:cbr-ru:ed:v2.0">
-      <BICAccount BIC="BIC1" CorrespAcc="CorrespAcc1" />
-      <FPSLiquidityInfo BusinessDay="1900-01-01" FPSLiquidity="0" FPSEnterPosition="0" FPSPosition="0" CurrentBalance="1" ArrestSum="1" />
-      <FPSTurnover FPSCreditSum="0" FPSDebetSum="0" />
-      <LiqEDID Sum="0" LiquidityTransKind="INCL">
-        <EDRefID EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" />
-      </LiqEDID>
-      <LiqEDID Sum="-999999999999999999" LiquidityTransKind="DECL">
-        <EDRefID EDNo="-999999999" EDDate="0001-01-01" EDAuthor="EDAuthor2" />
-      </LiqEDID>
-      <LiqEDID Sum="999999999999999999" LiquidityTransKind="INCL">
-        <EDRefID EDNo="999999999" EDDate="9999-12-31" EDAuthor="EDAuthor3" />
-      </LiqEDID>
-      <InitialED EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" />
-      </ED711>
-    XML
+    xml = File.open('test/files/ed_711.xml').read
 
     assert_kind_of(Ufebs::Response::LiquidityInfo, Ufebs::ED711(xml))
+  end
+
+  def test_ed_743_parse
+    xml = File.open('test/files/ed_743.xml').read
+
+    assert_kind_of(Ufebs::Response::GetRegistry, Ufebs::ED743(xml))
   end
 end

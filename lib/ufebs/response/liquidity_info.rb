@@ -14,7 +14,7 @@ module Ufebs
       attribute :ed_author, String, tag: 'EDAuthor'
       attribute :creation_reason, String, tag: 'CreationReason'
       attribute :creation_date_time, String, tag: 'CreationDateTime'
-      
+
       has_one :bic_account, Ufebs::Entities::BicAccount, tag: 'BICAccount'
       has_one :fps_liquidity_info, 'Ufebs::Response::FPSLiquidityInfo', tag: 'FPSLiquidityInfo'
       has_one :fps_turnover, 'Ufebs::Response::FPSTurnover', tag: 'FPSTurnover'
