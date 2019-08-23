@@ -7,6 +7,7 @@ Dir[File.dirname(__FILE__) + '/**/entities/*.rb'].each { |ff| require ff }
 Dir[File.dirname(__FILE__) + '/**/fields/*.rb'].each { |ff| require ff }
 Dir[File.dirname(__FILE__) + '/**/documents/*.rb'].each { |ff| require ff }
 Dir[File.dirname(__FILE__) + '/**/requests/*.rb'].each { |ff| require ff }
+Dir[File.dirname(__FILE__) + '/**/response/*.rb'].each { |ff| require ff }
 
 module Ufebs
   extend self
@@ -214,6 +215,11 @@ module Ufebs
   # }
   def ED710(params)
     Ufebs::Requests::LiquidityInfo.new(params)
+  end
+
+  # Извещения о состоянии ликвидности в СБП
+  def ED711(xml)
+    Ufebs::Response::LiquidityInfo.parse(xml)
   end
 
   # Запрос на увеличение или уменьшение позиции в СБП 
