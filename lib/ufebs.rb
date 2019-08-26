@@ -246,7 +246,12 @@ module Ufebs
   def ED731(params)
     Ufebs::Requests::LiquidityChange.new(params)
   end
-  
+
+  # Подтверждение исполнения запроса об управлении ликвидности
+  def ED732(xml)
+    Ufebs::Response::LiquidityChange.parse(xml)
+  end
+
   # Запрос на получение потранзакционного реестра
   # params = {
   #   ed_receiver: '1234567890',

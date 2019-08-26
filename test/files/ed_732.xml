@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<ED732 EDReceiver="EDReceiver1" EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" xmlns="urn:cbr-ru:ed:v2.0">
+  <RequestInfo BIC="BIC1" CorrespAcc="CorrespAcc1" Sum="0" LiquidityTransKind="INCL" />
+  <LiquidityInfo FPSLiquidity="0" FPSPosition="0" ExecCode="EXEC" />
+  <InitialED EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" />
+</ED732>
