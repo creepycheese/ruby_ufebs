@@ -300,7 +300,12 @@ module Ufebs
   def ED806(params)
     Ufebs::Requests::ParticipantProfile.new(params)
   end
-  
+
+  # Профиль участника
+  def ED808(xml)
+    Ufebs::Response::ParticipantProfile.parse(xml)
+  end
+
   # XML запрос-зонд
   # @param params [Hash]
   # @option :number аттрибут EDNo
