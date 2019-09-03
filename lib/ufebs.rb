@@ -222,7 +222,7 @@ module Ufebs
     Ufebs::Response::LiquidityInfo.parse(xml)
   end
 
-  # Запрос на увеличение или уменьшение позиции в СБП 
+  # Запрос на увеличение или уменьшение позиции в СБП
   # params = {
   #   ed_receiver: '1234567890',
   #   ed_no: '1',

@@ -3,18 +3,19 @@ module Ufebs
     class SbpTestRequest
       include HappyMapper
 
-      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
 
       tag 'ED799'
       namespace 'ed'
 
-      attribute :number, String, tag: 'EDNo'
+      attribute :ed_no, String, tag: 'EDNo'
       attribute :ed_date, String, tag: 'EDDate'
       attribute :ed_author, String, tag: 'EDAuthor'
       attribute :creation_date_time, String, tag: 'CreationDateTime'
 
-      def initialize(params={})
-        @number, @ed_author = params[:number], params[:ed_author]
+      def initialize(params = {})
+        @ed_no = params[:ed_no]
+        @ed_author = params[:ed_author]
         @ed_date = Date.parse(params[:ed_date].to_s).strftime('%Y-%m-%d')
         @creation_date_time = DateTime.parse(params[:creation_date_time].to_s).strftime("%Y-%m-%dT%H:%M:%SZ")
         super()
