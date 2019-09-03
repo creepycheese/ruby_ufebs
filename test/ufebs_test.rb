@@ -14,7 +14,7 @@ class UfebsTest < MiniTest::Test
 
   def test_ed799
     pr = Ufebs::ED799(
-      number: '321',
+      ed_no: '321',
       ed_date: '2003-04-14',
       ed_author: '4525545000',
       creation_date_time: Time.now
