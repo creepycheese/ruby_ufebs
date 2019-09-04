@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ufebs
   module Entities
     class EdRefId

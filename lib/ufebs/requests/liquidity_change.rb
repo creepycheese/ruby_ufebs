@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Ufebs
   module Requests
     class LiquidityChange
       include HappyMapper
 
-      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
 
       tag 'ED731'
       namespace 'ed'
@@ -16,7 +18,7 @@ module Ufebs
       has_one :request_info, Ufebs::Entities::RequestInfo, tag: 'RequestInfo'
       has_one :request_reason, Ufebs::Entities::RequestReason, tag: 'RequestReason'
       has_one :ed_ref_id, Ufebs::Entities::EdRefId, tag: 'EDRefID'
-      
+
       def initialize(params = {})
         params.each do |key, value|
           case key.to_sym

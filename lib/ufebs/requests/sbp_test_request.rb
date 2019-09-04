@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ufebs
   module Requests
     class SbpTestRequest
@@ -17,7 +19,7 @@ module Ufebs
         @ed_no = params[:ed_no]
         @ed_author = params[:ed_author]
         @ed_date = Date.parse(params[:ed_date].to_s).strftime('%Y-%m-%d')
-        @creation_date_time = DateTime.parse(params[:creation_date_time].to_s).strftime("%Y-%m-%dT%H:%M:%SZ")
+        @creation_date_time = DateTime.parse(params[:creation_date_time].to_s).strftime('%Y-%m-%dT%H:%M:%SZ')
         super()
       end
 

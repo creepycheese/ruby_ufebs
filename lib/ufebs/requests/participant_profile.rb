@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Ufebs
   module Requests
     class ParticipantProfile
       include HappyMapper
 
-      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
 
       tag 'ED806'
       namespace 'ed'
@@ -16,7 +18,7 @@ module Ufebs
 
       has_one :participant_id, Ufebs::Entities::ParticipantId, tag: 'ParticipantID'
 
-      def initialize(params={})
+      def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
           when :ed_date then @ed_date = Date.parse(value.to_s).strftime('%Y-%m-%d')

@@ -5,7 +5,7 @@ module Ufebs
     class GetRegistry
       include HappyMapper
 
-      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
 
       tag 'ED742'
       namespace 'ed'
@@ -17,7 +17,7 @@ module Ufebs
 
       has_one :request_info, Ufebs::Entities::RequestInfo, tag: 'RequestInfo'
 
-      def initialize(params={})
+      def initialize(params = {})
         params.each do |key, value|
           case key.to_sym
           when :ed_date then @ed_date = Date.parse(value.to_s).strftime('%Y-%m-%d')

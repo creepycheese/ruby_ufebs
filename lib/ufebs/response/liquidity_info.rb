@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 module Ufebs
   module Response
     class LiquidityInfo
       include HappyMapper
 
-      register_namespace 'ed', "urn:cbr-ru:ed:v2.0"
+      register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
 
       tag 'ED711'
       namespace 'ed'
@@ -36,10 +38,10 @@ module Ufebs
       attribute :current_balance, Integer, tag: 'CurrentBalance'
       attribute :arrest_sum, Integer, tag: 'ArrestSum'
     end
-    
+
     class FPSTurnover
       include HappyMapper
-      
+
       attribute :credit_sum, Integer, tag: 'FPSCreditSum'
       attribute :debet_sum, Integer, tag: 'FPSDebetSum'
     end

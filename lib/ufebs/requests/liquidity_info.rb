@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Ufebs
   module Requests
     class LiquidityInfo
