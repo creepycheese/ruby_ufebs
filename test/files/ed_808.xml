@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="windows-1251" ?>
+<ED808 CreationDateTime="1900-01-01T01:01:01+03:00" InfoTypeCode="FIRR" BusinessDay="1900-01-01" ChangeNumber="1" EDReceiver="EDReceiver1" EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" xmlns="urn:cbr-ru:ed:v2.0">
+  <CreationReason>
+    <CreationReasonCode>ACCH</CreationReasonCode>
+    <CreationReasonCode>AICH</CreationReasonCode>
+    <CreationReasonCode>ALCH</CreationReasonCode>
+  </CreationReason>
+  <BICDirectoryEntry BIC="BIC1" ChangeType="ADDD">
+    <ParticipantInfo NameP="NameP1" EnglName="EnglName1" RegN="RegN1" CntrCd="C1" Rgn="R1" Ind="Ind1" Tnp="Tnp1" Nnp="Nnp1" Adr="Adr1" PrntBIC="PrntBIC1" DateIn="1900-01-01" DateOut="1900-01-01" PtType="P1" Srvcs="1" XchType="1" UID="UID1" NPSParticipant="1" ToNPSDate="1900-01-01" ParticipantStatus="PSAC">
+      <RstrList Rstr="NORS" RstrDate="1900-01-01" />
+      <RstrList Rstr="URRS" RstrDate="0001-01-01" />
+      <RstrList Rstr="LWRS" RstrDate="9999-12-31" />
+    </ParticipantInfo>
+    <SWBICS SWBIC="SWBIC__1" DefaultSWBIC="true" />
+    <SWBICS SWBIC="SWBIC__2" DefaultSWBIC="false" />
+    <SWBICS SWBIC="SWBIC__3" DefaultSWBIC="true" />
+    <Accounts Account="Account1" RegulationAccountType="BANA" CK="C1" AccountCBRBIC="AccountCBRBIC1" DateIn="1900-01-01" DateOut="1900-01-01" AccountStatus="ACAC">
+      <AccRstrList AccRstr="NORS" AccRstrDate="1900-01-01" />
+      <AccRstrList AccRstr="URRS" AccRstrDate="0001-01-01" />
+      <AccRstrList AccRstr="LWRS" AccRstrDate="9999-12-31" />
+    </Accounts>
+    <Accounts Account="Account2" RegulationAccountType="CBRA" CK="C2" AccountCBRBIC="AccountCBRBIC2" DateIn="0001-01-01" DateOut="0001-01-01" AccountStatus="ACDL">
+      <AccRstrList AccRstr="LMRS" AccRstrDate="1899-11-30" />
+      <AccRstrList AccRstr="CLRS" AccRstrDate="1900-02-02" />
+      <AccRstrList AccRstr="FPRS" AccRstrDate="0001-02-02" />
+    </Accounts>
+    <Accounts Account="Account3" RegulationAccountType="CRSA" CK="C3" AccountCBRBIC="AccountCBRBIC3" DateIn="9999-12-31" DateOut="9999-12-31" AccountStatus="ACAC">
+      <AccRstrList AccRstr="MRTR" AccRstrDate="9999-11-29" />
+      <AccRstrList AccRstr="NORS" AccRstrDate="1899-10-29" />
+      <AccRstrList AccRstr="URRS" AccRstrDate="1900-03-06" />
+    </Accounts>
+  </BICDirectoryEntry>
+  <ParticipantProfile>
+    <ParticipantProfileInfo PtType="P1" ServCBRBIC="ServCBRBIC1" DefaultARMNo="D1" ChannelMode="3">
+      <UFCFInfo>
+        <UFBIC>UFBIC1</UFBIC>
+      </UFCFInfo>
+      <IntradayRestrictions>
+        <StopUrgentFTS Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1900-01-01" DocNumber="DocNumber1" Description="Description1" />
+        </StopUrgentFTS>
+        <StopSendFTI Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="0001-01-01" DocNumber="DocNumber2" Description="Description2" />
+        </StopSendFTI>
+        <StopSendRecvEM Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="9999-12-31" DocNumber="DocNumber3" Description="Description3" />
+        </StopSendRecvEM>
+        <CreditorsRequirementsMoratorium Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1899-11-30" DocNumber="DocNumber4" Description="Description4" />
+        </CreditorsRequirementsMoratorium>
+        <PendingDeletion Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1900-02-02" DocNumber="DocNumber5" Description="Description5" />
+        </PendingDeletion>
+      </IntradayRestrictions>
+      <ParticipantAttributes CanBeAuthorOfConfLiqRsrv="true" CanBeAuthorOfLiqRsrv="true" CanBeAuthorOfCover="true" CanSendDD="true" />
+      <EPSInfo RCPAllowed="true">
+        <ClearingCircuits ClearingCircuit="0001" ClearingCircuitShortName="ClearingCircuitShortName1" ClearingCircuitFullName="ClearingCircuitFullName1" PerfomanceSchema="AONS" DefaultSchema="true" ClaimLimitsAllowed="true">
+          <GarFunds GarFundsUsage="GFCA">
+            <GarFundNumber BIC="BIC1" Account="Account1" />
+          </GarFunds>
+          <ClearingAccount BIC="BIC1" Account="Account1" />
+        </ClearingCircuits>
+        <ClearingCircuits ClearingCircuit="0002" ClearingCircuitShortName="ClearingCircuitShortName2" ClearingCircuitFullName="ClearingCircuitFullName2" PerfomanceSchema="INDS" DefaultSchema="false" ClaimLimitsAllowed="false">
+          <GarFunds GarFundsUsage="GFCI">
+            <GarFundNumber BIC="BIC2" Account="Account2" />
+          </GarFunds>
+          <ClearingAccount BIC="BIC2" Account="Account2" />
+        </ClearingCircuits>
+        <ClearingCircuits ClearingCircuit="0003" ClearingCircuitShortName="ClearingCircuitShortName3" ClearingCircuitFullName="ClearingCircuitFullName3" PerfomanceSchema="AONS" DefaultSchema="true" ClaimLimitsAllowed="true">
+          <GarFunds GarFundsUsage="GFNU">
+            <GarFundNumber BIC="BIC3" Account="Account3" />
+          </GarFunds>
+          <ClearingAccount BIC="BIC3" Account="Account3" />
+        </ClearingCircuits>
+      </EPSInfo>
+      <AccountsAuthorizedForDD>
+        <AccountsList BIC="BIC1" Account="Account1" IPBIC="IPBIC1" AggrementID="AggrementID1" DateTo="1900-01-01" IPAccount="IPAccount1" />
+        <AccountsList BIC="BIC2" Account="Account2" IPBIC="IPBIC2" AggrementID="AggrementID2" DateTo="0001-01-01" IPAccount="IPAccount2" />
+        <AccountsList BIC="BIC3" Account="Account3" IPBIC="IPBIC3" AggrementID="AggrementID3" DateTo="9999-12-31" IPAccount="IPAccount3" />
+      </AccountsAuthorizedForDD>
+      <AuthorizedClaimAuthorsForIP>
+        <AuthorizedClaimAuthorsListForIP AggrementID="AggrementID1" DateTo="1900-01-01" IPAccount="IPAccount1">
+          <BIC>BIC1</BIC>
+        </AuthorizedClaimAuthorsListForIP>
+        <AuthorizedClaimAuthorsListForIP AggrementID="AggrementID2" DateTo="0001-01-01" IPAccount="IPAccount2">
+          <BIC>BIC2</BIC>
+        </AuthorizedClaimAuthorsListForIP>
+        <AuthorizedClaimAuthorsListForIP AggrementID="AggrementID3" DateTo="9999-12-31" IPAccount="IPAccount3">
+          <BIC>BIC3</BIC>
+        </AuthorizedClaimAuthorsListForIP>
+      </AuthorizedClaimAuthorsForIP>
+      <LimitsInfo>
+        <LimitInfo LimitType="FIPL" Value="0" PayerBIC="PayerBIC1" AggrementID="AggrementID1" Utilization="1" BIC="BIC1" Account="Account1" UID="UID1" ClearingCircuit="0001" />
+        <LimitInfo LimitType="FPML" Value="-999999999999999999" PayerBIC="PayerBIC2" AggrementID="AggrementID2" Utilization="-999999999999999999" BIC="BIC2" Account="Account2" UID="UID2" ClearingCircuit="0002" />
+        <LimitInfo LimitType="ICLL" Value="999999999999999999" PayerBIC="PayerBIC3" AggrementID="AggrementID3" Utilization="999999999999999999" BIC="BIC3" Account="Account3" UID="UID3" ClearingCircuit="0003" />
+      </LimitsInfo>
+      <DirectParticipantBICAccount BIC="BIC1" Account="Account1" />
+    </ParticipantProfileInfo>
+    <AccountsInfo Account="Account1" AccountType="BANA" DateOfDeletion="1900-01-01" DefaultARMNo="D1" UseCorrespAccInFTS="true">
+      <AccIntradayRestrictions>
+        <StopSendFTI Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="0001-02-02" DocNumber="DocNumber6" Description="Description6" />
+        </StopSendFTI>
+        <StopCredits Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="9999-11-29" DocNumber="DocNumber7" Description="Description7" />
+        </StopCredits>
+        <StopUrgentFTS Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1899-10-29" DocNumber="DocNumber8" Description="Description8" />
+        </StopUrgentFTS>
+        <SuspendSendRecvEM Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1900-03-06" DocNumber="DocNumber9" Description="Description9" />
+        </SuspendSendRecvEM>
+        <StopDebits Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="0001-03-06" DocNumber="DocNumber10" Description="Description10" />
+        </StopDebits>
+        <StopFPS Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="9999-10-28" DocNumber="DocNumber11" Description="Description11" />
+        </StopFPS>
+        <LiquidAccumulate Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1899-09-27" DocNumber="DocNumber12" Description="Description12" />
+        </LiquidAccumulate>
+        <PendingDeletion Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1900-04-07" DocNumber="DocNumber13" Description="Description13" />
+        </PendingDeletion>
+        <RouteToCBR Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="0001-04-07" DocNumber="DocNumber14" Description="Description14" />
+        </RouteToCBR>
+        <ManualVerifMode Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="9999-09-26" DocNumber="DocNumber15" Description="Description15" />
+        </ManualVerifMode>
+        <Arrest Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1899-08-26" DocNumber="DocNumber16" Description="Description16" />
+        </Arrest>
+        <SpecialMode Applied="true" ApplyDate="1900-01-01">
+          <RestrictionBasisDoc DocDate="1900-05-09" DocNumber="DocNumber17" Description="Description17" />
+        </SpecialMode>
+      </AccIntradayRestrictions>
+      <PendingDeletionInfo AccountCloseDate="1900-01-01">
+        <DestinationInfo DestinationBIC="DestinationBIC1" DestinationAccount="DestinationAccount1" />
+      </PendingDeletionInfo>
+      <BalanceSweepingAccount BIC="BIC1" Account="Account1">
+        <DailyTransfer>
+          <TimeTransfer>01:01:01</TimeTransfer>
+        </DailyTransfer>
+      </BalanceSweepingAccount>
+      <PoolSPInfo>
+        <ListOfSP>
+          <SPInfo BIC="BIC1" Account="Account1" />
+          <SPInfo BIC="BIC2" Account="Account2" />
+          <SPInfo BIC="BIC3" Account="Account3" />
+        </ListOfSP>
+      </PoolSPInfo>
+      <IPInfo>
+        <IPBICAccList BIC="BIC1" Account="Account1" />
+        <IPBICAccList BIC="BIC2" Account="Account2" />
+        <IPBICAccList BIC="BIC3" Account="Account3" />
+      </IPInfo>
+      <LimitsInfo>
+        <LimitInfo LimitType="IOCL" Value="-1" PayerBIC="PayerBIC4" AggrementID="AggrementID4" Utilization="0" BIC="BIC4" Account="Account4" UID="UID4" ClearingCircuit="0001" />
+        <LimitInfo LimitType="IPCL" Value="1" PayerBIC="PayerBIC5" AggrementID="AggrementID5" Utilization="2" BIC="BIC5" Account="Account5" UID="UID5" ClearingCircuit="0002" />
+        <LimitInfo LimitType="NURL" Value="-999999999999999998" PayerBIC="PayerBIC6" AggrementID="AggrementID6" Utilization="-999999999999999998" BIC="BIC6" Account="Account6" UID="UID6" ClearingCircuit="0003" />
+      </LimitsInfo>
+      <AuthorizedClaimAuthors>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0001">
+          <BIC>BIC1</BIC>
+        </AuthorizedClaimAuthorsList>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0002">
+          <BIC>BIC2</BIC>
+        </AuthorizedClaimAuthorsList>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0003">
+          <BIC>BIC3</BIC>
+        </AuthorizedClaimAuthorsList>
+      </AuthorizedClaimAuthors>
+      <ArrestsInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID1" IndeterminateAmountFlag="true" ArrestAmount="0" OutstandingAmount="0">
+          <RestrictionBasisDoc DocDate="1900-01-01" DocNumber="DocNumber1" Description="Description1" />
+        </ArrestDetailedInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID2" IndeterminateAmountFlag="false" ArrestAmount="-999999999999999999" OutstandingAmount="-999999999999999999">
+          <RestrictionBasisDoc DocDate="0001-01-01" DocNumber="DocNumber2" Description="Description2" />
+        </ArrestDetailedInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID3" IndeterminateAmountFlag="true" ArrestAmount="999999999999999999" OutstandingAmount="999999999999999999">
+          <RestrictionBasisDoc DocDate="9999-12-31" DocNumber="DocNumber3" Description="Description3" />
+        </ArrestDetailedInfo>
+      </ArrestsInfo>
+    </AccountsInfo>
+    <AccountsInfo Account="Account2" AccountType="CBRA" DateOfDeletion="0001-01-01" DefaultARMNo="D2" UseCorrespAccInFTS="false">
+      <AccIntradayRestrictions>
+        <StopSendFTI Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="0001-05-09" DocNumber="DocNumber18" Description="Description18" />
+        </StopSendFTI>
+        <StopCredits Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="9999-08-25" DocNumber="DocNumber19" Description="Description19" />
+        </StopCredits>
+        <StopUrgentFTS Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="1899-07-25" DocNumber="DocNumber20" Description="Description20" />
+        </StopUrgentFTS>
+        <SuspendSendRecvEM Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="1900-06-10" DocNumber="DocNumber21" Description="Description21" />
+        </SuspendSendRecvEM>
+        <StopDebits Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="0001-06-10" DocNumber="DocNumber22" Description="Description22" />
+        </StopDebits>
+        <StopFPS Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="9999-07-24" DocNumber="DocNumber23" Description="Description23" />
+        </StopFPS>
+        <LiquidAccumulate Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="1899-06-23" DocNumber="DocNumber24" Description="Description24" />
+        </LiquidAccumulate>
+        <PendingDeletion Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="1900-07-12" DocNumber="DocNumber25" Description="Description25" />
+        </PendingDeletion>
+        <RouteToCBR Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="0001-07-12" DocNumber="DocNumber26" Description="Description26" />
+        </RouteToCBR>
+        <ManualVerifMode Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="9999-06-22" DocNumber="DocNumber27" Description="Description27" />
+        </ManualVerifMode>
+        <Arrest Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="1899-05-22" DocNumber="DocNumber28" Description="Description28" />
+        </Arrest>
+        <SpecialMode Applied="false" ApplyDate="0001-01-01">
+          <RestrictionBasisDoc DocDate="1900-08-13" DocNumber="DocNumber29" Description="Description29" />
+        </SpecialMode>
+      </AccIntradayRestrictions>
+      <PendingDeletionInfo AccountCloseDate="0001-01-01">
+        <DestinationInfo DestinationBIC="DestinationBIC2" DestinationAccount="DestinationAccount2" />
+      </PendingDeletionInfo>
+      <BalanceSweepingAccount BIC="BIC2" Account="Account2">
+        <DailyTransfer>
+          <TimeTransfer>00:00:00</TimeTransfer>
+        </DailyTransfer>
+      </BalanceSweepingAccount>
+      <PoolSPInfo>
+        <ListOfSP>
+          <SPInfo BIC="BIC4" Account="Account4" />
+          <SPInfo BIC="BIC5" Account="Account5" />
+          <SPInfo BIC="BIC6" Account="Account6" />
+        </ListOfSP>
+      </PoolSPInfo>
+      <IPInfo>
+        <IPBICAccList BIC="BIC4" Account="Account4" />
+        <IPBICAccList BIC="BIC5" Account="Account5" />
+        <IPBICAccList BIC="BIC6" Account="Account6" />
+      </IPInfo>
+      <LimitsInfo>
+        <LimitInfo LimitType="TCLL" Value="999999999999999998" PayerBIC="PayerBIC7" AggrementID="AggrementID7" Utilization="999999999999999998" BIC="BIC7" Account="Account7" UID="UID7" ClearingCircuit="0001" />
+        <LimitInfo LimitType="URGL" Value="-2" PayerBIC="PayerBIC8" AggrementID="AggrementID8" Utilization="-1" BIC="BIC8" Account="Account8" UID="UID8" ClearingCircuit="0002" />
+        <LimitInfo LimitType="VIPL" Value="2" PayerBIC="PayerBIC9" AggrementID="AggrementID9" Utilization="3" BIC="BIC9" Account="Account9" UID="UID9" ClearingCircuit="0003" />
+      </LimitsInfo>
+      <AuthorizedClaimAuthors>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0001">
+          <BIC>BIC4</BIC>
+        </AuthorizedClaimAuthorsList>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0002">
+          <BIC>BIC5</BIC>
+        </AuthorizedClaimAuthorsList>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0003">
+          <BIC>BIC6</BIC>
+        </AuthorizedClaimAuthorsList>
+      </AuthorizedClaimAuthors>
+      <ArrestsInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID4" IndeterminateAmountFlag="false" ArrestAmount="-1" OutstandingAmount="-1">
+          <RestrictionBasisDoc DocDate="1899-11-30" DocNumber="DocNumber4" Description="Description4" />
+        </ArrestDetailedInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID5" IndeterminateAmountFlag="true" ArrestAmount="1" OutstandingAmount="1">
+          <RestrictionBasisDoc DocDate="1900-02-02" DocNumber="DocNumber5" Description="Description5" />
+        </ArrestDetailedInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID6" IndeterminateAmountFlag="false" ArrestAmount="-999999999999999998" OutstandingAmount="-999999999999999998">
+          <RestrictionBasisDoc DocDate="0001-02-02" DocNumber="DocNumber6" Description="Description6" />
+        </ArrestDetailedInfo>
+      </ArrestsInfo>
+    </AccountsInfo>
+    <AccountsInfo Account="Account3" AccountType="CRSA" DateOfDeletion="9999-12-31" DefaultARMNo="D3" UseCorrespAccInFTS="true">
+      <AccIntradayRestrictions>
+        <StopSendFTI Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="0001-08-13" DocNumber="DocNumber30" Description="Description30" />
+        </StopSendFTI>
+        <StopCredits Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="9999-05-21" DocNumber="DocNumber31" Description="Description31" />
+        </StopCredits>
+        <StopUrgentFTS Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="1899-04-20" DocNumber="DocNumber32" Description="Description32" />
+        </StopUrgentFTS>
+        <SuspendSendRecvEM Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="1900-09-14" DocNumber="DocNumber33" Description="Description33" />
+        </SuspendSendRecvEM>
+        <StopDebits Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="0001-09-14" DocNumber="DocNumber34" Description="Description34" />
+        </StopDebits>
+        <StopFPS Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="9999-04-19" DocNumber="DocNumber35" Description="Description35" />
+        </StopFPS>
+        <LiquidAccumulate Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="1899-03-19" DocNumber="DocNumber36" Description="Description36" />
+        </LiquidAccumulate>
+        <PendingDeletion Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="1900-10-16" DocNumber="DocNumber37" Description="Description37" />
+        </PendingDeletion>
+        <RouteToCBR Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="0001-10-16" DocNumber="DocNumber38" Description="Description38" />
+        </RouteToCBR>
+        <ManualVerifMode Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="9999-03-18" DocNumber="DocNumber39" Description="Description39" />
+        </ManualVerifMode>
+        <Arrest Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="1899-02-15" DocNumber="DocNumber40" Description="Description40" />
+        </Arrest>
+        <SpecialMode Applied="true" ApplyDate="9999-12-31">
+          <RestrictionBasisDoc DocDate="1900-11-17" DocNumber="DocNumber41" Description="Description41" />
+        </SpecialMode>
+      </AccIntradayRestrictions>
+      <PendingDeletionInfo AccountCloseDate="9999-12-31">
+        <DestinationInfo DestinationBIC="DestinationBIC3" DestinationAccount="DestinationAccount3" />
+      </PendingDeletionInfo>
+      <BalanceSweepingAccount BIC="BIC3" Account="Account3">
+        <DailyTransfer>
+          <TimeTransfer>23:59:59</TimeTransfer>
+        </DailyTransfer>
+      </BalanceSweepingAccount>
+      <PoolSPInfo>
+        <ListOfSP>
+          <SPInfo BIC="BIC7" Account="Account7" />
+          <SPInfo BIC="BIC8" Account="Account8" />
+          <SPInfo BIC="BIC9" Account="Account9" />
+        </ListOfSP>
+      </PoolSPInfo>
+      <IPInfo>
+        <IPBICAccList BIC="BIC7" Account="Account7" />
+        <IPBICAccList BIC="BIC8" Account="Account8" />
+        <IPBICAccList BIC="BIC9" Account="Account9" />
+      </IPInfo>
+      <LimitsInfo>
+        <LimitInfo LimitType="VPML" Value="-999999999999999997" PayerBIC="PayerBIC10" AggrementID="AggrementID10" Utilization="-999999999999999997" BIC="BIC10" Account="Account10" UID="UID10" ClearingCircuit="0001" />
+        <LimitInfo LimitType="IPIL" Value="999999999999999997" PayerBIC="PayerBIC11" AggrementID="AggrementID11" Utilization="999999999999999997" BIC="BIC11" Account="Account11" UID="UID11" ClearingCircuit="0002" />
+        <LimitInfo LimitType="FIPL" Value="-3" PayerBIC="PayerBIC12" AggrementID="AggrementID12" Utilization="-2" BIC="BIC12" Account="Account12" UID="UID12" ClearingCircuit="0003" />
+      </LimitsInfo>
+      <AuthorizedClaimAuthors>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0001">
+          <BIC>BIC7</BIC>
+        </AuthorizedClaimAuthorsList>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0002">
+          <BIC>BIC8</BIC>
+        </AuthorizedClaimAuthorsList>
+        <AuthorizedClaimAuthorsList ClearingCircuit="0003">
+          <BIC>BIC9</BIC>
+        </AuthorizedClaimAuthorsList>
+      </AuthorizedClaimAuthors>
+      <ArrestsInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID7" IndeterminateAmountFlag="true" ArrestAmount="999999999999999998" OutstandingAmount="999999999999999998">
+          <RestrictionBasisDoc DocDate="9999-11-29" DocNumber="DocNumber7" Description="Description7" />
+        </ArrestDetailedInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID8" IndeterminateAmountFlag="false" ArrestAmount="-2" OutstandingAmount="-2">
+          <RestrictionBasisDoc DocDate="1899-10-29" DocNumber="DocNumber8" Description="Description8" />
+        </ArrestDetailedInfo>
+        <ArrestDetailedInfo ArrestID="ArrestID9" IndeterminateAmountFlag="true" ArrestAmount="2" OutstandingAmount="2">
+          <RestrictionBasisDoc DocDate="1900-03-06" DocNumber="DocNumber9" Description="Description9" />
+        </ArrestDetailedInfo>
+      </ArrestsInfo>
+    </AccountsInfo>
+  </ParticipantProfile>
+  <InitialED EDNo="1" EDDate="1900-01-01" EDAuthor="EDAuthor1" />
+</ED808>
