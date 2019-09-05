@@ -8,9 +8,11 @@ module Ufebs
       namespace 'ed'
 
       element :bic, String, tag: 'BIC'
+      element :uid, String, tag: 'UID'
 
-      def initialize(bic: '')
+      def initialize(bic: '', uid: '')
         @bic = bic
+        @uid = uid
       end
     end
   end
