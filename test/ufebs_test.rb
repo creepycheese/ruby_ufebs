@@ -94,7 +94,7 @@ class UfebsTest < MiniTest::Test
       ed_author: '4525545000',
       request_code: 'FIRR',
       participant_id: {
-        bic: '123456789'
+        uid: '1234567890'
       }
     )
 
