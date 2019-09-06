@@ -75,6 +75,25 @@ class UfebsTest < MiniTest::Test
       request_info: {
         bic: '123456789',
         correspondent_account: '40702810200203001037',
+        business_day: {
+          abstract_date: Time.now
+        }
+      }
+    )
+
+    doc = Nokogiri::XML(pr.to_xml)
+    assert Ufebs.validate(doc).valid?
+  end
+
+  def test_ed742_with_time_interval
+    pr = Ufebs::ED742(
+      ed_receiver: '1234567890',
+      ed_no: '1',
+      ed_date: Time.now,
+      ed_author: '4525545000',
+      request_info: {
+        bic: '123456789',
+        correspondent_account: '40702810200203001037',
         date_time_interval: {
           begin_time: Time.now,
           end_time: Time.now
