@@ -121,6 +121,23 @@ class UfebsTest < MiniTest::Test
     assert Ufebs.validate(doc).valid?
   end
 
+  def test_ed210
+    pr = Ufebs::ED210(
+      ed_no: '11',
+      ed_date: Time.now,
+      ed_author: '4525545000',
+      abstract_request: '1',
+      abstract_date: Time.now,
+      begin_time: '09:40:00',
+      end_time: '10:10:00',
+      account: '30101810300000000545',
+      session_id: '1'
+    )
+
+    doc = Nokogiri::XML(pr.to_xml)
+    assert Ufebs.validate(doc).valid?
+  end
+
   def test_it_maps_with_ed101
     po = Ufebs::ED101(
       number: 7,
