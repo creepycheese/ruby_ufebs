@@ -159,6 +159,7 @@ module Ufebs
   end
 
   def ED210(params)
+    Ufebs::Requests::AccountStatement.new(params)
   end
 
   # Создание/Парсинг выписки ED211
