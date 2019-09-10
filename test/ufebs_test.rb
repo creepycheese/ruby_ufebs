@@ -77,6 +77,10 @@ class UfebsTest < MiniTest::Test
         correspondent_account: '40702810200203001037',
         business_day: {
           abstract_date: Time.now
+        },
+        date_time_interval: {
+          begin_time: '',
+          end_time: nil
         }
       }
     )
@@ -131,7 +135,7 @@ class UfebsTest < MiniTest::Test
       begin_time: '09:40:00',
       end_time: '10:10:00',
       account: '30101810300000000545',
-      session_id: '1'
+      session_id: nil
     )
 
     doc = Nokogiri::XML(pr.to_xml)
