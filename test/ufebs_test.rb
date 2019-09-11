@@ -135,7 +135,8 @@ class UfebsTest < MiniTest::Test
       begin_time: '09:40:00',
       end_time: '10:10:00',
       account: '30101810300000000545',
-      session_id: nil
+      session_id: nil,
+      bic: '044525420'
     )
 
     doc = Nokogiri::XML(pr.to_xml)

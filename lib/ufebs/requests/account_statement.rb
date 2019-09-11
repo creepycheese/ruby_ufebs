@@ -20,6 +20,7 @@ module Ufebs
       attribute :end_time, String, tag: 'EndTime'
       attribute :account, String, tag: 'Acc'
       attribute :session_id, String, tag: 'SessionID'
+      attribute :bic, String, tag: 'BIC'
 
       def initialize(params = {})
         params.each do |key, value|
