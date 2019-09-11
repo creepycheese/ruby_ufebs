@@ -22,7 +22,7 @@ module Ufebs
       attribute :abstract_date, String, tag: 'AbstractDate'
 
       def initialize(abstract_date: '')
-        @abstract_date = Date&.parse(abstract_date.to_s)&.strftime('%Y-%m-%d') if present?(abstract_date)
+        @abstract_date = Date.parse(abstract_date.to_s).strftime('%Y-%m-%d')
       end
     end
 
@@ -49,6 +49,8 @@ module Ufebs
 
             @date_time_interval = DateTimeInterval.new(begin_time: value[:begin_time], end_time: value[:end_time])
           when :business_day
+            next unless present?(value[:abstract_date])
+
             @business_day = BusinessDay.new(abstract_date: value[:abstract_date])
           else instance_variable_set("@#{key}".to_sym, value)
           end

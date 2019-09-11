@@ -98,6 +98,9 @@ class UfebsTest < MiniTest::Test
       request_info: {
         bic: '123456789',
         correspondent_account: '40702810200203001037',
+        business_day: {
+          abstract_date: ''
+        },
         date_time_interval: {
           begin_time: Time.now,
           end_time: Time.now
