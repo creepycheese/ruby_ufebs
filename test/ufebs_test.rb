@@ -203,4 +203,16 @@ class UfebsTest < MiniTest::Test
 
     assert_kind_of(Ufebs::Response::GetRegistry, Ufebs::ED743(xml))
   end
+
+  def test_ed_807_parse
+    xml = File.open('test/files/ed_807.xml').read
+
+    assert_kind_of(Ufebs::Response::BicDirectory, Ufebs::ED807(xml))
+  end
+
+  def test_ed_808_parse
+    xml = File.open('test/files/ed_808.xml').read
+
+    assert_kind_of(Ufebs::Response::ParticipantProfile, Ufebs::ED808(xml))
+  end
 end

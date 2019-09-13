@@ -302,6 +302,11 @@ module Ufebs
     Ufebs::Requests::ParticipantProfile.new(params)
   end
 
+  # Изменения или полный справочник биков
+  def ED807(xml)
+    Ufebs::Response::BicDirectory.parse(xml)
+  end
+
   # Профиль участника
   def ED808(xml)
     Ufebs::Response::ParticipantProfile.parse(xml)
