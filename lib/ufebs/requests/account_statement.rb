@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-# require_relative '../../ufebs/modules/common'
+require_relative '../../ufebs/modules/common'
 
 module Ufebs
   module Requests
     class AccountStatement
       include HappyMapper
-      # include Ufebs::Common
+      include Ufebs::Common
 
       register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
 
@@ -30,9 +30,9 @@ module Ufebs
           when :ed_date then @ed_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
           when :abstract_date then @abstract_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
           when :begin_time
-            @begin_time = Time.parse(value.to_s).strftime('%H:%M:%S')# if present?(value)
+            @begin_time = Time.parse(value.to_s).strftime('%H:%M:%S') if present?(value)
           when :end_time
-            @end_time = Time.parse(value.to_s).strftime('%H:%M:%S')# if present?(value)
+            @end_time = Time.parse(value.to_s).strftime('%H:%M:%S') if present?(value)
           else instance_variable_set("@#{key}".to_sym, value)
           end
         end
