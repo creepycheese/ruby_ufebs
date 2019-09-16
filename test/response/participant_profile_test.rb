@@ -9,13 +9,16 @@ class Ufebs::Response::ParticipantProfileTest < MiniTest::Test
   end
 
   def test_ed_attributes
-    assert_equal('FIRR', @parsed_xml.info_type_code)
     assert_equal('1900-01-01', @parsed_xml.business_day)
     assert_equal('1', @parsed_xml.change_number)
+    assert_equal('FIRR', @parsed_xml.info_type_code)
+    assert_equal(%w[ACCH AICH ALCH], @parsed_xml.creation_reason_codes)
   end
 
-  def test_creation_reason_codes
-    assert_equal(%w[ACCH AICH ALCH], @parsed_xml.creation_reason_codes)
+  def test_initial_ed
+    assert_equal('1', @parsed_xml.initial_ed.ed_no)
+    assert_equal('1900-01-01', @parsed_xml.initial_ed.ed_date)
+    assert_equal('EDAuthor1', @parsed_xml.initial_ed.ed_author)
   end
 
   def test_bic_directory
