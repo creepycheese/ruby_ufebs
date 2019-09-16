@@ -24,7 +24,7 @@ class Ufebs::Response::BicDirectoryTest < MiniTest::Test
     assert_equal('FIRR', @parsed_xml.info_type_code)
   end
 
-  def test_creation_reasons
+  def test_creation_reason
     assert_equal(['SOBD'], @parsed_xml.creation_reason_codes)
   end
 end
