@@ -23,6 +23,8 @@ module Ufebs
     class Info
       include HappyMapper
 
+      namespace 'ed'
+
       attribute :fps_liquidity, Integer, tag: 'FPSLiquidity'
       attribute :fps_position, Integer, tag: 'FPSPosition'
       attribute :exec_code, String, tag: 'ExecCode'
