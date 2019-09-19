@@ -31,6 +31,8 @@ module Ufebs
     class FPSLiquidityInfo
       include HappyMapper
 
+      namespace 'ed'
+
       attribute :business_day, String, tag: 'BusinessDay'
       attribute :fps_liquidity, Integer, tag: 'FPSLiquidity'
       attribute :fps_enter_position, Integer, tag: 'FPSEnterPosition'
@@ -42,12 +44,16 @@ module Ufebs
     class FPSTurnover
       include HappyMapper
 
+      namespace 'ed'
+
       attribute :credit_sum, Integer, tag: 'FPSCreditSum'
       attribute :debet_sum, Integer, tag: 'FPSDebetSum'
     end
 
     class InitialED
       include HappyMapper
+
+      namespace 'ed'
 
       attribute :ed_no, String, tag: 'EDNo'
       attribute :ed_date, String, tag: 'EDDate'
@@ -56,6 +62,8 @@ module Ufebs
 
     class LiqEDID
       include HappyMapper
+
+      namespace 'ed'
 
       attribute :sum, Integer, tag: 'Sum'
       attribute :liquidity_trans_kind, String, tag: 'LiquidityTransKind'
