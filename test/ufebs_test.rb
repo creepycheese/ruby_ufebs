@@ -128,6 +128,22 @@ class UfebsTest < MiniTest::Test
     assert Ufebs.validate(doc).valid?
   end
 
+  def test_ed806_with_nil_uid
+    pr = Ufebs::ED806(
+      ed_receiver: '1234567890',
+      ed_no: '1',
+      ed_date: Time.now,
+      ed_author: '4525545000',
+      request_code: 'FIRR',
+      participant_id: {
+        uid: nil
+      }
+    )
+
+    doc = Nokogiri::XML(pr.to_xml)
+    assert Ufebs.validate(doc).valid?
+  end
+
   def test_ed210
     pr = Ufebs::ED210(
       ed_no: '11',

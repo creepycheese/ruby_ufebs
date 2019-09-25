@@ -9,24 +9,24 @@ class Ufebs::Response::GetRegistryTest < MiniTest::Test
   end
 
   def test_part_info
-    assert_equal('1', @parsed_xml.part_info.part_no)
-    assert_equal(1, @parsed_xml.part_info.part_quantity)
-    assert_equal('PartAggregateID1', @parsed_xml.part_info.part_aggregate_id)
-  end
-
-  def test_fps_trans_infos
-    assert_equal('BICCorr1', @parsed_xml.fps_trans_infos.first.bic_corr)
-    assert_equal('CorrespAcc1', @parsed_xml.fps_trans_infos.first.correspondent_account)
-    assert_equal('DEBT', @parsed_xml.fps_trans_infos.first.dc)
+    assert_equal('1', @parsed_xml.part_info.number)
+    assert_equal(1, @parsed_xml.part_info.quantity)
+    assert_equal('PartAggregateID1', @parsed_xml.part_info.aggregate_id)
   end
 
   def test_trans_infos
-    first_trans_info = @parsed_xml.fps_trans_infos.first.trans_infos.first
+    assert_equal('BICCorr1', @parsed_xml.trans_infos.first.bic)
+    assert_equal('CorrespAcc1', @parsed_xml.trans_infos.first.correspondent_account)
+    assert_equal('DEBT', @parsed_xml.trans_infos.first.dc)
+  end
 
-    assert_equal('TransactionID1', first_trans_info.transaction_id)
-    assert_equal(0, first_trans_info.sum)
-    assert_equal('PUSH', first_trans_info.operation_type)
-    assert_equal('1900-01-01T01:01:01+03:00', first_trans_info.trans_date_time)
-    assert_equal(3, @parsed_xml.fps_trans_infos.first.trans_infos.size)
+  def test_transactions
+    transaction = @parsed_xml.trans_infos.first.transactions.first
+
+    assert_equal('TransactionID1', transaction.id)
+    assert_equal(0, transaction.amount)
+    assert_equal('PUSH', transaction.operation_type)
+    assert_equal('1900-01-01T01:01:01+03:00', transaction.date_time)
+    assert_equal(3, @parsed_xml.trans_infos.first.transactions.size)
   end
 end
