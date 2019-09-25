@@ -31,6 +31,8 @@ module Ufebs
       class BicDirectory
         include HappyMapper
 
+        namespace 'ed'
+
         attribute :bic, String, tag: 'BIC'
         attribute :change_type, String, tag: 'ChangeType'
 
@@ -42,12 +44,16 @@ module Ufebs
       class SwiftBics
         include HappyMapper
 
+        namespace 'ed'
+
         attribute :bic, String, tag: 'SWBIC'
         attribute :default, Boolean, tag: 'DefaultSWBIC'
       end
 
       class Account
         include HappyMapper
+
+        namespace 'ed'
 
         attribute :account, String, tag: 'Account'
         attribute :regulation_account_type, String, tag: 'RegulationAccountType'
@@ -62,6 +68,8 @@ module Ufebs
 
       class ParticipantInfo
         include HappyMapper
+
+        namespace 'ed'
 
         attribute :name, String, tag: 'NameP'
         attribute :eng_name, String, tag: 'EnglName'
@@ -89,6 +97,8 @@ module Ufebs
       class ParticipantRestrict
         include HappyMapper
 
+        namespace 'ed'
+
         attribute :resctrict, String, tag: 'Rstr'
         attribute :date, String, tag: 'RstrDate'
       end
@@ -96,12 +106,16 @@ module Ufebs
       class AccountRestrict
         include HappyMapper
 
+        namespace 'ed'
+
         attribute :resctrict, String, tag: 'AccRstr'
         attribute :date, String, tag: 'AccRstrDate'
       end
 
       class CreationReason
         include HappyMapper
+
+        namespace 'ed'
 
         has_many :codes, String, tag: 'CreationReasonCode'
       end

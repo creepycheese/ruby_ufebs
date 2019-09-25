@@ -8,6 +8,8 @@ module Ufebs
       include HappyMapper
       include Ufebs::Common
 
+      namespace 'ed'
+
       attribute :begin_time, String, tag: 'BeginTime'
       attribute :end_time, String, tag: 'EndTime'
 
@@ -20,6 +22,8 @@ module Ufebs
     class BusinessDay
       include HappyMapper
       include Ufebs::Common
+
+      namespace 'ed'
 
       attribute :abstract_date, String, tag: 'AbstractDate'
 

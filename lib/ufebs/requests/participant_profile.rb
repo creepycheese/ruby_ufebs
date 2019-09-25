@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
+require_relative '../../ufebs/modules/common'
+
 module Ufebs
   module Requests
     class ParticipantProfile
       include HappyMapper
+      include Ufebs::Common
 
       register_namespace 'ed', 'urn:cbr-ru:ed:v2.0'
 
@@ -23,6 +26,8 @@ module Ufebs
           case key.to_sym
           when :ed_date then @ed_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
           when :participant_id
+            next unless present?(value[:uid]) && present?(value[:bic])
+
             @bic_account = Ufebs::Entities::ParticipantId.new(uid: value[:uid], bic: value[:bic])
           else
             instance_variable_set("@#{key}".to_sym, value)

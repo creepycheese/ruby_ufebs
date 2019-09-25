@@ -20,34 +20,40 @@ module Ufebs
       has_one :part_info, 'Ufebs::Response::PartInfo', tag: 'PartInfo'
       has_one :initial_ed, Ufebs::Entities::EdRefId, tag: 'InitialED'
 
-      has_many :fps_trans_infos, 'Ufebs::Response::FPSTransInfo', tag: 'FPSTransInfo'
+      has_many :trans_infos, 'Ufebs::Response::FPSTransInfo', tag: 'FPSTransInfo'
     end
 
     class PartInfo
       include HappyMapper
 
-      attribute :part_no, String, tag: 'PartNo'
-      attribute :part_quantity, Integer, tag: 'PartQuantity'
-      attribute :part_aggregate_id, String, tag: 'PartAggregateID'
+      namespace 'ed'
+
+      attribute :number, String, tag: 'PartNo'
+      attribute :quantity, Integer, tag: 'PartQuantity'
+      attribute :aggregate_id, String, tag: 'PartAggregateID'
     end
 
     class FPSTransInfo
       include HappyMapper
 
-      attribute :bic_corr, String, tag: 'BICCorr'
+      namespace 'ed'
+
+      attribute :bic, String, tag: 'BICCorr'
       attribute :correspondent_account, String, tag: 'CorrespAcc'
       attribute :dc, String, tag: 'DC'
 
-      has_many :trans_infos, 'Ufebs::Response::TransInfo', tag: 'TransInfo'
+      has_many :transactions, 'Ufebs::Response::TransInfo', tag: 'TransInfo'
     end
 
     class TransInfo
       include HappyMapper
 
-      attribute :transaction_id, String, tag: 'TransactionID'
-      attribute :sum, Integer, tag: 'Sum'
+      namespace 'ed'
+
+      attribute :id, String, tag: 'TransactionID'
+      attribute :amount, Integer, tag: 'Sum'
       attribute :operation_type, String, tag: 'OperationType'
-      attribute :trans_date_time, String, tag: 'TransDateTime'
+      attribute :date_time, String, tag: 'TransDateTime'
     end
   end
 end
