@@ -26,7 +26,7 @@ module Ufebs
           case key.to_sym
           when :ed_date then @ed_date = Date.parse(value.to_s).strftime('%Y-%m-%d')
           when :participant_id
-            next unless present?(value[:uid]) && present?(value[:bic])
+            next unless present?(value[:uid]) || present?(value[:bic])
 
             @bic_account = Ufebs::Entities::ParticipantId.new(uid: value[:uid], bic: value[:bic])
           else

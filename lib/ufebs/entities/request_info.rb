@@ -28,7 +28,7 @@ module Ufebs
       attribute :abstract_date, String, tag: 'AbstractDate'
 
       def initialize(abstract_date: '')
-        @abstract_date = Date.parse(abstract_date.to_s).strftime('%Y-%m-%d')
+        @abstract_date = Date.parse(abstract_date.to_s).strftime('%Y-%m-%d') if present?(abstract_date)
       end
     end
 
