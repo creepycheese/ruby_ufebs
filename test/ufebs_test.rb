@@ -128,7 +128,7 @@ class UfebsTest < MiniTest::Test
     assert Ufebs.validate(doc).valid?
   end
 
-  def test_ed806_with_nil_uid
+  def test_ed806_with_nil_uid_and_bic
     pr = Ufebs::ED806(
       ed_receiver: '1234567890',
       ed_no: '1',
@@ -136,7 +136,8 @@ class UfebsTest < MiniTest::Test
       ed_author: '4525545000',
       request_code: 'FIRR',
       participant_id: {
-        uid: nil
+        uid: nil,
+        bic: ''
       }
     )
 
@@ -216,6 +217,12 @@ class UfebsTest < MiniTest::Test
 
   def test_ed_743_parse
     xml = File.open('test/files/ed_743.xml').read
+
+    assert_kind_of(Ufebs::Response::GetRegistry, Ufebs::ED743(xml))
+  end
+
+  def test_ed743_with_abstract_date
+    xml = File.open('test/files/ed743_abstract_date.xml').read
 
     assert_kind_of(Ufebs::Response::GetRegistry, Ufebs::ED743(xml))
   end

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<ED743 xmlns="urn:cbr-ru:ed:v2.0" EDNo="16702" EDDate="2019-10-03" EDAuthor="4511111111" EDReceiver="4525420000" CreationDateTime="2019-09-25T19:16:03Z">
+  <RequestInfo BIC="044525420" CorrespAcc="30101810945250000420">
+    <BusinessDay AbstractDate="2019-10-03" />
+  </RequestInfo>
+  <InitialED EDNo="18" EDDate="2019-10-03" EDAuthor="4525420000" />
+</ED743>
