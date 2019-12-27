@@ -13,7 +13,6 @@ module Ufebs
       attribute :status_code, String, tag: 'StatusCode'
       attribute :quantity_ed, String, tag: 'QuantityED'
       attribute :sum,         String, tag: 'Sum'
-      attribute :ed_day_no,   String, tag: 'EDDayNo'
 
       has_one :initial_ed,
               Ufebs::Entities::EdRefId,
