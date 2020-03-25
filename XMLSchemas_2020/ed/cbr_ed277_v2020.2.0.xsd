@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+
+Схемы с описанием прикладных частей электронных сообщений, используемых в расчетной сети Банка России.
+Обмен ПБР(ВЦ) с КО.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" version="2020.2.0">
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2020.2.0.xsd" />
+	<xs:include schemaLocation="cbr_ed_objects_v2020.2.0.xsd" />
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные объекты</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="ED277_DepositTerms">
+		<xs:annotation>
+			<xs:documentation>Сведения о привлечении депозита</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ApplicationSum" type="lt:KopeckAmountType" use="required">
+			<xs:annotation>
+				<xs:documentation>Сумма депозита</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ApplicationRate" type="lt:PercentNumberType" use="required">
+			<xs:annotation>
+				<xs:documentation>Ставка</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PlacementDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата размещения</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReturnDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата возврата</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ED277_OrgInfo">
+		<xs:annotation>
+			<xs:documentation>Реквизиты кредитной организации</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OrgName" type="lt:Max160TextType">
+				<xs:annotation>
+					<xs:documentation>Наименование</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="OrgRegNum" type="lt:BankDKOIDType">
+			<xs:annotation>
+				<xs:documentation>Регистрационный номер</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AgreementDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата Договора</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AgreementNum" type="lt:Max11TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер Договора</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AccDepositNum" type="lt:AccountNumberRUIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер депозитного счета</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="NotificationInfo">
+		<xs:annotation>
+			<xs:documentation>Реквизиты извещения</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="NotificationDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата извещения</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="NotificationNum" type="lt:Max11TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер извещения</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED277" type="ed:ED277">
+	</xs:element>
+	<xs:complexType name="ED277">
+     		<xs:annotation>
+         		<xs:documentation>Извещение о привлечении Банком России денежных средств в депозит овернайт</xs:documentation>
+		</xs:annotation>
+      		<xs:complexContent>
+         		<xs:extension base="ed:ESWithMandatoryEDReceiver">
+            			<xs:sequence>
+               				<xs:element name="NotificationInfo" type="ed:NotificationInfo">
+                  				<xs:annotation>
+                     					<xs:documentation>Реквизиты извещения</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+               				<xs:element name="OrgInfo" type="ed:ED277_OrgInfo">
+                  				<xs:annotation>
+                     					<xs:documentation>Реквизиты кредитной организации</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+               				<xs:element name="DepositTerms" type="ed:ED277_DepositTerms">
+                  				<xs:annotation>
+                     					<xs:documentation>Сведения о привлечении депозита</xs:documentation>
+                  				</xs:annotation>
+               				</xs:element>
+            			</xs:sequence>
+            			<xs:attribute name="EDDateTime" type="lt:DateTimeType" use="required">
+               				<xs:annotation>
+                  				<xs:documentation>Дата и время составления ЭС.</xs:documentation>
+               				</xs:annotation>
+		            	</xs:attribute>
+         		</xs:extension>
+      		</xs:complexContent>
+   	</xs:complexType>
+</xs:schema>

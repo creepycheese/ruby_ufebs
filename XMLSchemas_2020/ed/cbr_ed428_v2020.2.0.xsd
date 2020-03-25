@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+ППС 
+
+Схемы с описанием прикладных частей электронных сообщений, используемых в расчетной сети Банка России.
+Обмен ДОФР (АС ДКО) с КО.
+
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" version="2020.2.0">
+	<xs:include schemaLocation="cbr_ed_objects_v2020.2.0.xsd"/>
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2020.2.0.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные объекты</xs:documentation>
+	</xs:annotation>
+	<xs:complexType name="RepaymentPlan">
+		<xs:annotation>
+			<xs:documentation>Информация о планируемом погашении</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="ReqNum" type="lt:Max20TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер заявления</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReqDateTime" type="lt:DateTimeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Календарные дата и время заявления</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreditConsDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата генерального кредитного договора</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreditConsNo" type="lt:Max10TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер генерального кредитного договора</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OrgRegNum" type="lt:BankDKOIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Регистрационный номер кредитной организации.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreditNum" type="lt:Max10TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер кредита Банка России (номер Извещения о предоставлении кредита)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreditDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата предоставления кредита Банка России</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReturnDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Планируемая дата погашения обязательств по кредиту Банка России</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReturnCreditSum" type="lt:KopeckAmountType">
+			<xs:annotation>
+				<xs:documentation>Сумма основного долга, планируемая к погашению.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="ReturnPercentSum" type="lt:KopeckAmountType">
+			<xs:annotation>
+				<xs:documentation>Сумма процентов, планируемая к погашению.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED428" type="ed:ED428"/>
+	<xs:complexType name="ED428">
+		<xs:annotation>
+			<xs:documentation>Уведомление о досрочном погашении обязательств по кредиту Банка России</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ed:ESWithMandatoryEDReceiver">
+				<xs:sequence>
+					<xs:element name="RepaymentPlan" type="ed:RepaymentPlan">
+						<xs:annotation>
+							<xs:documentation>Информация о планируемом погашении</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
