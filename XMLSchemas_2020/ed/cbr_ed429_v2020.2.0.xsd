@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="windows-1251"?>
+<!--Центральный Банк Российской Федерации.
+Унифицированные форматы электронных банковских сообщений.
+
+ППС 
+
+Схемы с описанием прикладных частей электронных сообщений, используемых в расчетной сети Банка России.
+Обмен ДОФР (АС ДКО) с КО.
+
+-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:ed="urn:cbr-ru:ed:v2.0" xmlns:lt="urn:cbr-ru:ed:leaftypes:v2.0" targetNamespace="urn:cbr-ru:ed:v2.0" elementFormDefault="qualified" version="2020.2.0">
+	<xs:import namespace="urn:cbr-ru:ed:leaftypes:v2.0" schemaLocation="cbr_ed_leaftypes_v2020.2.0.xsd"/>
+	<xs:include schemaLocation="cbr_ed_objects_v2020.2.0.xsd"/>
+	<xs:annotation>
+		<xs:documentation>Локальные прикладные объекты</xs:documentation>
+	</xs:annotation>
+	<xs:element name="Security" type="ed:Security"/>
+	<xs:complexType name="Security">
+		<xs:annotation>
+			<xs:documentation>Ценные бумаги</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="SecurityRegNum" type="lt:Max20TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Государственный регистрационный номер (идентификационный номер) выпуска ценных бумаг</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SecurityCode" type="lt:ISINIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>ISIN - международный идентификационный номер выпуска ценных бумаг</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="SecurityAmount" type="lt:Max24QuantityType" use="required">
+			<xs:annotation>
+				<xs:documentation>Количество ценных бумаг соответствующего выпуска</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="SecurityDepoPartitions" type="ed:SecurityDepoPartitions"/>
+	<xs:complexType name="SecurityDepoPartitions">
+		<xs:annotation>
+			<xs:documentation>Разделы счетов депо для ценных бумаг</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="DepoName" type="lt:Max512TextContentType">
+				<xs:annotation>
+					<xs:documentation>Наименование депозитария</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Security" type="ed:Security" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Ценные бумаги</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="DepoCode" type="lt:DepoIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Код депозитария</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DepoAccount" type="lt:DepoAccountIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>№ счета депо в депозитарии</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DepoPartitionFrom" type="lt:DepoPartitionIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>№ раздела счета депо, из которого переводится обеспечение</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DepoPartitionFromName" type="lt:Max100TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Наименование раздела, из которого переводится обеспечение</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DepoPartitionTo" type="lt:DepoPartitionIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>№ раздела счета депо, в который следует перевести обеспечение</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="DepoPartitionToName" type="lt:Max100TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Наименование раздела счета депо, в который следует перевести обеспечение</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="SecurityDepoPartitionsList" type="ed:SecurityDepoPartitionsList"/>
+	<xs:complexType name="SecurityDepoPartitionsList">
+		<xs:annotation>
+			<xs:documentation>Список ценных бумаг для вывода</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="SecurityDepoPartitions" type="ed:SecurityDepoPartitions" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Разделы счетов депо для ценных бумаг</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="CreditNonmarketAssetList" type="ed:CreditNonmarketAssetList"/>
+	<xs:complexType name="CreditNonmarketAssetList">
+		<xs:annotation>
+			<xs:documentation>Список активов</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="CreditNonmarketAsset" type="ed:CreditNonmarketAsset" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Активы</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="GuarantorReplacementList" type="ed:GuarantorReplacementList"/>
+	<xs:complexType name="GuarantorReplacementList">
+		<xs:annotation>
+			<xs:documentation>Список поручительств для замены</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="GuarantorReplacement" type="ed:GuarantorReplacement" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Замена поручителей</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="AssetWithdrawal" type="ed:AssetWithdrawal"/>
+	<xs:complexType name="AssetWithdrawal">
+		<xs:annotation>
+			<xs:documentation>Информация о выводе обеспечения</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice minOccurs="1" maxOccurs="1">
+				<xs:element name="SecurityDepoPartitionsList" type="ed:SecurityDepoPartitionsList">
+					<xs:annotation>
+						<xs:documentation>Список ценных бумаг для вывода</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="CreditNonmarketAssetList" type="ed:CreditNonmarketAssetList">
+					<xs:annotation>
+						<xs:documentation>Список активов</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="GuarantorReplacementList" type="ed:GuarantorReplacementList">
+					<xs:annotation>
+						<xs:documentation>Список поручительств для замены</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:choice>
+		</xs:sequence>
+		<xs:attribute name="AssetReqNum" type="lt:Max20TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер заявления</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AssetReqDateTime" type="lt:DateTimeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Календарные дата и время заявления</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreditConsDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата генерального кредитного договора</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="CreditConsNo" type="lt:Max10TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер генерального кредитного договора</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="OrgRegNum" type="lt:BankDKOIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Регистрационный номер кредитной организации.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="CreditNonmarketAsset" type="ed:CreditNonmarketAsset"/>
+	<xs:complexType name="CreditNonmarketAsset">
+		<xs:annotation>
+			<xs:documentation>Активы</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IssuerName" type="lt:Max255TextContentType" minOccurs="0" maxOccurs="1">
+				<xs:annotation>
+					<xs:documentation>Наименование организации, проверяемой в отношении актива (для всех видов активов)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="AssetCode" type="lt:AssetIDTextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Уникальный номер актива в системе Банка России (если известен КО)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AssetNo" type="lt:Max255TextType">
+			<xs:annotation>
+				<xs:documentation>Номер актива (номер кредитного договора, векселя)</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="AssetDate" type="lt:DateType">
+			<xs:annotation>
+				<xs:documentation>Дата актива (дата выдачи векселя, дата кредитного договора).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="IsResident" type="lt:OneDigitCodeType">
+			<xs:annotation>
+				<xs:documentation>Является Резидентом РФ.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="INN" type="lt:INNIDTextType">
+			<xs:annotation>
+				<xs:documentation>ИНН организации.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="EGRUL" type="lt:EGRULIDTextType">
+			<xs:annotation>
+				<xs:documentation>Регистрационный номер организации в ЕГРЮЛ (ОГРН).</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="TUHolder" type="lt:TUCodeIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Код ТУ. ТУ, в котором хранится актив, по справочнику КП.</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="PartitionTypeTo" type="lt:TwoDigitCodeType" use="required">
+			<xs:annotation>
+				<xs:documentation>Вид раздела, в который выводится обеспечение</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="IssuerName" type="ed:IssuerName"/>
+	<xs:complexType name="IssuerName">
+		<xs:annotation>
+			<xs:documentation>Заменяемый поручитель</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="GuarantorRegNum" type="lt:BankDKOIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Регистрационный номер КО - поручителя</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="NewGuarantee" type="ed:NewGuarantee"/>
+	<xs:complexType name="NewGuarantee">
+		<xs:annotation>
+			<xs:documentation>Заменяющее поручительство</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="AgreementNumber" type="lt:Max20TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер Соглашения об обеспечении кредитов Банка России поручительствами</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="NewGuaranteeNumber" type="lt:Max255TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер договора поручительства</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="NewGuaranteeDate" type="lt:DateType" use="required">
+			<xs:annotation>
+				<xs:documentation>Дата договора поручительства</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="NewGuarantorRegNum" type="lt:BankDKOIDType" use="required">
+			<xs:annotation>
+				<xs:documentation>Регистрационный номер КО - поручителя</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="GuaranteeAmount" type="lt:TotalKopeckAmountType" use="required">
+			<xs:annotation>
+				<xs:documentation>Сумма, указанная в договоре поручительства</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:element name="GuarantorReplacement" type="ed:GuarantorReplacement"/>
+	<xs:complexType name="GuarantorReplacement">
+		<xs:annotation>
+			<xs:documentation>Замена поручителей</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IssuerName" type="ed:IssuerName" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Заменяемый поручитель</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="NewGuarantee" type="ed:NewGuarantee" maxOccurs="unbounded">
+				<xs:annotation>
+					<xs:documentation>Заменяющее поручительство</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="CreditNum" type="lt:Max10TextType" use="required">
+			<xs:annotation>
+				<xs:documentation>Номер кредита</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:annotation>
+		<xs:documentation>Прикладные части ЭС</xs:documentation>
+	</xs:annotation>
+	<xs:element name="ED429" type="ed:ED429"/>
+	<xs:complexType name="ED429">
+		<xs:annotation>
+			<xs:documentation>Заявление на перевод ценных бумаг из раздела "Блокировано Банком России" в Основной раздел или другой раздел "Блокировано Банком России" счета депо кредитной организации / Заявка на вывод активов из залога по кредиту / Заявка на возврат активов</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ed:ESWithMandatoryEDReceiver">
+				<xs:sequence>
+					<xs:element name="AssetWithdrawal" type="ed:AssetWithdrawal">
+						<xs:annotation>
+							<xs:documentation>Информация о выводе обеспечения</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>
