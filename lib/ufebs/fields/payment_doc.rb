@@ -14,6 +14,7 @@ module Ufebs
         content.attribute :system_code,        String, tag: 'SystemCode'
         content.attribute :priority,           String, tag: 'Priority'
         content.attribute :payment_precedence, String, tag: 'PaymentPrecedence'
+        content.attribute :code_purpose,       String, tag: 'CodePurpose'
 
         content.has_one :acc_doc, ::Ufebs::Entities::AccDoc,      tag: 'AccDoc'
         content.has_one :payer,   ::Ufebs::Entities::Participant, tag: 'Payer'

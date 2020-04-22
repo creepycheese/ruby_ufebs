@@ -12,7 +12,7 @@ class Ufebs::Documents::CollectionOrderTest < MiniTest::Test
         </Session>
         <ED104 ChargeOffDate="2018-01-03" EDAuthor="4525416000" EDDate="2018-01-03"
                EDNo="17" Priority="5" ReceiptDate="2018-01-03" Sum="1" SystemCode="01"
-               TransKind="06" FileDate="2018-01-03">
+               TransKind="06" FileDate="2018-01-03" CodePurpose="code purpose">
           <AccDoc AccDocDate="2018-01-03" AccDocNo="1"/>
           <Payer PersonalAcc="40817810000000000000">
             <Name>Пример</Name>
@@ -30,6 +30,7 @@ class Ufebs::Documents::CollectionOrderTest < MiniTest::Test
 
     assert result.any?
     assert result[0].file_date == '2018-01-03'
+    assert result[0].code_purpose == 'code purpose'
   end
   
   def test_it_maps_to_valid_xml_with_processing_details
