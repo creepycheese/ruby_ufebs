@@ -11,7 +11,8 @@ class Ufebs::Documents::PayerOrderTest < MiniTest::Test
           <SessionID>4</SessionID>
         </Session>
         <ED105 EDAuthor="4525416000" EDDate="2018-01-03" EDNo="17" Priority="5"
-               Sum="1" SystemCode="01" TransKind="16" TransContent="String">
+               Sum="1" SystemCode="01" TransKind="16" TransContent="String"
+               CodePurpose="code purpose">
           <AccDoc AccDocDate="2018-01-03" AccDocNo="1"/>
           <Payer PersonalAcc="40817810000000000000">
             <Name>Пример</Name>
@@ -29,6 +30,7 @@ class Ufebs::Documents::PayerOrderTest < MiniTest::Test
 
     assert result.any?
     assert result[0].trans_content == 'String'
+    assert result[0].code_purpose == 'code purpose'
   end
 
   def test_it_maps_to_valid_xml
@@ -40,6 +42,7 @@ class Ufebs::Documents::PayerOrderTest < MiniTest::Test
       trans_kind:        '16',
       acc_doc:           { number: '3', date: Time.now },
       purpose:           'оплата в том числе ндс 4000 руб',
+      code_purpose:      'code purpose',
       trans_content:     'String',
       payer:             {
         name:         'ООО ТЕСТ',
@@ -80,5 +83,6 @@ class Ufebs::Documents::PayerOrderTest < MiniTest::Test
     assert Ufebs.validate(doc).valid?
     assert po.priority == 0
     assert po.partial_payt.payt_no == '01'
+    assert po.code_purpose == 'code purpose'
   end
 end

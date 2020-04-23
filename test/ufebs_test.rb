@@ -171,6 +171,7 @@ class UfebsTest < MiniTest::Test
       acc_doc: { number: '3', date: Time.now },
       ed_author: '4525545000',
       purpose: 'оплата в том числе ндс 4000 руб',
+      code_purpose: 'code_purpose',
       payer: {
         name: 'ООО ТЕСТ',
         account: '40702810200203001037',

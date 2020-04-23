@@ -21,6 +21,7 @@ module Ufebs
       attribute :priority,           String, tag: 'Priority'
       attribute :payment_precedence, String, tag: 'PaymentPrecedence'
       attribute :trans_content,      String, tag: 'TransContent'
+      attribute :code_purpose,       String, tag: 'CodePurpose'
 
       has_one :acc_doc,            ::Ufebs::Entities::AccDoc,            tag: 'AccDoc'
       has_one :payer,              ::Ufebs::Entities::Participant,       tag: 'Payer'
